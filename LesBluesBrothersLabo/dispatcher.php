@@ -43,9 +43,7 @@
                     include_once "gestiontshirt.html";
                     
                 }else{
-                    echo('refusé');
-                   
-                    
+                    echo('refusé');   
 
                     
                 }
