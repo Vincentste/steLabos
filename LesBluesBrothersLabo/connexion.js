@@ -1,7 +1,5 @@
 $(function(){
     
-
-
 getFormulaireConnexion();
 $('.contenu').on("click",".envoi",valideMotDePasse);
 
@@ -9,10 +7,14 @@ $('.contenu').on("click",".envoi",valideMotDePasse);
 
 function valideMotDePasse(e){
      $.getJSON("dispatcher.php",{op:"controleConnexion",nom:$('#nom').val(),mdp:$('#mdp').val()},function(data){
-         ///
-         console.log(data.authorisation);
+        
+         if(data.authorisation == "oui"){
+         	$("body>.contenu").load("dispatcher.php","op=template_tshirt");
+         }else{
+         	$("body>.contenu").load("dispatcher.php","op=connexion&msg=oui");
+         }
+
     }); 
-    console.log("passe ici");
 }
 
 function getFormulaireConnexion($ou){
