@@ -41,7 +41,8 @@
                     echo('autorise');
                     session_start();
                     $_SESSION['connecte']='oui';
-                    $op='gestiontshirt';
+                    $operation='gestiontshirt';
+                    echo($operation);
                     
                 }
             }
