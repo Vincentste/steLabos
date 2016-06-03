@@ -49,12 +49,14 @@
                *///admin refusé
                 if($resultat){
                     echo('autorisé');
+                     session_start();
                     $_SESSION['connecte']='oui';
                     $op='gestiontshirt';
+                    include_once "gestiontshirt.html";
                     
                 }else{
                     echo('refusé');
-                    session_start();
+                   
                     
 
                     
