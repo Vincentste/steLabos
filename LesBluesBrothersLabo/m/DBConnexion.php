@@ -4,8 +4,8 @@
 		private $pdo = null;
 
 		private function __construct(){
-			$utilisateur = "root";
-			$motdepasse = "mysql";
+			$utilisateur = "labo";
+			$motdepasse = "labo";
 			$serveur = "mysql:host=localhost;dbname=tshirt";
 			$this->pdo = new PDO ($serveur,$utilisateur,$motdepasse);
 			$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
