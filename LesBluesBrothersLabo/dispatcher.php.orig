@@ -4,7 +4,7 @@
     	"connexion" => "accueil.html",
         "controleConnexion"=>"accueil.html",
     	"affichageAccueil" => "accueil.html",
-        "gestiontshirt"=>"gestiontshirt.html"
+        "gestiontshirt"=>"gestiontshirt.html",
 	];
 
 	//récupérer l'opération
@@ -18,7 +18,7 @@
 
 	switch ($op){
 		case "accueil":
-				require_once " ";
+				require_once "accueil.html";
 			break;
 		case "connexion":
 			$Affichage = new Affichage();
@@ -33,15 +33,31 @@
             	
                 $resultat=requeteConnexion($nom,$mdp);
 
+               /*
+               *///admin refusé
                 if($resultat){
-                    echo('{"authorisation":"oui"}');
+                    echo('pasauto');
+                }else{
+                    echo('autorise');
                     session_start();
                     $_SESSION['connecte']='oui';
-              
-                 
+                    $op='gestiontshirt';
+<<<<<<< HEAD
+
+=======
+>>>>>>> steGitHub/master
+                var_dump($resultat);
+               /*
+               *///admin refusé
+                if($resultat){
+                    echo('autorisé');
+                     session_start();
+                    $_SESSION['connecte']='oui';
+                    $op='gestiontshirt';
+                    include_once "gestiontshirt.html";
                     
                 }else{
-                    echo('{"authorisation":"non"}');
+                    echo('refusé');   
 
                     
                 }
@@ -49,10 +65,8 @@
             
           
 			break;
-                
-            case "gestiontshirt":
+        case "gestiontshirt":
             require_once "gestiontshirt";
-            break;
             
             
         
