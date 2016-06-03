@@ -1,0 +1,7 @@
+﻿test.txt
+et un autre texte
+modifié par kevin
+modifié par vincent
+
+https://github.com/Vincentste/steLabos
+https://github.com/Vincentste/steLabos.git
