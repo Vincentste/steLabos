@@ -13,7 +13,7 @@
 	    $op = "connexion";
 	}
 
-	require_once __DIR__.'/c/TemplateConnexion.php'; 
+	require_once __DIR__.'/c/TemplateConnexion.php';
     require_once __DIR__.'/m/connexion.php';
 
 	switch ($op){
@@ -57,10 +57,19 @@
 			break;   
             case "template_tshirt":
             $Affichage = new Affichage();
-            
-            $tab =  
 
             echo $Affichage->afficheChampsRecherche();
+            
+            $tabCat = recupAllCategories();
+            $tabMat = recupAllMatieres();
+            $tabCrea = recupAllCreateurs();
+            
+            $tab = ["categories"=>$tabCat,
+                "matieres"=>$tabMat,
+                "createurs"=>$tabCrea];
+
+            echo json_encode($tab);
+            
             break;
             
             

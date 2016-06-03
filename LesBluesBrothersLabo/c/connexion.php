@@ -23,34 +23,3 @@ function requeteConnexion($nom,$mdp){
        return $resultat->fetchAll(PDO::FETCH_OBJ);
         
 }
-
-function recupAllCreateur(){
-	$requete="SELECT * FROM createurs";
-	$connexion=connexion_PDO();
-	//preparation requete
-    $resultat=$connexion->prepare($requete);
-    $resultat->execute();
-    //dans résultat on a l'ensemble des résultats de la requete
-     return $resultat->fetchAll(PDO::FETCH_OBJ);
-}
-
-function recupAllMatiere(){
-	$requete="SELECT * FROM matieres";
-	$connexion=connexion_PDO();
-	//preparation requete
-    $resultat=$connexion->prepare($requete);
-    $resultat->execute();
-    //dans résultat on a l'ensemble des résultats de la requete
-     return $resultat->fetchAll(PDO::FETCH_OBJ);
-}
-
-function recupAllCategories(){
-	$requete="SELECT * FROM categories";
-	$connexion=connexion_PDO();
-	//preparation requete
-    $resultat=$connexion->prepare($requete);
-    $resultat->execute();
-    //dans résultat on a l'ensemble des résultats de la requete
-     return $resultat->fetchAll(PDO::FETCH_OBJ);
-}
-
