@@ -4,6 +4,7 @@
     	"connexion" => "accueil.html",
         "controleConnexion"=>"accueil.html",
     	"affichageAccueil" => "accueil.html",
+        "gestiontshirt"=>"gestiontshirt.html",
 	];
 
 	//récupérer l'opération
@@ -38,13 +39,18 @@
                     echo('pasauto');
                 }else{
                     echo('autorise');
-                   /* session_start();
+                    session_start();
                     $_SESSION['connecte']='oui';
-                    echo($_SESSION['connecte']);*/
+                    $op='gestiontshirt';
+                    
                 }
             }
             
           
 			break;
+        case "gestiontshirt":
+            require_once "gestiontshirt";
+            
+            
         
 	}
