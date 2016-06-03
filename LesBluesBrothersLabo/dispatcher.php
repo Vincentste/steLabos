@@ -18,7 +18,7 @@
 
 	switch ($op){
 		case "accueil":
-				require_once "accueil.html";
+				require_once " ";
 			break;
 		case "connexion":
 			$Affichage = new Affichage();
@@ -34,15 +34,15 @@
                 $resultat=requeteConnexion($nom,$mdp);
 
                 if($resultat){
-                    echo('autorisé');
+                    echo('{"authorisation":"oui"}');
                     session_start();
                     $_SESSION['connecte']='oui';
-                    $op='gestiontshirt';
-                    include_once "gestiontshirt.html";
+              
+                 
                     
                 }else{
-                    echo('refusé');   
-                    
+                    echo('{"authorisation":"non"}');
+                   
                 }
             }
             

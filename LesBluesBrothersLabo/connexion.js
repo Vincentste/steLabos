@@ -9,6 +9,8 @@ $('.contenu').on("click",".envoi",valideMotDePasse);
 
 function valideMotDePasse(e){
      $.getJSON("dispatcher.php",{op:"controleConnexion",nom:$('#nom').val(),mdp:$('#mdp').val()},function(data){
+         ///
+         console.log(data.authorisation);
     }); 
     console.log("passe ici");
 }
