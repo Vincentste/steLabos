@@ -22,7 +22,7 @@
 			break;
 		case "connexion":
 			$Affichage = new Affichage();
-			echo $Affichage->afficheConnexion();
+			echo $Affichage->afficheConnexion($message);
 			break;
 		case "controleConnexion":
 

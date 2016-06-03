@@ -4,7 +4,7 @@
     	"connexion" => "accueil.html",
         "controleConnexion"=>"accueil.html",
     	"affichageAccueil" => "accueil.html",
-        "gestiontshirt"=>"gestiontshirt.html"
+        "template_tshirt"=>"accueil.html"
 	];
 
 	//récupérer l'opération
@@ -22,7 +22,15 @@
 			break;
 		case "connexion":
 			$Affichage = new Affichage();
-			echo $Affichage->afficheConnexion();
+
+            if(isset($_GET['msg'])){
+                $message = "Vous n'êtes pas autorisé à vous connecter"; 
+            }else{
+                $message = ""; 
+            }
+            
+
+			echo $Affichage->afficheConnexion($message);
 			break;
 		case "controleConnexion":
 
@@ -46,11 +54,9 @@
                 }
             }
             
-          
-			break;
-                
-            case "gestiontshirt":
-            require_once "gestiontshirt";
+			break;   
+            case "template_tshirt":
+                echo "ok";
             break;
             
             
