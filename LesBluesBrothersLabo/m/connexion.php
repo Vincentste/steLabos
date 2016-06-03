@@ -2,9 +2,9 @@
 function connexion_PDO() {
 		static $connexion;
 		if (!isset ($connexion)) {
-			$utilisateur ="root";
-			$motdepasse="mysql";
-			$serveur= "mysql:host=localhost;dbname=boutique t-shirt";
+			$utilisateur = "labo";
+			$motdepasse = "labo";
+			$serveur= "mysql:host=localhost;dbname=tshirt";
 			$connexion = new PDO ($serveur,$utilisateur,$motdepasse);
 		 	$connexion->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			$requete="SET NAMES utf8";
