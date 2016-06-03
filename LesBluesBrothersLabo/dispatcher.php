@@ -56,7 +56,8 @@
             
 			break;   
             case "template_tshirt":
-                echo "ok";
+            $Affichage = new Affichage();
+            echo $Affichage->afficheChampsRecherche();
             break;
             
             

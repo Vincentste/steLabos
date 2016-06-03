@@ -50,6 +50,7 @@
           
 			break;
         case "gestiontshirt":
+        echo $Affichage->afficheConnexion($message);
             require_once "gestiontshirt";
             
             
