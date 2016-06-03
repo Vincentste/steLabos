@@ -4,7 +4,8 @@
     	"connexion" => "accueil.html",
         "controleConnexion"=>"accueil.html",
     	"affichageAccueil" => "accueil.html",
-        "template_tshirt"=>"accueil.html"
+        "template_tshirt"=>"accueil.html",
+        "data_recherche"=>"accueil.html",
 	];
 
 	//récupérer l'opération
@@ -59,7 +60,8 @@
             $Affichage = new Affichage();
 
             echo $Affichage->afficheChampsRecherche();
-            
+            break;
+            case "data_recherche":
             $tabCat = recupAllCategories();
             $tabMat = recupAllMatieres();
             $tabCrea = recupAllCreateurs();

@@ -9,9 +9,15 @@ function valideMotDePasse(e){
      $.getJSON("dispatcher.php",{op:"controleConnexion",nom:$('#nom').val(),mdp:$('#mdp').val()},function(data){
         
          if(data.authorisation == "oui"){
-         	$("body>.contenu").load("dispatcher.php","op=template_tshirt");
+    		$("body>.contenu").load("dispatcher.php","op=template_tshirt",function(){
+    			$.getJSON("dispatcher.php","op=data_recherche",function(data){
+         			console.log(data)
+
+         	});	
+    		});     	
+         	
          }else{
-         	$("body>.contenu").load("dispatcher.php","op=connexion&msg=oui");
+         	
          }
 
     }); 
