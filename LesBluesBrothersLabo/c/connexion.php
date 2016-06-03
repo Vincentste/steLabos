@@ -2,8 +2,8 @@
 function connexion_PDO() {
 		static $connexion;
 		if (!isset ($connexion)) {
-			$utilisateur ="root";
-			$motdepasse="mysql";
+			$utilisateur ="labo";
+			$motdepasse="labo";
 			$serveur= "mysql:host=localhost;dbname=tshirt";
 			$connexion = new PDO ($serveur,$utilisateur,$motdepasse);
 		 	$connexion->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
