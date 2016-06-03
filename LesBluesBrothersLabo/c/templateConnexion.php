@@ -16,9 +16,10 @@ class Affichage{
     
     public function afficheChampsRecherche(){
         return '
+            <section class="content">
             <h1>Moteur de recherche</h1>
             <form><fieldset id="champHaut">  
-            <input type="text" id="champTexte"/>
+            <input type="text" id="champTexte" name="champTexte"/>
             </fieldset>
             <fieldset id="champbas">
             <p>
@@ -35,7 +36,9 @@ class Affichage{
             </p>           
             <input type="button" id="boutChampRech" value="envoyer" autocomplete="off"/>
             </p>   
-            </fieldset></form>'; 
+            </fieldset></form>
+            <div id="divAjout"><p>Ajouter un t-shirt</p></div>
+            </section>'; 
     }
     
 }

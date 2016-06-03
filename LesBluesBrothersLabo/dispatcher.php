@@ -33,6 +33,7 @@
 
 			echo $Affichage->afficheConnexion($message);
 			break;
+            
 		case "controleConnexion":
 
             $nom = isset($_GET['nom'])?$_GET['nom']:"";
@@ -54,26 +55,28 @@
                    
                 }
             }
-            
 			break;   
+            
             case "template_tshirt":
             $Affichage = new Affichage();
-
             echo $Affichage->afficheChampsRecherche();
             break;
+            
             case "data_recherche":
             $tabCat = recupAllCategories();
             $tabMat = recupAllMatieres();
             $tabCrea = recupAllCreateurs();
-            
             $tab = ["categories"=>$tabCat,
                 "matieres"=>$tabMat,
                 "createurs"=>$tabCrea];
-
             echo json_encode($tab);
-            
             break;
             
-            
-        
-	}
+            case "rechercheParTexte";
+            $text=$_GET[chaine];
+            $resultat=requeteTshirtParNoms($text);
+            echo json_encode($resultat);
+           /* echo('{"chaine":"text"}');*/
+            break;    
+    }
+	
