@@ -32,6 +32,18 @@
             if($nom!="" && $mdp!=""){
             	
                 $resultat=requeteConnexion($nom,$mdp);
+<<<<<<< HEAD
+
+               /*
+               *///admin refusé
+                if($resultat){
+                    echo('pasauto');
+                }else{
+                    echo('autorise');
+                    session_start();
+                    $_SESSION['connecte']='oui';
+                    $op='gestiontshirt';
+=======
                 var_dump($resultat);
                /*
                *///admin refusé
@@ -46,6 +58,7 @@
                     echo('refusé');   
 
                     
+>>>>>>> gitHub/master
                 }
             }
             
