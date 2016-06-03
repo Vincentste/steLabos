@@ -24,9 +24,12 @@
 			echo $Affichage->afficheConnexion();
 			break;
 		case "controleConnexion":
+
             $nom = isset($_GET['nom'])?$_GET['nom']:"";
             $mdp = isset($_GET['mdp'])?$_GET['mdp']:"";
+
             if($nom!="" && $mdp!=""){
+            	
                 $resultat=requeteConnexion($nom,$mdp);
                 echo(count($resultat));
                /*
