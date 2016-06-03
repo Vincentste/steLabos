@@ -15,11 +15,11 @@ class Affichage{
     }
     
     public function afficheChampsdeRecherche(){
-        return '<form><div id='champHaut'>
+        return '<form><div id="champHaut">
             <h1>Moteur de recherche</h1>
-            <input type='text' id='champTexte'/>
+            <input type="text" id="champTexte"/>
             </div>
-            <div id='champbas'>
+            <div id="champbas">
             <p>
             <label for="createurs">Créateurs</label>
             <select id="selectCre" name="createurs" class=""></select>
@@ -33,7 +33,7 @@ class Affichage{
             <select id="selectCat" name="categorie" class=''></select>
             </p>  
             <p>
-            <input type="button" id='boutChampRech' value="envoyer" autocomplete="off"/>
+            <input type="button" id="boutChampRech" value="envoyer" autocomplete="off"/>
             </p>   
             </div></form>';
         
