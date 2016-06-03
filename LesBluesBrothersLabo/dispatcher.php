@@ -54,7 +54,6 @@
                     
                 }else{
                     echo('refusé');   
-
                     
                 }
             }
@@ -63,6 +62,7 @@
 			break;
         case "gestiontshirt":
             require_once "gestiontshirt";
+            break;
             
             
         
