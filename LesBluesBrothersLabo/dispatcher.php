@@ -32,18 +32,16 @@
             if($nom!="" && $mdp!=""){
             	
                 $resultat=requeteConnexion($nom,$mdp);
-                echo(count($resultat));
+
                /*
                *///admin refusé
-                if((count($resultat)) == 0){
+                if($resultat){
                     echo('pasauto');
                 }else{
                     echo('autorise');
                     session_start();
                     $_SESSION['connecte']='oui';
                     $op='gestiontshirt';
-
-                    
                 }
             }
             
