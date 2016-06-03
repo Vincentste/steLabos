@@ -4,7 +4,7 @@
     	"connexion" => "accueil.html",
         "controleConnexion"=>"accueil.html",
     	"affichageAccueil" => "accueil.html",
-        "gestiontshirt"=>"gestiontshirt.html",
+        "gestiontshirt"=>"gestiontshirt.html"
 	];
 
 	//récupérer l'opération
@@ -33,22 +33,9 @@
             	
                 $resultat=requeteConnexion($nom,$mdp);
 
-               /*
-               *///admin refusé
-                if($resultat){
-                    echo('pasauto');
-                }else{
-                    echo('autorise');
-                    session_start();
-                    $_SESSION['connecte']='oui';
-                    $op='gestiontshirt';
-
-                var_dump($resultat);
-               /*
-               *///admin refusé
                 if($resultat){
                     echo('autorisé');
-                     session_start();
+                    session_start();
                     $_SESSION['connecte']='oui';
                     $op='gestiontshirt';
                     include_once "gestiontshirt.html";
@@ -62,8 +49,10 @@
             
           
 			break;
-        case "gestiontshirt":
+                
+            case "gestiontshirt":
             require_once "gestiontshirt";
+            break;
             
             
         
