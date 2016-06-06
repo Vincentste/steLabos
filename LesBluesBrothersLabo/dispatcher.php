@@ -4,9 +4,10 @@
     	"connexion" => "accueil.html",
         "controleConnexion"=>"accueil.html",
     	"affichageAccueil" => "accueil.html",
-        "template_tshirt"=>"acueil.html",
+        "template_tshirt"=>"accueil.html",
         "data_recherche"=>"accueil.html",
         "rechercheParTexte"=>"accueil.html",
+        "voletAjoutTshirt"=>"accueil.html"
 	];
 
 	//récupérer l'opération
@@ -70,12 +71,18 @@
             echo json_encode($tab);
             break;
             
-            case "rechercheParTexte";
+            case "rechercheParTexte":
             $text=$_GET['chaine'];
             echo($text);
             $resultat=requeteTshirtParNoms($text);
             echo json_encode($resultat);
            /* echo('{"chaine":"text"}');*/
-            break;    
+            break; 
+
+            case "voletAjoutTshirt":
+            $Affichage = new Affichage();
+            echo $Affichage->afficheAjoutTshirt();
+            break;
+
     }
 	
