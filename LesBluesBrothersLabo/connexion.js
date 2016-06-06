@@ -39,7 +39,7 @@ function valideMotDePasse(e){
     		});     	
          	
          }else{
-         	$("body>.contenu").load("dispatcher.php","op=connexion&msg=oui");
+         	
          }
 
     }); 

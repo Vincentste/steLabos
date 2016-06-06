@@ -1,0 +1,137 @@
+/* line 17, d:/programmes/scout/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, d:/programmes/scout/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, d:/programmes/scout/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, d:/programmes/scout/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, d:/programmes/scout/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, d:/programmes/scout/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, d:/programmes/scout/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, d:/programmes/scout/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, d:/programmes/scout/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/*## VARIABLES ##*/
+/*## MIXINS ##*/
+/* line 7, ../scss/style.scss */
+a {
+  text-decoration: none;
+  color: black;
+}
+
+/* line 12, ../scss/style.scss */
+body {
+  width: 75%;
+  margin: 0 auto;
+  font-family: helvetica,arial,"sans-serif";
+}
+/* line 17, ../scss/style.scss */
+body .contenu {
+  border: 1px solid black;
+  margin: 1em;
+  padding: 1em;
+  height: 90vh;
+}
+/* line 23, ../scss/style.scss */
+body .contenu .content {
+  position: relative;
+}
+/* line 26, ../scss/style.scss */
+body .contenu .content h1 {
+  font-size: 1.5em;
+  padding-bottom: 1em;
+  text-align: center;
+}
+/* line 32, ../scss/style.scss */
+body .contenu .content #champHaut {
+  border-bottom: 1px solid black;
+}
+/* line 35, ../scss/style.scss */
+body .contenu .content #champHaut #champTexte {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 20px;
+}
+/* line 43, ../scss/style.scss */
+body .contenu .content #champbas {
+  position: relative;
+  display: flex;
+  margin: 1em;
+}
+/* line 48, ../scss/style.scss */
+body .contenu .content #champbas #boutChampRech {
+  position: absolute;
+  right: 0;
+}
+/* line 53, ../scss/style.scss */
+body .contenu .content #champbas p {
+  margin: 0 0.5em;
+}
+/* line 58, ../scss/style.scss */
+body .contenu .content #divAjout li:first-child {
+  text-align: center;
+}
+/* line 62, ../scss/style.scss */
+body .contenu .content #divAjout li {
+  padding: 0.5em;
+  border-bottom: 1px solid black;
+  background: #c8c8c8;
+}
+/* line 67, ../scss/style.scss */
+body .contenu .content #divAjout li a:hover {
+  display: block;
+  cursor: pointer;
+}
