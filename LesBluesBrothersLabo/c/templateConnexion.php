@@ -40,14 +40,13 @@ class Affichage{
             </p>   
             </fieldset></form>
             
-            <ul id="divAjout">
-                <li>
-                    <a href="" alt="Ajouter un Tee-shirt">Ajouter un nouveau t-shirt</a>
-                </li>
-            </ul>
-            </section>
-            
-'; 
+            <div id="divAjout"> Ajouter un nouveau t-shirt </div>
+            <div id="voletAjout"></div>
+            </section>'; 
+    }
+
+    public function afficheAjoutTshirt(){
+        return "<p>Ok</p>";
     }
     
 }

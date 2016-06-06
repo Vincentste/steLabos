@@ -120,21 +120,15 @@ body .contenu .content #champbas #boutChampRech {
 body .contenu .content #champbas p {
   margin: 0 0.5em;
 }
-/* line 58, ../scss/style.scss */
-body .contenu .content #divAjout li:first-child {
+/* line 56, ../scss/style.scss */
+body .contenu .content #divAjout {
+  display: block;
   text-align: center;
-}
-/* line 62, ../scss/style.scss */
-body .contenu .content #divAjout li {
   padding: 0.5em;
   border-bottom: 1px solid black;
   background: #c8c8c8;
 }
-/* line 67, ../scss/style.scss */
-body .contenu .content #divAjout li a {
-  display: block;
-}
-/* line 71, ../scss/style.scss */
-body .contenu .content #divAjout li a:hover {
+/* line 64, ../scss/style.scss */
+body .contenu .content #divAjout:hover {
   cursor: pointer;
 }

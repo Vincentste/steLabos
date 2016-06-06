@@ -54,25 +54,14 @@ body{
 			}
 
 			#divAjout{
-
-				li:first-child{
-					text-align:center;
-				}
-
-				li{
-					padding: 0.5em;
-					border-bottom: 1px solid black;
-					background: rgb(200,200,200);
-
-					a{ 
-						display: block; 
-					}
-
-					a:hover{
-						cursor: pointer;
-					}
-				}
+				display: block;
+				text-align:center;
+				padding: 0.5em;
+				border-bottom: 1px solid black;
+				background: rgb(200,200,200);
 			}
+
+			#divAjout:hover{ cursor: pointer; }
 		}
 	}
 }
