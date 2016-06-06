@@ -44,23 +44,26 @@ function valideMotDePasse(e){
 
     }); 
 }
+
+
+function getFormulaireConnexion($ou){
+    $ou = $ou?$ou:$("body>.contenu");
+    $("body>.contenu").load("dispatcher.php","op=connexion");
+    
+}
+
 function rechercheParTexte(e){
-    $.getJSON("dispatcher.php",{"op":"rechercheParTexte","chaine":$('#champTexte').val()},function(data){
-    $ul = $("<ul/>").insertAfter("#divAjout");
+    $("#recherche").remove();
+    $.getJSON("dispatcher.php",{op:"rechercheParTexte",lettre:$('#champTexte').val()},function(data){
+    $ul = $("<ul id='recherche'/>").insertAfter("#divAjout");
+    for (var i=0; i<data.length; i++){
+        var tshirt = data[i].prod_nom
+        $("<li/>").text(tshirt).appendTo($ul);
+    }
         
     });
 }
 
-function getFormulaireConnexion($ou){
-	$ou = $ou?$ou:$("body>.contenu");
-	$("body>.contenu").load("dispatcher.php","op=connexion");
-    
-}
-    
-})/*
 
-       $("<option/>").text($(this).text())
-                .appendTo("#monPremierFormulaire")
-                .attr("nomFormation",$(this).text());
-               
-            })*/
+    
+});
