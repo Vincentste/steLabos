@@ -24,7 +24,11 @@ $operation_permise=[
 require_once __DIR__.'/c/TemplateConnexion.php';
 require_once __DIR__.'/m/connexion.php';
   session_start();
+<<<<<<< HEAD
   $_SESSION['connecte']= " ";
+>>>>>>> origin/master
+=======
+  
 >>>>>>> origin/master
 
 	//récupérer l'opération
