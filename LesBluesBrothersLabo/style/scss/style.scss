@@ -53,7 +53,7 @@ body{
 				p{ margin: 0 0.5em; }
 			}
 
-			#divAjout{
+			#buttonAjout{
 				display: block;
 				text-align:center;
 				padding: 0.5em;
@@ -61,7 +61,7 @@ body{
 				background: rgb(200,200,200);
 			}
 
-			#divAjout:hover{ cursor: pointer; }
+			#buttonAjout:hover{ cursor: pointer; }
 		}
 	}
 }

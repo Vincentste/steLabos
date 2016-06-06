@@ -3,7 +3,7 @@ $(function(){
 getFormulaireConnexion();
 $('.contenu').on("click",".envoi",valideMotDePasse);
 $('.contenu').on('keyup','#champTexte',rechercheParTexte);
-
+$('.contenu').on('click','#divAjout',voletAjoutTshirt);
 
 function valideMotDePasse(e){
      $.getJSON("dispatcher.php",{"op":"controleConnexion","nom":$('#nom').val(),"mdp":$('#mdp').val()},function(data){
@@ -62,6 +62,14 @@ function rechercheParTexte(e){
     }
         
     });
+}
+
+function voletAjoutTshirt(e){
+    // $.getJSON("dispatcher.php",{"op":"voletAjoutTshirt"},function(data){
+  
+    // });
+    
+    $("#voletAjout").load("dispatcher.php","op=voletAjoutTshirt");  
 }
 
 

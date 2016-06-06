@@ -40,8 +40,10 @@ class Affichage{
             </p>   
             </fieldset></form>
             
-            <div id="divAjout"> Ajouter un nouveau t-shirt </div>
-            <div id="voletAjout"></div>
+            <div id="divAjout"> 
+                <div id="buttonAjout"> Ajouter un nouveau t-shirt </div>
+                <div id="voletAjout"></div>
+            </div>
             </section>'; 
     }
 
