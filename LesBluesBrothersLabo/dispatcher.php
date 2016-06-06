@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 	$operation_permise=[
 	   "accueil"=>true,
     	"connexion" => "accueil.html",
@@ -10,26 +9,6 @@
         "rechercheParTexte"=>"accueil.html",
         "voletAjoutTshirt"=>"accueil.html"
 	];
-=======
-$operation_permise=[
-"accueil"=>true,
-"connexion" => "accueil.html",
-"controleConnexion"=>"accueil.html",
-"affichageAccueil" => "accueil.html",
-"template_tshirt"=>"acueil.html",
-"data_recherche"=>"accueil.html",
-"rechercheParTexte"=>"accueil.html",
-];
-
-require_once __DIR__.'/c/TemplateConnexion.php';
-require_once __DIR__.'/m/connexion.php';
-  session_start();
-<<<<<<< HEAD
-  $_SESSION['connecte']= " ";
->>>>>>> origin/master
-=======
-  
->>>>>>> origin/master
 
 	//récupérer l'opération
 	$op = (isset($_GET["op"]))?$_GET["op"]:"accueil";
