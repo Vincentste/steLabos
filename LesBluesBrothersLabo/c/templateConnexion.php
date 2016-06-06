@@ -3,7 +3,8 @@
 class Affichage{
      
    public function afficheConnexion($message){
-        return '<form class="connexion"><label for="nom">Nom</label>        
+        return '<div id="formConnexion">
+         <form class="connexion"><label for="nom">Nom</label>        
             <input type="text" name="nom"id="nom" autocomplete="off" />
             </br>
             <label for="mdp">password</label>
@@ -11,7 +12,8 @@ class Affichage{
             </br>
             <input type="button" class="envoi" value="envoyer" autocomplete="off"/>
             <label>'.$message.'</label>
-        <form/>';
+        <form/>
+        </div>';
     }
     
     public function afficheChampsRecherche(){
@@ -23,23 +25,33 @@ class Affichage{
             </fieldset>
             <fieldset id="champbas">
             <p>
-            <label for="createurs">Créateurs</label>
+            <label for="createurs">Créateurs : </label>
             <select id="selectCre" name="createurs" class=""></select>
             </p> 
             <p>
-            <label for="matieres">Matières</label>
+            <label for="matieres">Matières : </label>
             <select id="selectMat" name="matieres" class=""></select>
             </p>
             <p>
-            <label for="categories">Catégories</label>
+            <label for="categories">Catégories : </label>
             <select id="selectCat" name="categories" class=""></select>
             </p>           
-            <input type="button" id="boutChampRech" value="envoyer" autocomplete="off"/>
+            <input type="button" id="boutChampRech" value="Afficher" autocomplete="off"/>
             </p>   
             </fieldset></form>
+<<<<<<< HEAD
             <div id="divAjout"><p>Ajouter un t-shirt</p></div>
             </section>
             <script type="text/javascript" src="recherche.js"></script>'; 
+=======
+            
+            <ul id="divAjout">
+                <li>
+                    <a href="" alt="Ajouter un Tee-shirt">Ajouter un nouveau t-shirt</a>
+                </li>
+            </ul>
+            </section>'; 
+>>>>>>> github/master
     }
     
 }
