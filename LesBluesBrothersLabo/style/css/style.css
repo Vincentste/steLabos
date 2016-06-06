@@ -131,7 +131,10 @@ body .contenu .content #divAjout li {
   background: #c8c8c8;
 }
 /* line 67, ../scss/style.scss */
-body .contenu .content #divAjout li a:hover {
+body .contenu .content #divAjout li a {
   display: block;
+}
+/* line 71, ../scss/style.scss */
+body .contenu .content #divAjout li a:hover {
   cursor: pointer;
 }
