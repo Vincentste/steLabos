@@ -12,6 +12,7 @@ $operation_permise=[
 require_once __DIR__.'/c/TemplateConnexion.php';
 require_once __DIR__.'/m/connexion.php';
   session_start();
+  $_SESSION['connecte']= " ";
 
 	//récupérer l'opération
 $op = (isset($_GET["op"]))?$_GET["op"]:"accueil";
