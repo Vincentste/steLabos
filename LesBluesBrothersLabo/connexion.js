@@ -48,30 +48,19 @@ function valideMotDePasse(e){
 
 
 function getFormulaireConnexion($ou){
-<<<<<<< HEAD
     console.log("ici")
 	$ou = $ou?$ou:$("body>.contenu");
 	$("body>.contenu").load("dispatcher.php","op=connexion");
-=======
-    $ou = $ou?$ou:$("body>.contenu");
-    $("body>.contenu").load("dispatcher.php","op=connexion");
->>>>>>> origin/master
     
 }
 
 function rechercheParTexte(e){
-    $("#recherche").remove();
-    $.getJSON("dispatcher.php",{op:"rechercheParTexte",lettre:$('#champTexte').val()},function(data){
-    $ul = $("<ul id='recherche'/>").insertAfter("#divAjout");
-    for (var i=0; i<data.length; i++){
-        var tshirt = data[i].prod_nom
-        $("<li/>").text(tshirt).appendTo($ul);
-    }
+    $.getJSON("dispatcher.php",{"op":"rechercheParTexte","chaine":$('#champTexte').val()},function(data){
+    $ul = $("<ul/>").insertAfter("#divAjout");
         
     });
 }
 
-<<<<<<< HEAD
 function voletAjoutTshirt(e){
     // $.getJSON("dispatcher.php",{"op":"voletAjoutTshirt"},function(data){
   
@@ -81,8 +70,3 @@ function voletAjoutTshirt(e){
 }
     
 })
-=======
-
-    
-});
->>>>>>> origin/master
