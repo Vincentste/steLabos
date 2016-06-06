@@ -1,10 +1,9 @@
-    
 $(function(){
     
 getFormulaireConnexion();
 $('.contenu').on("click",".envoi",valideMotDePasse);
 $('.contenu').on('keyup','#champTexte',rechercheParTexte);
-$('.contenu').on('click','#divAjout',voletAjoutTshirt);
+
 
 function valideMotDePasse(e){
      $.getJSON("dispatcher.php",{"op":"controleConnexion","nom":$('#nom').val(),"mdp":$('#mdp').val()},function(data){
@@ -36,7 +35,7 @@ function valideMotDePasse(e){
                         option.appendTo('#selectMat');
                         
                     }     
-         	    });	
+         	});	
     		});     	
          	
          }else{
@@ -48,25 +47,23 @@ function valideMotDePasse(e){
 
 
 function getFormulaireConnexion($ou){
-    console.log("ici")
-	$ou = $ou?$ou:$("body>.contenu");
-	$("body>.contenu").load("dispatcher.php","op=connexion");
+    $ou = $ou?$ou:$("body>.contenu");
+    $("body>.contenu").load("dispatcher.php","op=connexion");
     
 }
 
 function rechercheParTexte(e){
-    $.getJSON("dispatcher.php",{"op":"rechercheParTexte","chaine":$('#champTexte').val()},function(data){
-    $ul = $("<ul/>").insertAfter("#divAjout");
+    $("#recherche").remove();
+    $.getJSON("dispatcher.php",{op:"rechercheParTexte",lettre:$('#champTexte').val()},function(data){
+    $ul = $("<ul id='recherche'/>").insertAfter("#divAjout");
+    for (var i=0; i<data.length; i++){
+        var tshirt = data[i].prod_nom
+        $("<li/>").text(tshirt).appendTo($ul);
+    }
         
     });
 }
 
-function voletAjoutTshirt(e){
-    // $.getJSON("dispatcher.php",{"op":"voletAjoutTshirt"},function(data){
-  
-    // });
+
     
-    $("#voletAjout").load("dispatcher.php","op=voletAjoutTshirt");  
-}
-    
-})
+});
