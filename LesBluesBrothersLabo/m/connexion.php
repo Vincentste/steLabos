@@ -117,7 +117,7 @@ function recupere_exemplaire($id,$taille){
     $resultat=$connexion->prepare($requete);
     $resultat->execute([':a'=>$id,':b'=>$taille]);
     return $resultat->fetchAll(PDO::FETCH_OBJ);
-    
+}
 function recupere_infos_untshirt($id){
     $requete="select * FROM produits where prod_id=:a ";
    

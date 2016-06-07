@@ -78,8 +78,39 @@ body{
 
 				li{
 					display: block;
-					padding: 0.5em;
+					padding: 0.7em;
 					border-bottom: 1px solid black;
+                    
+                    ul{
+                        width:30%;
+                        float:right;
+                        .modif{
+                            background-image:url('../../icons/pencil.png');
+                            background-size:contain;
+                            background-position:top 50% left 50%;
+                            background-repeat:no-repeat;
+                            float:right;
+                            width:10%;
+                            
+                        }
+                        .voir{
+                            background-image:url('../../icons/plus-button.png');
+                            background-size:contain;
+                            background-position:top 50% left 50%;
+                            background-repeat:no-repeat;
+                            float:right;
+                            width:10%;
+                            
+                        }
+                        .supprimer{
+                            background-image:url('../../icons/rubbish-bin.png');
+                            background-size:contain;
+                            background-position:top 50% left 50%;
+                            background-repeat:no-repeat;
+                            float:right;
+                            width:10%;
+                        }
+                    }
 				}
 			}
 		}
