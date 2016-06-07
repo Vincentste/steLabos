@@ -159,12 +159,12 @@ function voletAjoutTshirt(e){
     }    
 }
 
-function saveTshirt(){
+function saveTshirt(e){
 
     var prodNom = $('#prodNom').val();
     var prodPrix = $('#prodPrix').val();
-    var img_gd = "vide";
-    var img_pt = "vide";
+    var img_gd = "";
+    var img_pt = "";
     var des = $('#prodDesc').val();
     var crea = $('#prodCre').val();
     var mat = $('#prodMat').val();
@@ -175,8 +175,11 @@ function saveTshirt(){
     "op=save_tshirt&nom="+prodNom+"&prix="+prodPrix+"&img_gd="+img_gd+"&img_pt="+img_pt+"&desc="+des+"&crea="+crea+"&mat="+mat+"&date="+date_aj+"&cat="+cat+""); 
 }
 
-function annuleTshirt(){
-    
+function annuleTshirt(e){
+    $('#prodNom').val(""); 
+    $('#prodPrix').val(""); 
+    $('#prodDesc').val("");
+    $('#prodDate').val("");
 }
 
     
