@@ -16,24 +16,21 @@ function valideMotDePasse(e){
                     for(var i=0;i < categories.length;i++){
                         var option=$('<option/>');
                         option.text(categories[i].cat_nom);
-                        option.appendTo('#selectCat');
-                        
+                        option.appendTo('#selectCat');    
                     }
                     
                     var createurs=data['createurs'];
                     for(var i=0;i < createurs.length;i++){
                         var option=$('<option/>');
                         option.text(createurs[i].cre_nom);
-                        option.appendTo('#selectCre');
-                        
+                        option.appendTo('#selectCre');   
                     }
                     
                    var matieres=data['matieres'];
                     for(var i=0;i < matieres.length;i++){
                         var option=$('<option/>');
                         option.text(matieres[i].mat_nom);
-                        option.appendTo('#selectMat');
-                        
+                        option.appendTo('#selectMat');    
                     }     
          	});	
     		});     	
@@ -70,8 +67,33 @@ function voletAjoutTshirt(e){
     // $.getJSON("dispatcher.php",{"op":"voletAjoutTshirt"},function(data){
   
     // });
+    $("#voletAjout").load("dispatcher.php","op=voletAjoutTshirt"); 
     
-    $("#voletAjout").load("dispatcher.php","op=voletAjoutTshirt");  
+    $.getJSON("dispatcher.php","op=data_recherche",function(data){
+
+                    var categories=data['categories'];
+                    for(var i=0;i < categories.length;i++){
+                        var option=$('<option/>');
+                        option.text(categories[i].cat_nom);
+                        option.appendTo('#prodCat');    
+                    }
+                    
+                    var createurs=data['createurs'];
+                    for(var i=0;i < createurs.length;i++){
+                        var option=$('<option/>');
+                        option.text(createurs[i].cre_nom);
+                        option.appendTo('#prodCre');   
+                    }
+                    
+                   var matieres=data['matieres'];
+                    for(var i=0;i < matieres.length;i++){
+                        var option=$('<option/>');
+                        option.text(matieres[i].mat_nom);
+                        option.appendTo('#prodMat');    
+                    }     
+    }); 
+    
+     
 }
 
     

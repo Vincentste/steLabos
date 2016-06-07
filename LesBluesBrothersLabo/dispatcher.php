@@ -49,8 +49,6 @@
                     
                     $_SESSION['connecte']='oui';
               
-                 
-                    
                 }else{
                     echo('{"authorisation":"non"}');
                    
