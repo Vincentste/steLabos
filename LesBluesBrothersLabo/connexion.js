@@ -59,20 +59,23 @@ function rechercheParTexte(e){
     for (var i=0; i<data.length; i++){
         var tshirt = data[i].prod_nom;
         $li = $("<li id=tshirt"+i+"/>").text(tshirt).appendTo($ul);
-        $("<ul id=tshirt"+i+"/>").prepend('<li class=ajouter>ajouter</li>').prepend('<li class=modif>modifier</li>').prepend('<li id='+data[i].prod_id+' class=supprimer>supprimer</li>').appendTo($li);
+        $("<ul class=tshirt/>").prepend('<li id='+data[i].prod_id+' class=supprimer>supprimer</li>').prepend('<li class=modif>modifier</li>').prepend('<li class=voir>voir</li>').appendTo($li);
     }
       
     $('.contenu').on('click','.supprimer', function supprimerTshirt(e){
             var idTshirt =($(this).attr("id"));
-            $.getJSON("dispatcher.php",{"op":"supprimerTshirt","id":idTshirt});
-            alert ("le tshirt a bien été supprimé !");
-
+            $(".choix").remove();
+            $choix = $('<div class=choix/>').prepend('<p class=oui>oui</p>').prepend('<p class=non>non</p>').appendTo($(this));
+                $('.choix').on('click','.oui', function choixOui(e){
+                    $.getJSON("dispatcher.php",{"op":"supprimerTshirt","id":idTshirt});
+                    alert ("le tshirt a bien été supprimé !");
+                });
+                $('.choix').on('click','.non', function choixNon(e){
+                   $(".choix").remove(); 
+                });
     });
-
-
-    });
+});
 }
-
 
 function voletAjoutTshirt(e){
     //Ajoute ou enlève la class au clique sur le bouton ajout tshirt
