@@ -74,7 +74,7 @@ function requteSupprimerTshirt($id){
 }
 
 function requeteInsertTshirt($nom,$prix,$img_gd,$img_pt,$des,$crea,$mat,$date_aj,$cat){
-	$requete='INSERT INTO produits VALUES ("",:nom,:prix,:img_gd,:img_pt,:des,:crea,:mat,:date_aj,:cat)';
+	$requete='INSERT INTO produits(prod_nom,prod_prix,prod_img_gd,prod_img_pt,prod_desc,prod_fk_createur,prod_fk_matiere,prod_date,prod_fk_categorie) VALUES (:nom,:prix,:img_gd,:img_pt,:des,:crea,:mat,:date_aj,:cat)';
 	$connexion=connexion_PDO();
     $resultat=$connexion->prepare($requete);
     $resultat->execute(
@@ -90,3 +90,17 @@ function requeteInsertTshirt($nom,$prix,$img_gd,$img_pt,$des,$crea,$mat,$date_aj
     	]);
 
 }
+  function requeteTshirtFiltres($categorie,$createur,$matiere){
+     $requete='Select * from produits'
+         .'JOIN categories on prod_fk_categorie = cat_id'
+         .'JOIN matieres on prod_fk_matiere = mat_id'
+         .'JOIN createurs on prod_fk_createur = cre_id'
+         .'Where cat_nom = :a'
+         .'and cre_nom = :b'
+         .'and mat_nom = :c';
+     $connexion=connexion_PDO();
+ 	//preparation requete
+     $resultat=$connexion->prepare($requete);
+     $resultat->execute([':a'=>$categorie,':b'=>$createur,':c'=>$matiere]);
+     return $resultat->fetch(PDO::FETCH_OBJ);
+  }

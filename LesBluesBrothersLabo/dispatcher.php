@@ -9,7 +9,8 @@
         "rechercheParTexte"=>"accueil.html",
         "supprimerTshirt"=>"accueil.html",
         "voletAjoutTshirt"=>"accueil.html",
-        "save_tshirt"=>"accueil.html"
+        "save_tshirt"=>"accueil.html",
+        "rechercheParFiltre"=>"accueil.html" 
 	];
 
 	//récupérer l'opération
@@ -79,6 +80,15 @@
             $resultat=requeteTshirtParNoms($text);
             echo json_encode($resultat);
             break;
+            
+            case"rechercheParFiltre":
+            $categorie=$_GET['cat'];
+            $matiere=$_GET['mat'];
+            $createur=$_GET['cre'];
+            $resultatFiltre=requeteTshirtFiltres($categorie,$createur,$matiere);
+            echo json_encode($resultatFiltre);
+            break;
+ 
 
             case "supprimerTshirt":
             $id=$_GET['id'];
@@ -92,15 +102,15 @@
 
             case "save_tshirt":
 
-                $nom=$_GET['prodNom']; 
-                $prix=$_GET['prodPrix'];
+                $nom= $_GET['nom']; 
+                $prix= $_GET['prix'];
                 $img_gd="";
                 $img_pt="";
-                $des=$_GET['prodDesc'];
-                $crea=$_GET['prodCrea'];
-                $mat=$_GET['prodMat'];
-                $date_aj=$_GET['prodDate'];
-                $cat=$_GET['prodCat'];
+                $des= $_GET['desc'];
+                $crea= $_GET['crea'];
+                $mat= $_GET['mat'];
+                $date_aj= $_GET['date'];
+                $cat= $_GET['cat'];
 
                 requeteInsertTshirt($nom,$prix,$img_gd,$img_pt,$des,$crea,$mat,$date_aj,$cat);
             break;
