@@ -9,6 +9,7 @@
         "rechercheParTexte"=>"accueil.html",
         "supprimerTshirt"=>"accueil.html",
         "voletAjoutTshirt"=>"accueil.html",
+        "save_tshirt"=>"accueil.html",
         "rechercheParFiltre"=>"accueil.html" 
 	];
 
@@ -98,6 +99,21 @@
                 $Affichage = new Affichage();
                 echo $Affichage->afficheAjoutTshirt();
             break; 
+
+            case "save_tshirt":
+
+                $nom= $_GET['nom']; 
+                $prix= $_GET['prix'];
+                $img_gd="";
+                $img_pt="";
+                $des= $_GET['desc'];
+                $crea= $_GET['crea'];
+                $mat= $_GET['mat'];
+                $date_aj= $_GET['date'];
+                $cat= $_GET['cat'];
+
+                requeteInsertTshirt($nom,$prix,$img_gd,$img_pt,$des,$crea,$mat,$date_aj,$cat);
+            break;
 
 
     }
