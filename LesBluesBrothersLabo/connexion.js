@@ -4,6 +4,8 @@ getFormulaireConnexion();
 $('.contenu').on("click",".envoi",valideMotDePasse);
 $('.contenu').on('keyup','#champTexte',rechercheParTexte);
 $('.contenu').on('click','#buttonAjout',voletAjoutTshirt);
+$('.contenu').on('click','#boutSav',saveTshirt);
+$('.contenu').on('click','#boutAnn',annuleTshirt);
 
 function valideMotDePasse(e){
      $.getJSON("dispatcher.php",{"op":"controleConnexion","nom":$('#nom').val(),"mdp":$('#mdp').val()},function(data){
@@ -64,14 +66,12 @@ function rechercheParTexte(e){
 
 
 function voletAjoutTshirt(e){
-    // $.getJSON("dispatcher.php",{"op":"voletAjoutTshirt"},function(data){
-  
-    // });
+    //Ajoute ou enlève la class au clique sur le bouton ajout tshirt
     $("#voletAjout").toggleClass("open");
 
-
-
+    //Ouvrire ou fermer le volet en fonction de la class "open"
     if($("#voletAjout").hasClass("open")){
+        
         $("#voletAjout").load("dispatcher.php","op=voletAjoutTshirt"); 
         
         $.getJSON("dispatcher.php","op=data_recherche",function(data){
@@ -97,11 +97,18 @@ function voletAjoutTshirt(e){
                             option.appendTo('#prodMat');    
                         }     
         });
+
     }else{
         $("#voletAjout").empty(); 
-    }
-    
-     
+    }    
+}
+
+function saveTshirt(){
+    alert("On sauvegarde !")
+}
+
+function annuleTshirt(){
+    alert("On annule !")
 }
 
     
