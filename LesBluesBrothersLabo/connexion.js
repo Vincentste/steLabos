@@ -90,21 +90,21 @@ function voletAjoutTshirt(e){
 
                         var categories=data['categories'];
                         for(var i=0;i < categories.length;i++){
-                            var option=$('<option/>');
+                            var option=$('<option value="'+categories[i].cat_nom+'"/>');
                             option.text(categories[i].cat_nom);
                             option.appendTo('#prodCat');    
                         }
                         
                         var createurs=data['createurs'];
                         for(var i=0;i < createurs.length;i++){
-                            var option=$('<option/>');
+                            var option=$('<option value="'+createurs[i].cat_nom+'"/>');
                             option.text(createurs[i].cre_nom);
                             option.appendTo('#prodCre');   
                         }
                         
                        var matieres=data['matieres'];
                         for(var i=0;i < matieres.length;i++){
-                            var option=$('<option/>');
+                            var option=$('<option value="'+matieres[i].cat_nom+'"/>');
                             option.text(matieres[i].mat_nom);
                             option.appendTo('#prodMat');    
                         }     
@@ -116,11 +116,11 @@ function voletAjoutTshirt(e){
 }
 
 function saveTshirt(){
-    alert("On sauvegarde !");
+    $("#voletAjout").load("dispatcher.php","op=save_tshirt"); 
 }
 
 function annuleTshirt(){
-    alert("On annule !");
+    
 }
 
     

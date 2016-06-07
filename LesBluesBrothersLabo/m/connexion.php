@@ -71,7 +71,22 @@ function requteSupprimerTshirt($id){
 	$connexion=connexion_PDO();
     $resultat=$connexion->prepare($requete);
     $resultat->execute([':a'=>$id]);
-   
+}
 
+function requeteInsertTshirt($nom,$prix,$img_gd,$img_pt,$des,$crea,$mat,$date_aj,$cat){
+	$requete='INSERT INTO produits VALUES ("",:nom,:prix,:img_gd,:img_pt,:des,:crea,:mat,:date_aj,:cat)';
+	$connexion=connexion_PDO();
+    $resultat=$connexion->prepare($requete);
+    $resultat->execute(
+    	[':nom'=>$nom,
+    	 ':prix'=>$prix,
+    	 ':img_gd'=>$img_gd,
+    	 ':img_pt'=>$img_pt,
+    	 ':des'=>$des,
+    	 ':crea'=>$crea,
+    	 ':mat'=>$mat,
+    	 ':date_aj'=>$date_aj,
+    	 ':cat'=>$cat
+    	]);
 
 }
