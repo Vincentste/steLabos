@@ -57,11 +57,21 @@ function recupAllCategories(){
 }
 	
 function requeteTshirtParNoms($lettre){
-	$requete='SELECT prod_nom FROM produits where prod_nom like :a';
+	$requete='SELECT * FROM produits where prod_nom like :a';
 	$connexion=connexion_PDO();
 	//preparation requete
     $resultat=$connexion->prepare($requete);
     $resultat->execute([':a'=>"%".$lettre."%"]);
     //dans résultat on a l'ensemble des résultats de la requete
      return $resultat->fetchAll(PDO::FETCH_OBJ);
+}
+
+function requteSupprimerTshirt($id){
+	$requete='DELETE FROM produits where prod_id = :a';
+	$connexion=connexion_PDO();
+    $resultat=$connexion->prepare($requete);
+    $resultat->execute([':a'=>$id]);
+   
+
+
 }

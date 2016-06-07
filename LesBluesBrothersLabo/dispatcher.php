@@ -7,6 +7,7 @@
         "template_tshirt"=>"accueil.html",
         "data_recherche"=>"accueil.html",
         "rechercheParTexte"=>"accueil.html",
+        "supprimerTshirt"=>"accueil.html",
         "voletAjoutTshirt"=>"accueil.html"
 	];
 
@@ -76,11 +77,18 @@
             $text=$_GET['lettre'];
             $resultat=requeteTshirtParNoms($text);
             echo json_encode($resultat);
-            break; 
+            break;
+
+            case "supprimerTshirt":
+            $id=$_GET['id'];
+            $requete = requteSupprimerTshirt($id);
+             
 
             case "voletAjoutTshirt":
                 $Affichage = new Affichage();
                 echo $Affichage->afficheAjoutTshirt();
             break; 
+
+
     }
 	
