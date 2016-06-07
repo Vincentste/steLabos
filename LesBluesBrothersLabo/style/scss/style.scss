@@ -74,11 +74,12 @@ body{
 
 			/*Listing des t-shirt*/
 			ul#recherche{
+				background: rgb(200,200,210);
+
 				li{
 					display: block;
 					padding: 0.5em;
 					border-bottom: 1px solid black;
-					background: rgb(200,200,200);
 				}
 			}
 		}
