@@ -73,31 +73,39 @@ function voletAjoutTshirt(e){
     // $.getJSON("dispatcher.php",{"op":"voletAjoutTshirt"},function(data){
   
     // });
-    $("#voletAjout").load("dispatcher.php","op=voletAjoutTshirt"); 
-    
-    $.getJSON("dispatcher.php","op=data_recherche",function(data){
+    $("#voletAjout").toggleClass("open");
 
-                    var categories=data['categories'];
-                    for(var i=0;i < categories.length;i++){
-                        var option=$('<option/>');
-                        option.text(categories[i].cat_nom);
-                        option.appendTo('#prodCat');    
-                    }
-                    
-                    var createurs=data['createurs'];
-                    for(var i=0;i < createurs.length;i++){
-                        var option=$('<option/>');
-                        option.text(createurs[i].cre_nom);
-                        option.appendTo('#prodCre');   
-                    }
-                    
-                   var matieres=data['matieres'];
-                    for(var i=0;i < matieres.length;i++){
-                        var option=$('<option/>');
-                        option.text(matieres[i].mat_nom);
-                        option.appendTo('#prodMat');    
-                    }     
-    }); 
+
+
+    if($("#voletAjout").hasClass("open")){
+        $("#voletAjout").load("dispatcher.php","op=voletAjoutTshirt"); 
+        
+        $.getJSON("dispatcher.php","op=data_recherche",function(data){
+
+                        var categories=data['categories'];
+                        for(var i=0;i < categories.length;i++){
+                            var option=$('<option/>');
+                            option.text(categories[i].cat_nom);
+                            option.appendTo('#prodCat');    
+                        }
+                        
+                        var createurs=data['createurs'];
+                        for(var i=0;i < createurs.length;i++){
+                            var option=$('<option/>');
+                            option.text(createurs[i].cre_nom);
+                            option.appendTo('#prodCre');   
+                        }
+                        
+                       var matieres=data['matieres'];
+                        for(var i=0;i < matieres.length;i++){
+                            var option=$('<option/>');
+                            option.text(matieres[i].mat_nom);
+                            option.appendTo('#prodMat');    
+                        }     
+        });
+    }else{
+        $("#voletAjout").empty(); 
+    }
     
      
 }
