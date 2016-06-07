@@ -77,15 +77,15 @@ function requteSupprimerTshirt($id){
 }
   function requeteTshirtFiltres($categorie,$createur,$matiere){
      $requete='Select * from produits'
-         .'JOIN categories on prod_fk_categorie = cat_id'
-         .'JOIN matieres on prod_fk_matiere = mat_id'
-         .'JOIN createurs on prod_fk_createur = cre_id'
-         .'Where cat_nom = :a'
-         .'and cre_nom = :b'
-         .'and mat_nom = :c';
+         .' JOIN categories on prod_fk_categorie = cat_id'
+         .' JOIN matieres on prod_fk_matiere = mat_id'
+         .' JOIN createurs on prod_fk_createur = cre_id'
+         .' Where cat_nom like :a'
+         .' and cre_nom like :b'
+         .' and mat_nom like :c';
      $connexion=connexion_PDO();
  	//preparation requete
      $resultat=$connexion->prepare($requete);
      $resultat->execute([':a'=>$categorie,':b'=>$createur,':c'=>$matiere]);
-     return $resultat->fetch(PDO::FETCH_OBJ);
+     return $resultat->fetchAll(PDO::FETCH_OBJ);
   }
