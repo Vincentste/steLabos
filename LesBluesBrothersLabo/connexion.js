@@ -53,25 +53,30 @@ function getFormulaireConnexion($ou){
 }
 
 function rechercheParTexte(e){
-    $("#recherche").remove(); 
+    $("#recherche").remove();
+    if($('#champTexte').val() ==""){
+        $("#recherche").remove();
+    } 
     $.getJSON("dispatcher.php",{"op":"rechercheParTexte","lettre":$('#champTexte').val()},function(data){
     $ul = $("<ul id='recherche'/>").insertAfter("#divAjout");
     for (var i=0; i<data.length; i++){
         var tshirt = data[i].prod_nom;
-        $li = $("<li id=tshirt"+i+"/>").text(tshirt).appendTo($ul);
+        $li = $("<li id=tshirt"+data[i].prod_id+"/>").text(tshirt).appendTo($ul);
         $("<ul class=tshirt/>").prepend('<li id='+data[i].prod_id+' class=supprimer>supprimer</li>').prepend('<li class=modif>modifier</li>').prepend('<li class=voir>voir</li>').appendTo($li);
     }
       
     $('.contenu').on('click','.supprimer', function supprimerTshirt(e){
+
             var idTshirt =($(this).attr("id"));
             $(".choix").remove();
             $choix = $('<div class=choix/>').prepend('<p class=oui>oui</p>').prepend('<p class=non>non</p>').appendTo($(this));
                 $('.choix').on('click','.oui', function choixOui(e){
                     $.getJSON("dispatcher.php",{"op":"supprimerTshirt","id":idTshirt});
+                    $('#tshirt'+idTshirt+'').remove();
                     alert ("le tshirt a bien été supprimé !");
                 });
-                $('.choix').on('click','.non', function choixNon(e){
-                   $(".choix").remove(); 
+                    $('.choix').on('click','.non', function choixNon(e){
+                    $(".choix").remove(); 
                 });
     });
 });
