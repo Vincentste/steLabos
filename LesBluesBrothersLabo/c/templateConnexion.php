@@ -48,7 +48,9 @@ class Affichage{
     }
 
     public function afficheAjoutTshirt(){
-        return "<p>Ok</p>";
+        return "<form>
+
+        </form>";
     }
     
 }

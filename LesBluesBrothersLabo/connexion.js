@@ -3,7 +3,7 @@ $(function(){
 getFormulaireConnexion();
 $('.contenu').on("click",".envoi",valideMotDePasse);
 $('.contenu').on('keyup','#champTexte',rechercheParTexte);
-$('.contenu').on('click','#divAjout',voletAjoutTshirt);
+$('.contenu').on('click','#buttonAjout',voletAjoutTshirt);
 
 function valideMotDePasse(e){
      $.getJSON("dispatcher.php",{"op":"controleConnexion","nom":$('#nom').val(),"mdp":$('#mdp').val()},function(data){
