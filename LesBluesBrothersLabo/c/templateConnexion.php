@@ -78,7 +78,11 @@ class Affichage{
             <p>
                 <label for="prodCat">Catégories : </label>
                 <select id="prodCat" name="prodCat"></select>
-            </p> 
+            </p>
+            <p>
+                <input type="button" id="boutSav" value="Sauvegarder" autocomplete="off"/>
+                <input type="button" id="boutAnn" value="Annuler" autocomplete="off"/>
+            </p>
         </form>';
     }
     
