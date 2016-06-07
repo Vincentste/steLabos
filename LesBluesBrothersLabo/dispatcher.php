@@ -8,7 +8,8 @@
         "data_recherche"=>"accueil.html",
         "rechercheParTexte"=>"accueil.html",
         "supprimerTshirt"=>"accueil.html",
-        "voletAjoutTshirt"=>"accueil.html"
+        "voletAjoutTshirt"=>"accueil.html",
+        "rechercheParFiltre"=>"accueil.html" 
 	];
 
 	//récupérer l'opération
@@ -78,6 +79,15 @@
             $resultat=requeteTshirtParNoms($text);
             echo json_encode($resultat);
             break;
+            
+            case"rechercheParFiltre":
+            $categorie=$_GET['cat'];
+            $matiere=$_GET['mat'];
+            $createur=$_GET['cre'];
+            $resultatFiltre=requeteTshirtFiltres($categorie,$createur,$matiere);
+            echo json_encode($resultatFiltre);
+            break;
+ 
 
             case "supprimerTshirt":
             $id=$_GET['id'];

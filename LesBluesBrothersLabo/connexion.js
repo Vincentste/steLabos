@@ -6,6 +6,7 @@ $('.contenu').on('keyup','#champTexte',rechercheParTexte);
 $('.contenu').on('click','#buttonAjout',voletAjoutTshirt);
 $('.contenu').on('click','#boutSav',saveTshirt);
 $('.contenu').on('click','#boutAnn',annuleTshirt);
+$('.contenu').on('click','#boutChampRech',rechercheParFiltres);
 
 
 function valideMotDePasse(e){
@@ -75,6 +76,19 @@ function rechercheParTexte(e){
                 });
     });
 });
+}
+    
+function rechercheParFiltres(e){
+   /* $("#recherche").remove(); */
+    $.getJSON("dispatcher.php",{"op":"rechercheParFiltre","cat":$('#selectCat').val(),"mat":$('#selectMat').val(),"cre":$('#selectCre').val()},function(data){
+   /* $ul = $("<ul id='recherche'/>").insertAfter("#divAjout");*/
+        console.log(data);
+     /*   for (var i=0; i<data.length; i++){
+            var tshirt = data[i].prod_nom;
+            $li = $("<li id=tshirt"+i+"/>").text(tshirt).appendTo($ul);
+            $("<ul class=tshirt/>").prepend('<li id='+data[i].prod_id+' class=supprimer>supprimer</li>').prepend('<li class=modif>modifier</li>').prepend('<li class=voir>voir</li>').appendTo($li);
+        }*/
+    });
 }
 
 function voletAjoutTshirt(e){
