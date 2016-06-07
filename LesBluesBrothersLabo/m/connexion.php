@@ -64,5 +64,4 @@ function requeteTshirtParNoms($lettre){
     $resultat->execute([':a'=>"%".$lettre."%"]);
     //dans résultat on a l'ensemble des résultats de la requete
      return $resultat->fetchAll(PDO::FETCH_OBJ);
-
 }

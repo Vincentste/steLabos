@@ -59,7 +59,7 @@ function rechercheParTexte(e){
     $ul = $("<ul id='recherche'/>").insertAfter("#divAjout");
     for (var i=0; i<data.length; i++){
         var tshirt = data[i].prod_nom;
-        $("<li/>").text(tshirt).appendTo($ul);
+        $("<li id="+i+"/>").text(tshirt).appendTo($ul);
     }
         
     });
