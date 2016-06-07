@@ -104,3 +104,28 @@ function requeteInsertTshirt($nom,$prix,$img_gd,$img_pt,$des,$crea,$mat,$date_aj
      $resultat->execute([':a'=>$categorie,':b'=>$createur,':c'=>$matiere]);
      return $resultat->fetchAll(PDO::FETCH_OBJ);
   }
+function recupere_exemplaire($id,$taille){
+    $requete="select exem_stock FROM exemplaires "
+            . "JOIN produits ON prod_id=exem_fk_tee "
+            . "JOIN createurs on prod_fk_createur=cre_id "
+            . "JOIN matieres on prod_fk_matiere=mat_id "
+            . "JOIN categories on prod_fk_categorie=cat_id "
+            . "JOIN tailles ON exem_fk_tail=tail_id WHERE  tail_nom=:b AND prod_id=:a";
+  
+    $connexion=connexion_PDO();
+        //preparation requete
+    $resultat=$connexion->prepare($requete);
+    $resultat->execute([':a'=>$id,':b'=>$taille]);
+    return $resultat->fetchAll(PDO::FETCH_OBJ);
+    
+function recupere_infos_untshirt($id){
+    $requete="select * FROM produits where prod_id=:a ";
+   
+  
+    $connexion=connexion_PDO();
+        //preparation requete
+    $resultat=$connexion->prepare($requete);
+    $resultat->execute([':a'=>$id]);
+    return $resultat->fetchAll(PDO::FETCH_OBJ);
+    
+}    
