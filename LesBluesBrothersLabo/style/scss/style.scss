@@ -18,7 +18,7 @@ body{
 		border: 1px solid black;
 		margin: 1em;
 		padding: 1em;
-		height: 90vh;
+		min-height: 90vh;
 		
 		.content{
 			position: relative;
@@ -28,7 +28,8 @@ body{
 				padding-bottom: 1em;
 				text-align: center; 
 			}
-
+			
+			/*Formulaire de recherche*/
 			#champHaut{	
 				border-bottom: 1px solid black;
 
@@ -53,15 +54,33 @@ body{
 				p{ margin: 0 0.5em; }
 			}
 
-			#buttonAjout{
-				display: block;
-				text-align:center;
-				padding: 0.5em;
-				border-bottom: 1px solid black;
-				background: rgb(200,200,200);
+			/*Partie ajout*/			
+			#divAjout{
+			
+				#buttonAjout{
+					display: block;
+					text-align:center;
+					padding: 0.5em;
+					border-bottom: 1px solid black;
+					background: rgb(200,200,200);
+				}
+
+				#buttonAjout:hover{ cursor: pointer; }
+				
+				#voletAjout{
+					padding: 0.5em;
+				}
 			}
 
-			#buttonAjout:hover{ cursor: pointer; }
+			/*Listing des t-shirt*/
+			ul#recherche{
+				li{
+					display: block;
+					padding: 0.5em;
+					border-bottom: 1px solid black;
+					background: rgb(200,200,200);
+				}
+			}
 		}
 	}
 }
