@@ -17,6 +17,10 @@ function valideMotDePasse(e){
     			$.getJSON("dispatcher.php","op=data_recherche",function(data){
 
                     var categories=data['categories'];
+                    var optionUne=$('<option/>');
+                    optionUne.val('%');
+                    optionUne.text('tous');
+                    optionUne.appendTo('#selectCat');
                     for(var i=0;i < categories.length;i++){
                         var option=$('<option/>');
                         option.text(categories[i].cat_nom);
@@ -24,6 +28,10 @@ function valideMotDePasse(e){
                     }
                     
                     var createurs=data['createurs'];
+                    var optionDeux=$('<option/>');
+                    optionDeux.val('%');
+                    optionDeux.text('tous');
+                    optionDeux.appendTo('#selectCre');
                     for(var i=0;i < createurs.length;i++){
                         var option=$('<option/>');
                         option.text(createurs[i].cre_nom);
@@ -31,6 +39,10 @@ function valideMotDePasse(e){
                     }
                     
                    var matieres=data['matieres'];
+                    var optionTrois=$('<option/>');
+                    optionTrois.val('%');
+                    optionTrois.text('tous');
+                    optionTrois.appendTo('#selectMat');
                     for(var i=0;i < matieres.length;i++){
                         var option=$('<option/>');
                         option.text(matieres[i].mat_nom);
@@ -54,40 +66,58 @@ function getFormulaireConnexion($ou){
 }
 
 function rechercheParTexte(e){
-    $("#recherche").remove(); 
+    $("#recherche").remove();
+    if($('#champTexte').val() ==""){
+        $("#recherche").remove();
+    } 
     $.getJSON("dispatcher.php",{"op":"rechercheParTexte","lettre":$('#champTexte').val()},function(data){
     $ul = $("<ul id='recherche'/>").insertAfter("#divAjout");
     for (var i=0; i<data.length; i++){
         var tshirt = data[i].prod_nom;
-        $li = $("<li id=tshirt"+i+"/>").text(tshirt).appendTo($ul);
+        $li = $("<li id=tshirt"+data[i].prod_id+"/>").text(tshirt).appendTo($ul);
         $("<ul class=tshirt/>").prepend('<li id='+data[i].prod_id+' class=supprimer>supprimer</li>').prepend('<li class=modif>modifier</li>').prepend('<li class=voir>voir</li>').appendTo($li);
     }
       
     $('.contenu').on('click','.supprimer', function supprimerTshirt(e){
+
             var idTshirt =($(this).attr("id"));
             $(".choix").remove();
             $choix = $('<div class=choix/>').prepend('<p class=oui>oui</p>').prepend('<p class=non>non</p>').appendTo($(this));
                 $('.choix').on('click','.oui', function choixOui(e){
                     $.getJSON("dispatcher.php",{"op":"supprimerTshirt","id":idTshirt});
+                    $('#tshirt'+idTshirt+'').remove();
                     alert ("le tshirt a bien été supprimé !");
                 });
-                $('.choix').on('click','.non', function choixNon(e){
-                   $(".choix").remove(); 
+                    $('.choix').on('click','.non', function choixNon(e){
+                    $(".choix").remove(); 
                 });
     });
 });
 }
     
 function rechercheParFiltres(e){
-   /* $("#recherche").remove(); */
+    $("#recherche").remove(); 
     $.getJSON("dispatcher.php",{"op":"rechercheParFiltre","cat":$('#selectCat').val(),"mat":$('#selectMat').val(),"cre":$('#selectCre').val()},function(data){
-   /* $ul = $("<ul id='recherche'/>").insertAfter("#divAjout");*/
+    $ul = $("<ul id='recherche'/>").insertAfter("#divAjout");
         console.log(data);
-     /*   for (var i=0; i<data.length; i++){
+        for (var i=0; i<data.length; i++){
             var tshirt = data[i].prod_nom;
-            $li = $("<li id=tshirt"+i+"/>").text(tshirt).appendTo($ul);
+            $li = $("<li id=tshirt"+data[i].prod_id+"/>").text(tshirt).appendTo($ul);
             $("<ul class=tshirt/>").prepend('<li id='+data[i].prod_id+' class=supprimer>supprimer</li>').prepend('<li class=modif>modifier</li>').prepend('<li class=voir>voir</li>').appendTo($li);
-        }*/
+        }
+         $('.contenu').on('click','.supprimer', function supprimerTshirt(e){
+            var idTshirt =($(this).attr("id"));
+            $(".choix").remove();
+            $choix = $('<div class=choix/>').prepend('<p class=oui>oui</p>').prepend('<p class=non>non</p>').appendTo($(this));
+                $('.choix').on('click','.oui', function choixOui(e){
+                    $.getJSON("dispatcher.php",{"op":"supprimerTshirt","id":idTshirt});
+                    $('#tshirt'+idTshirt+'').remove();
+                    alert ("le tshirt a bien été supprimé !");
+                });
+                $('.choix').on('click','.non', function choixNon(e){
+                   $(".choix").remove(); 
+                });
+    });
     });
 }
 
