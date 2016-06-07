@@ -16,6 +16,8 @@
 	    $op = "connexion";
 	}
 
+    session_start();
+
 	require_once __DIR__.'/c/TemplateConnexion.php';
     require_once __DIR__.'/m/connexion.php';
 
@@ -44,7 +46,7 @@
 
                 if($resultat){
                     echo('{"authorisation":"oui"}');
-                    session_start();
+                    
                     $_SESSION['connecte']='oui';
               
                  
@@ -71,15 +73,14 @@
             echo json_encode($tab);
             break;
             
-            case "rechercheParTexte";
-            $text=$_GET['chaine'];
-            echo($text);
+            case "rechercheParTexte":
+            $text=$_GET['lettre'];
             $resultat=requeteTshirtParNoms($text);
             echo json_encode($resultat);
            /* echo('{"chaine":"text"}');*/
             break; 
 
-            case "voletAjoutTshirt";
+            case "voletAjoutTshirt":
                 $Affichage = new Affichage();
                 echo $Affichage->afficheAjoutTshirt();
             break; 

@@ -53,16 +53,18 @@ function getFormulaireConnexion($ou){
 }
 
 function rechercheParTexte(e){
-    $("#recherche").remove();
-    $.getJSON("dispatcher.php",{op:"rechercheParTexte",lettre:$('#champTexte').val()},function(data){
+    $("#recherche").remove(); 
+
+    $.getJSON("dispatcher.php",{"op":"rechercheParTexte","lettre":$('#champTexte').val()},function(data){
     $ul = $("<ul id='recherche'/>").insertAfter("#divAjout");
     for (var i=0; i<data.length; i++){
-        var tshirt = data[i].prod_nom
+        var tshirt = data[i].prod_nom;
         $("<li/>").text(tshirt).appendTo($ul);
     }
         
     });
 }
+
 
 function voletAjoutTshirt(e){
     // $.getJSON("dispatcher.php",{"op":"voletAjoutTshirt"},function(data){
@@ -71,7 +73,6 @@ function voletAjoutTshirt(e){
     
     $("#voletAjout").load("dispatcher.php","op=voletAjoutTshirt");  
 }
-
 
     
 });
