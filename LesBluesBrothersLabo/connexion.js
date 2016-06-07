@@ -5,6 +5,7 @@ $('.contenu').on("click",".envoi",valideMotDePasse);
 $('.contenu').on('keyup','#champTexte',rechercheParTexte);
 $('.contenu').on('click','#buttonAjout',voletAjoutTshirt);
 
+
 function valideMotDePasse(e){
      $.getJSON("dispatcher.php",{"op":"controleConnexion","nom":$('#nom').val(),"mdp":$('#mdp').val()},function(data){
         
@@ -56,9 +57,14 @@ function rechercheParTexte(e){
     for (var i=0; i<data.length; i++){
         var tshirt = data[i].prod_nom;
         $li = $("<li id=tshirt"+i+"/>").text(tshirt).appendTo($ul);
-        $("<ul/>").prepend('<li>ajouter</li>').prepend('<li>modifier</li>').prepend('<li>supprimer</li>').appendTo($li);
+        $("<ul id=tshirt"+i+"/>").prepend('<li class=ajouter>ajouter</li>').prepend('<li class=modif>modifier</li>').prepend('<li class=supprimer>supprimer</li>').appendTo($li);
     }
-        
+      
+    $('.contenu').on('click','.supprimer', function supprimerTshirt(){
+        alert("ok");
+    });
+
+
     });
 }
 
