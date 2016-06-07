@@ -48,9 +48,20 @@ class Affichage{
     }
 
     public function afficheAjoutTshirt(){
-        return "<form>
-
-        </form>";
+        return '<form>
+            <p>
+                <label for="prodNom">Nom : </label>
+                <input type="text"name="prodNom" id="prodNom" />
+            </p>
+            <p>
+                <label for="prodPrix">Prix : </label>
+                <input type="text"name="prodPrix" id="prodPrix" />
+            </p>
+            <p>
+                <label for="prodDate">Date : </label>
+                <input type="date"name="prodDate" id="prodDate" />
+            </p>
+        </form>';
     }
     
 }
