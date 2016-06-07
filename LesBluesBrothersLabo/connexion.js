@@ -6,6 +6,7 @@ $('.contenu').on('keyup','#champTexte',rechercheParTexte);
 $('.contenu').on('click','#buttonAjout',voletAjoutTshirt);
 $('.contenu').on('click','#boutSav',saveTshirt);
 $('.contenu').on('click','#boutAnn',annuleTshirt);
+$('.contenu').on('click','#boutChampRech',rechercheParFiltres);
 
 
 function valideMotDePasse(e){
@@ -76,6 +77,19 @@ function rechercheParTexte(e){
     });
 });
 }
+    
+function rechercheParFiltres(e){
+   /* $("#recherche").remove(); */
+    $.getJSON("dispatcher.php",{"op":"rechercheParFiltre","cat":$('#selectCat').val(),"mat":$('#selectMat').val(),"cre":$('#selectCre').val()},function(data){
+   /* $ul = $("<ul id='recherche'/>").insertAfter("#divAjout");*/
+        console.log(data);
+     /*   for (var i=0; i<data.length; i++){
+            var tshirt = data[i].prod_nom;
+            $li = $("<li id=tshirt"+i+"/>").text(tshirt).appendTo($ul);
+            $("<ul class=tshirt/>").prepend('<li id='+data[i].prod_id+' class=supprimer>supprimer</li>').prepend('<li class=modif>modifier</li>').prepend('<li class=voir>voir</li>').appendTo($li);
+        }*/
+    });
+}
 
 function voletAjoutTshirt(e){
     //Ajoute ou enlève la class au clique sur le bouton ajout tshirt
@@ -90,21 +104,21 @@ function voletAjoutTshirt(e){
 
                         var categories=data['categories'];
                         for(var i=0;i < categories.length;i++){
-                            var option=$('<option value="'+categories[i].cat_nom+'"/>');
+                            var option=$('<option value="'+categories[i].cat_id+'"/>');
                             option.text(categories[i].cat_nom);
                             option.appendTo('#prodCat');    
                         }
                         
                         var createurs=data['createurs'];
                         for(var i=0;i < createurs.length;i++){
-                            var option=$('<option value="'+createurs[i].cat_nom+'"/>');
+                            var option=$('<option value="'+createurs[i].cre_id+'"/>');
                             option.text(createurs[i].cre_nom);
                             option.appendTo('#prodCre');   
                         }
                         
                        var matieres=data['matieres'];
                         for(var i=0;i < matieres.length;i++){
-                            var option=$('<option value="'+matieres[i].cat_nom+'"/>');
+                            var option=$('<option value="'+matieres[i].mat_id+'"/>');
                             option.text(matieres[i].mat_nom);
                             option.appendTo('#prodMat');    
                         }     
@@ -116,7 +130,19 @@ function voletAjoutTshirt(e){
 }
 
 function saveTshirt(){
-    $("#voletAjout").load("dispatcher.php","op=save_tshirt"); 
+
+    var prodNom = $('#prodNom').val();
+    var prodPrix = $('#prodPrix').val();
+    var img_gd = "vide";
+    var img_pt = "vide";
+    var des = $('#prodDesc').val();
+    var crea = $('#prodCre').val();
+    var mat = $('#prodMat').val();
+    var date_aj = $('#prodDate').val();
+    var cat = $('#prodCat').val();
+
+    $("#voletAjout").load("dispatcher.php",
+    "op=save_tshirt&nom="+prodNom+"&prix="+prodPrix+"&img_gd="+img_gd+"&img_pt="+img_pt+"&desc="+des+"&crea="+crea+"&mat="+mat+"&date="+date_aj+"&cat="+cat+""); 
 }
 
 function annuleTshirt(){
