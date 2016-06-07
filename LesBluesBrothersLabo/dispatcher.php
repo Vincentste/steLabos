@@ -17,6 +17,7 @@
 	}
 
     session_start();
+    
 
 	require_once __DIR__.'/c/TemplateConnexion.php';
     require_once __DIR__.'/m/connexion.php';
@@ -75,7 +76,6 @@
             $text=$_GET['lettre'];
             $resultat=requeteTshirtParNoms($text);
             echo json_encode($resultat);
-           /* echo('{"chaine":"text"}');*/
             break; 
 
             case "voletAjoutTshirt":

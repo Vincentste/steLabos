@@ -51,12 +51,12 @@ function getFormulaireConnexion($ou){
 
 function rechercheParTexte(e){
     $("#recherche").remove(); 
-
     $.getJSON("dispatcher.php",{"op":"rechercheParTexte","lettre":$('#champTexte').val()},function(data){
     $ul = $("<ul id='recherche'/>").insertAfter("#divAjout");
     for (var i=0; i<data.length; i++){
         var tshirt = data[i].prod_nom;
-        $("<li id="+i+"/>").text(tshirt).appendTo($ul);
+        $li = $("<li id=tshirt"+i+"/>").text(tshirt).appendTo($ul);
+        $("<ul/>").prepend('<li>ajouter</li>').prepend('<li>modifier</li>').prepend('<li>supprimer</li>').appendTo($li);
     }
         
     });
