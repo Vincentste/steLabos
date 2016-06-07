@@ -113,11 +113,11 @@ function voletAjoutTshirt(e){
 }
 
 function saveTshirt(){
-    alert("On sauvegarde !")
+    alert("On sauvegarde !");
 }
 
 function annuleTshirt(){
-    alert("On annule !")
+    alert("On annule !");
 }
 
     

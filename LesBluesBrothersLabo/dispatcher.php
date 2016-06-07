@@ -8,7 +8,7 @@
         "data_recherche"=>"accueil.html",
         "rechercheParTexte"=>"accueil.html",
         "supprimerTshirt"=>"accueil.html",
-        "voletAjoutTshirt"=>"accueil.html"
+        "voletAjoutTshirt"=>"accueil.html",
 	];
 
 	//récupérer l'opération
