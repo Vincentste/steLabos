@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import "compass";
 @import "compass/reset";
 
@@ -84,4 +85,123 @@ body{
 			}
 		}
 	}
+=======
+@import "compass";
+@import "compass/reset";
+
+/*## VARIABLES ##*/
+
+/*## MIXINS ##*/
+a{ 
+	text-decoration: none; 
+	color: black;
+}
+
+body{
+	width: 75%;
+	margin: 0 auto;
+	font-family: helvetica,arial,"sans-serif";
+
+	.contenu{
+		border: 1px solid black;
+		margin: 1em;
+		padding: 1em;
+		min-height: 90vh;
+		
+		.content{
+			position: relative;
+			
+			h1{ 
+				font-size: 1.5em;
+				padding-bottom: 1em;
+				text-align: center; 
+			}
+			
+			/*Formulaire de recherche*/
+			#champHaut{	
+				border-bottom: 1px solid black;
+
+				#champTexte{
+					position: absolute;
+					top:0;
+					right: 0;
+					border-radius: 20px; 
+				}
+			}
+
+			#champbas{
+				position: relative;
+				display: flex;
+				margin: 1em;
+
+				#boutChampRech{
+					position: absolute;
+					right: 0;
+				}
+
+				p{ margin: 0 0.5em; }
+			}
+
+			/*Partie ajout*/			
+			#divAjout{
+			
+				#buttonAjout{
+					display: block;
+					text-align:center;
+					padding: 0.5em;
+					border-bottom: 1px solid black;
+					background: rgb(200,200,200);
+				}
+
+				#buttonAjout:hover{ cursor: pointer; }
+				
+				#voletAjout{
+					padding: 0.5em;
+				}
+			}
+
+			/*Listing des t-shirt*/
+			ul#recherche{
+				background: rgb(200,200,210);
+
+				li{
+					display: block;
+					padding: 0.7em;
+					border-bottom: 1px solid black;
+                    
+                    ul{
+                        width:30%;
+                        float:right;
+                        .modif{
+                            background-image:url('../../icons/pencil.png');
+                            background-size:contain;
+                            background-position:top 50% left 50%;
+                            background-repeat:no-repeat;
+                            float:right;
+                            width:10%;
+                            
+                        }
+                        .voir{
+                            background-image:url('../../icons/plus-button.png');
+                            background-size:contain;
+                            background-position:top 50% left 50%;
+                            background-repeat:no-repeat;
+                            float:right;
+                            width:10%;
+                            
+                        }
+                        .supprimer{
+                            background-image:url('../../icons/rubbish-bin.png');
+                            background-size:contain;
+                            background-position:top 50% left 50%;
+                            background-repeat:no-repeat;
+                            float:right;
+                            width:10%;
+                        }
+                    }
+				}
+			}
+		}
+	}
+>>>>>>> 044e9fac266efeb1c8b06aaeef39f50fed98d98a
 }
