@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <?php
 	$operation_permise=[
 	   "accueil"=>true,
@@ -95,8 +95,8 @@
 
             case "supprimerTshirt":
             $id=$_GET['id'];
-            $requete = requteSupprimerTshirt($id);
-             
+            requeteSupprimerTshirt($id);
+            break;
 
             case "voletAjoutTshirt":
                 $Affichage = new Affichage();
@@ -123,125 +123,3 @@
                 echo $Affichage->afficheModifTshirt();
             break;
     }
-=======
-<?php
-	$operation_permise=[
-	   "accueil"=>true,
-    	"connexion" => "accueil.html",
-        "controleConnexion"=>"accueil.html",
-    	"affichageAccueil" => "accueil.html",
-        "template_tshirt"=>"accueil.html",
-        "data_recherche"=>"accueil.html",
-        "rechercheParTexte"=>"accueil.html",
-        "supprimerTshirt"=>"accueil.html",
-        "voletAjoutTshirt"=>"accueil.html",
-        "save_tshirt"=>"accueil.html",
-        "rechercheParFiltre"=>"accueil.html" 
-	];
-
-	//récupérer l'opération
-	$op = (isset($_GET["op"]))?$_GET["op"]:"accueil";
-	if(!isset($operation_permise[$op])){
-	    $op = "connexion";
-	}
-
-    session_start();
-    
-
-	require_once __DIR__.'/c/TemplateConnexion.php';
-    require_once __DIR__.'/m/connexion.php';
-
-	switch ($op){
-		case "accueil":
-	
-			break;
-		case "connexion":
-            //affiche le menu de connecion
-			$Affichage = new Affichage();
-			echo $Affichage->afficheConnexion();
-            //control si déjà connecté
-            if ($_SESSION['connecte']='oui'){
-            $op = "template_tshirt";
-            }
-			break;
-            
-		case "controleConnexion":
-
-            $nom = isset($_GET['nom'])?$_GET['nom']:"";
-            $mdp = isset($_GET['mdp'])?$_GET['mdp']:"";
-
-            if($nom!="" && $mdp!=""){
-            	
-                $resultat=requeteConnexion($nom,$mdp);
-
-                if($resultat){
-                    echo('{"authorisation":"oui"}');
-                    
-                    $_SESSION['connecte']='oui';
-              
-                }else{
-                    echo('{"authorisation":"non"}');
-                   
-                }
-            }
-			break;   
-            
-            case "template_tshirt":
-            $Affichage = new Affichage();
-            echo $Affichage->afficheChampsRecherche();
-            break;
-            
-            case "data_recherche":
-            $tabCat = recupAllCategories();
-            $tabMat = recupAllMatieres();
-            $tabCrea = recupAllCreateurs();
-            $tab = ["categories"=>$tabCat,
-                "matieres"=>$tabMat,
-                "createurs"=>$tabCrea];
-            echo json_encode($tab);
-            break;
-            
-            case "rechercheParTexte":
-            $text=$_GET['lettre'];
-            $resultat=requeteTshirtParNoms($text);
-            echo json_encode($resultat);
-            break;
-            
-            case"rechercheParFiltre":
-            $categorie=$_GET['cat'];
-            $matiere=$_GET['mat'];
-            $createur=$_GET['cre'];
-            $resultatFiltre=requeteTshirtFiltres($categorie,$createur,$matiere);
-            echo json_encode($resultatFiltre);
-            break;
- 
-
-            case "supprimerTshirt":
-            $id=$_GET['id'];
-            $requete = requteSupprimerTshirt($id);
-             
-
-            case "voletAjoutTshirt":
-                $Affichage = new Affichage();
-                echo $Affichage->afficheAjoutTshirt();
-            break; 
-
-            case "save_tshirt":
-
-                $nom = $_GET['nom']; 
-                $prix = $_GET['prix'];
-                $img_gd = "";
-                $img_pt = "";
-                $des = $_GET['desc'];
-                $crea = $_GET['crea'];
-                $mat = $_GET['mat'];
-                $date_aj = $_GET['date'];
-                $cat = $_GET['cat'];
-
-                requeteInsertTshirt($nom,$prix,$img_gd,$img_pt,$des,$crea,$mat,$date_aj,$cat);
-            break;
-
-
-    }
->>>>>>> 044e9fac266efeb1c8b06aaeef39f50fed98d98a
-	
