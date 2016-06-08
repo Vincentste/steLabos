@@ -91,7 +91,7 @@ class Affichage{
         <form>
            <br/>
                 <label for="prodNom">Nom : </label>
-                <input type="text" name="prodNom" class="prodNom" value=""/>
+                <input type="text" name="prodNom" id="prodNom" value=""/>
             <br/>
            <br/>
                 <label for="prodPrix">Prix : </label>

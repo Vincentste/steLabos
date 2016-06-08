@@ -211,10 +211,9 @@ function modifTshirt(e){
         $(this).parent().next().load("dispatcher.php","op=ModifierTshirt");
         
         var idTshirt = $(this).attr("data");
-       
-        $(this).parent().next().children().find("input.prodNom").val("shit");
-        $(this).parent().next().children().find("input.prodNom").focus();
-       
+        alert($(this).parent().next().attr("class"));
+        $(this).parent().next().children().find("input#prodNom").val("shit");
+        $(this).parent().next().children().find("input#prodNom").focus();
        
         
 
