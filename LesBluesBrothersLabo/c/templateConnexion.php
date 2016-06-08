@@ -86,6 +86,49 @@ class Affichage{
         </form>';
     }
     
+     public function afficheModifTshirt(){
+        return '
+        <form>
+            <p>
+                <label for="prodNom">Nom : </label>
+                <input type="text" name="prodNom" id="prodNom" />
+            </p>
+            <p>
+                <label for="prodPrix">Prix : </label>
+                <input type="text" name="prodPrix" id="prodPrix" />
+            </p>
+            <p>
+                <label for="prodDate">Date : </label>
+                <input type="date" name="prodDate" id="prodDate" />
+            </p>
+            <p>
+                <label for="prodDesc">Description : </label>
+                <textarea name="prodDesc" id="prodDesc"></textarea>
+            </p>
+
+            <p>
+                <label for="prodCre">Créateurs : </label>
+                <select id="prodCre" name="prodCre"></select>
+            </p> 
+            <p>
+                <label for="prodMat">Matières : </label>
+                <select id="prodMat" name="prodMat"></select>
+            </p>
+            <p>
+                <label for="prodCat">Catégories : </label>
+                <select id="prodCat" name="prodCat"></select>
+            </p>
+            <p>
+                <input type="button" id="boutSav" value="Sauvegarder" autocomplete="off"/>
+                <input type="button" id="boutAnn" value="Annuler" autocomplete="off"/>
+            </p>
+        </form>';
+    }
+
+
+
+
+
 }
    
 

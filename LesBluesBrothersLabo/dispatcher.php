@@ -8,9 +8,11 @@
         "data_recherche"=>"accueil.html",
         "rechercheParTexte"=>"accueil.html",
         "supprimerTshirt"=>"accueil.html",
+        "ModifierTshirt"=>"accueil.html",
         "voletAjoutTshirt"=>"accueil.html",
         "save_tshirt"=>"accueil.html",
-        "rechercheParFiltre"=>"accueil.html" 
+        "rechercheParFiltre"=>"accueil.html"
+
 	];
 
 	//récupérer l'opération
@@ -115,6 +117,9 @@
                 requeteInsertTshirt($nom,$prix,$img_gd,$img_pt,$des,$crea,$mat,$date_aj,$cat);
             break;
 
-
+            case "ModifierTshirt":
+                $Affichage = new Affichage();
+                echo $Affichage->afficheModifTshirt();
+            break;
     }
 	
