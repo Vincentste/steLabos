@@ -80,7 +80,7 @@ function rechercheParTexte(e){
         $("<ul class=tshirt/>").prepend('<li data='+data[i].prod_id+' class=supprimer>supprimer</li>').prepend('<li data='+data[i].prod_id+' class=modif >modifier</li>').prepend('<li class=voir>voir</li>').appendTo($li);
     }
     //div qui va servir à la modification du tshirt.
-    $("<form class=modifier/>").insertAfter(".tshirt");
+    $("<form class='modifier'/>").insertAfter(".tshirt");
 
     //supprimer un tshirt de la DB
     $('.contenu').on('click','.supprimer', function supprimerTshirt(e){
@@ -119,7 +119,7 @@ function rechercheParFiltres(e){
             $li = $("<li id=tshirt"+data[i].prod_id+"/>").text(tshirt).appendTo($ul);
             $("<ul class=tshirt/>").prepend('<li data='+data[i].prod_id+' class=supprimer>supprimer</li>').prepend('<li data='+data[i].prod_id+' class=modif >modifier</li>').prepend('<li class=voir>voir</li>').appendTo($li);
         }
-         $("<form class=modifier/>").insertAfter(".tshirt");
+         $("<form class='modifier'/>").insertAfter(".tshirt");
         //supprime le Tshirt clické 
          $('.contenu').on('click','.supprimer', function supprimerTshirt(e){
             var idTshirt =($(this).attr("data"));
@@ -210,6 +210,12 @@ function annuleTshirt(){
 
 
 function modifTshirt(){
+
+         //Ajoute ou enlève la class au clique sur le bouton ajout tshirt
+    $("form.modifier").toggleClass("open");
+
+    //Ouvrire ou fermer le volet en fonction de la class "open"
+    if($("form.modifier").hasClass("open")){
    
         var idTshirt = $(this).attr("data");
 
@@ -229,10 +235,11 @@ function modifTshirt(){
            $("textarea#prodDesc").val(desc);
         });
         
-       $(this).parent().next().find("input#prodNom").focus();
-            $(this).parent().next().find("input#prodNom").val("shit");
+    
         
-
+    }else{
+        $("form.modifier").empty(); 
+    }    
 
 
 }
