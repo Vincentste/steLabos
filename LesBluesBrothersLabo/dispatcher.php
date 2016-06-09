@@ -116,8 +116,13 @@
                 $mat= $_GET['mat'];
                 $date_aj= $_GET['date'];
                 $cat= $_GET['cat'];
+                $tailleS= $_GET['tailleS'];
+                $tailleM= $_GET['tailleM'];
+                $tailleL= $_GET['tailleL'];
+                $tailleXL= $_GET['tailleXL'];
 
                 requeteInsertTshirt($nom,$prix,$img_gd,$img_pt,$des,$crea,$mat,$date_aj,$cat);
+                reqqueteInsertTaille($tailleS,$tailleM,$tailleL,$tailleXL);
             break;
 
             case "afficheModifierTshirt":

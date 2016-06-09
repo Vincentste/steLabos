@@ -88,7 +88,23 @@ function requeteInsertTshirt($nom,$prix,$img_gd,$img_pt,$des,$crea,$mat,$date_aj
     	 ':date_aj'=>$date_aj,
     	 ':cat'=>$cat
     	]);
+}
 
+function reqqueteInsertTaille($tailleS,$tailleM,$tailleL,$tailleXL){
+    $requete='INSERT INTO exemplaires(prod_nom,prod_prix,prod_img_gd,prod_img_pt,prod_desc,prod_fk_createur,prod_fk_matiere,prod_date,prod_fk_categorie) VALUES (:nom,:prix,:img_gd,:img_pt,:des,:crea,:mat,:date_aj,:cat)';
+    $connexion=connexion_PDO();
+    $resultat=$connexion->prepare($requete);
+    $resultat->execute(
+        [':nom'=>$nom,
+         ':prix'=>$prix,
+         ':img_gd'=>$img_gd,
+         ':img_pt'=>$img_pt,
+         ':des'=>$des,
+         ':crea'=>$crea,
+         ':mat'=>$mat,
+         ':date_aj'=>$date_aj,
+         ':cat'=>$cat
+        ]);
 }
 
   function requeteTshirtFiltres($categorie,$createur,$matiere){
