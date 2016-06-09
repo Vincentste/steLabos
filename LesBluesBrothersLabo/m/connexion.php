@@ -92,7 +92,7 @@ function requeteInsertTshirt($nom,$prix,$img_gd,$img_pt,$des,$crea,$mat,$date_aj
     return $connexion->lastInsertId("prod_id");
 }
 
-function requeteInsertTaille($id_exem,$id_taille,$stock){
+function requeteInsertExem($id_exem,$id_taille,$stock){
     $requete='INSERT INTO exemplaires(exem_fk_tee,exem_fk_tail,exem_stock) VALUES (:id_exem,:id_taille,:stock)';
     $connexion=connexion_PDO();
     $resultat=$connexion->prepare($requete);

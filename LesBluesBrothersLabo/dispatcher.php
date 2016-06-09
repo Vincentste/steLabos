@@ -133,7 +133,7 @@
                    
                     //Boucler sur toutes les tailles
                     foreach ($tabExem as $id_taille => $stock) {
-                        requeteInsertTaille($id_exem,$id_taille,$stock);
+                        requeteInsertExem($id_exem,$id_taille,$stock);
                     }                    
                 }
 
