@@ -156,21 +156,23 @@ body{
 							li.supprimer:hover{
 									cursor:pointer; 
 							}
-					form.modifier{
+					}
+
+					/*formulaire modifier*/
+					form{
 						padding: 0.5em;
 						position: relative;
 						padding: 0.5em;
 						display: flex;
-
-							section{
-								width: 30%;
-								padding: 0.5em
+					
+						section{
+							width: 30%;
+							padding: 0.5em;
+				
+							#imgPrew img{
+								width: 50%;
 							}
-						
-						#imgPrew img{
-							width: 50%;
 						}
-
 						#infosAjout{
 
 							p{ 	
@@ -185,6 +187,7 @@ body{
 						}
 
 						#taillesAjout{
+
 							p{ 	
 								margin-top: 0.5em;
 								margin-bottom: 0.5em;
@@ -193,28 +196,17 @@ body{
 
 						.boutonsFormAjout{
 							position: absolute;
-							bottom:0;
+							bottom:3%;
 							right: 25%;
 						}
 					
-				}
 
-				#imageAjout{
-					position: absolute;
-					top: 0;
-					right: 0;
-					height: 100%;
-					border: 1px solid black;
-					background: rgb(240,240,240);
 
-				}
+					}
+				}		
                     
-
-
-                    }
-				}
 			}
 		}
 	}
-
 }
+

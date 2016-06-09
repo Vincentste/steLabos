@@ -98,7 +98,7 @@ function rechercheParTexte(e){
                     $(".modalSupp").fadeOut();
                     var modal = $('#myModal');
                     modal.fadeIn();
-                    modal.fadeOut(3000);
+                    modal.fadeOut(2000);
                     
                 });
                 //confirmation -->non
@@ -135,7 +135,7 @@ function rechercheParFiltres(e){
                     $(".modalSupp").fadeOut();
                     var modal = $('#myModal');
                     modal.fadeIn();
-                    modal.fadeOut(3000);
+                    modal.fadeOut(2000);
                     
                 });
                 //confirmation -->non
@@ -232,11 +232,16 @@ function modifTshirt(){
            var prix = data[0].prod_prix;
            var date = data[0].prod_date;
            var desc = data[0].prod_desc;
+           var imgpew = data[0].prod_img_pt;
+           var imglist = data[0].prod_img_gd;
            //insertion ds les champs 
            $("input#prodNom").val(nom);
            $("input#prodPrix").val(prix);
            $("input#prodDate").val(date);
            $("textarea#prodDesc").val(desc);
+           $("#imgprew").attr("src","images/"+imgpew);
+           $("#imglist").attr("src","images/"+imglist);
+           
         });
        
         $.getJSON("dispatcher.php","op=data_recherche",function(data){

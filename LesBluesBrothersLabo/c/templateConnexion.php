@@ -130,11 +130,11 @@ class Affichage{
         
              <section id="imgPrew">
                 <figure>
-                    <img src="images/no.jpg" alt="image liste preview" />
+                    <img  id="imglist" src="" alt="image liste preview" />
                     <figcaption>Image liste</figcaption>
                 </figure>
                 <figure>
-                     <img src="images/no.jpg" alt="image détails preview"/>
+                     <img id="imgprew" src="" alt="image détails preview"/>
                      <figcaption>Image détails</figcaption>
                 </figure>
             </section>
@@ -194,13 +194,7 @@ class Affichage{
                 <input type="button" id="boutSav" value="Sauvegarder" autocomplete="off"/>
                 <input type="button" id="boutAnn" value="Annuler" autocomplete="off"/>
             </div>
-        </form>
-        <section id="imageAjout">
-            <h2>IMAGES</h2>
-            <div class="voletImageAjout">
-                
-            </div>
-        </section>';
+        ';
     }
     
     

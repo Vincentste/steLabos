@@ -194,6 +194,7 @@ body .contenu .content ul#recherche li {
   padding: 0.7em;
   margin: 0;
   border-bottom: 1px solid black;
+  /*formulaire modifier*/
 }
 /* line 139, ../scss/style.scss */
 body .contenu .content ul#recherche li ul.tshirt {
@@ -219,49 +220,40 @@ body .contenu .content ul#recherche li ul.tshirt li.voir:hover {
 body .contenu .content ul#recherche li ul.tshirt li.supprimer:hover {
   cursor: pointer;
 }
-/* line 159, ../scss/style.scss */
-body .contenu .content ul#recherche li ul.tshirt form.modifier {
+/* line 162, ../scss/style.scss */
+body .contenu .content ul#recherche li form {
   padding: 0.5em;
   position: relative;
   padding: 0.5em;
   display: flex;
 }
-/* line 165, ../scss/style.scss */
-body .contenu .content ul#recherche li ul.tshirt form.modifier section {
+/* line 168, ../scss/style.scss */
+body .contenu .content ul#recherche li form section {
   width: 30%;
   padding: 0.5em;
 }
-/* line 170, ../scss/style.scss */
-body .contenu .content ul#recherche li ul.tshirt form.modifier #imgPrew img {
+/* line 172, ../scss/style.scss */
+body .contenu .content ul#recherche li form section #imgPrew img {
   width: 50%;
 }
-/* line 176, ../scss/style.scss */
-body .contenu .content ul#recherche li ul.tshirt form.modifier #infosAjout p {
+/* line 178, ../scss/style.scss */
+body .contenu .content ul#recherche li form #infosAjout p {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
 }
-/* line 181, ../scss/style.scss */
-body .contenu .content ul#recherche li ul.tshirt form.modifier #infosAjout #prodDesc {
+/* line 183, ../scss/style.scss */
+body .contenu .content ul#recherche li form #infosAjout #prodDesc {
   width: 100%;
   height: 10rem;
 }
-/* line 188, ../scss/style.scss */
-body .contenu .content ul#recherche li ul.tshirt form.modifier #taillesAjout p {
+/* line 191, ../scss/style.scss */
+body .contenu .content ul#recherche li form #taillesAjout p {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
 }
-/* line 194, ../scss/style.scss */
-body .contenu .content ul#recherche li ul.tshirt form.modifier .boutonsFormAjout {
+/* line 197, ../scss/style.scss */
+body .contenu .content ul#recherche li form .boutonsFormAjout {
   position: absolute;
-  bottom: 0;
+  bottom: 3%;
   right: 25%;
-}
-/* line 202, ../scss/style.scss */
-body .contenu .content ul#recherche li ul.tshirt #imageAjout {
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 100%;
-  border: 1px solid black;
-  background: #f0f0f0;
 }
