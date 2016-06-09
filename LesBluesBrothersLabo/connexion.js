@@ -80,7 +80,7 @@ function rechercheParTexte(e){
         $("<ul class=tshirt/>").prepend('<li data='+data[i].prod_id+' class=supprimer>supprimer</li>').prepend('<li data='+data[i].prod_id+' class=modif >modifier</li>').prepend('<li class=voir>voir</li>').appendTo($li);
     }
     //div qui va servir à la modification du tshirt.
-    $("<div class=modifier/>").insertAfter(".tshirt");
+    $("<form class=modifier/>").insertAfter(".tshirt");
 
     //supprimer un tshirt de la DB
     $('.contenu').on('click','.supprimer', function supprimerTshirt(e){
@@ -119,7 +119,7 @@ function rechercheParFiltres(e){
             $li = $("<li id=tshirt"+data[i].prod_id+"/>").text(tshirt).appendTo($ul);
             $("<ul class=tshirt/>").prepend('<li data='+data[i].prod_id+' class=supprimer>supprimer</li>').prepend('<li data='+data[i].prod_id+' class=modif >modifier</li>').prepend('<li class=voir>voir</li>').appendTo($li);
         }
-         $("<div class=modifier/>").insertAfter(".tshirt");
+         $("<form class=modifier/>").insertAfter(".tshirt");
         //supprime le Tshirt clické 
          $('.contenu').on('click','.supprimer', function supprimerTshirt(e){
             var idTshirt =($(this).attr("data"));
@@ -209,45 +209,31 @@ function annuleTshirt(){
 
 
 
-function modifTshirt(e){
+function modifTshirt(){
    
         var idTshirt = $(this).attr("data");
 
-        $(this).parent().next().load("dispatcher.php","op=ModifierTshirt");
+        $(this).parent().next().load("dispatcher.php","op=afficheModifierTshirt");
         
+        $.getJSON("dispatcher.php",{"op":"ModifierTshirt","id":idTshirt},function(data){
 
-        $.getJSON("dispatcher.php","op=data_recherche",function(data){
+           
+           var nom = data[0].prod_nom;
+           var prix = data[0].prod_prix;
+           var date = data[0].prod_date;
+           var desc = data[0].prod_desc;
 
-                        var categories=data['categories'];
-                        for(var i=0;i < categories.length;i++){
-                            var option=$('<option value="'+categories[i].cat_id+'"/>');
-                            option.text(categories[i].cat_nom);
-                            option.appendTo('#prodCat');    
-                        }
-                        
-                        var createurs=data['createurs'];
-                        for(var i=0;i < createurs.length;i++){
-                            var option=$('<option value="'+createurs[i].cre_id+'"/>');
-                            option.text(createurs[i].cre_nom);
-                            option.appendTo('#prodCre');   
-                        }
-                        
-                       var matieres=data['matieres'];
-                        for(var i=0;i < matieres.length;i++){
-                            var option=$('<option value="'+matieres[i].mat_id+'"/>');
-                            option.text(matieres[i].mat_nom);
-                            option.appendTo('#prodMat');    
-                        } 
-        
+           $("input#prodNom").val(nom);
+           $("input#prodPrix").val(prix);
+           $("input#prodDate").val(date);
+           $("textarea#prodDesc").val(desc);
         });
-
-
-
-        $(this).parent().next().children().find("input#prodNom").focus();
-        $(this).parent().next().children().find("input#prodNom").val("shit");
+        
+       $(this).parent().next().find("input#prodNom").focus();
+            $(this).parent().next().find("input#prodNom").val("shit");
         
 
-    
+
 
 }
 

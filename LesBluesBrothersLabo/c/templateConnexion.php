@@ -88,7 +88,7 @@ class Affichage{
 
     public function afficheModifTshirt(){
         return '
-        <form>
+        
            <br/>
                 <label for="prodNom">Nom : </label>
                 <input type="text" name="prodNom" id="prodNom" value=""/>

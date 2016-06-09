@@ -10,6 +10,7 @@
         "rechercheParTexte"=>"accueil.html",
         "supprimerTshirt"=>"accueil.html",
         "ModifierTshirt"=>"accueil.html",
+        "afficheModifierTshirt"=>"accueil.html",
         "voletAjoutTshirt"=>"accueil.html",
         "save_tshirt"=>"accueil.html",
         "rechercheParFiltre"=>"accueil.html"
@@ -118,8 +119,14 @@
                 requeteInsertTshirt($nom,$prix,$img_gd,$img_pt,$des,$crea,$mat,$date_aj,$cat);
             break;
 
-            case "ModifierTshirt":
+            case "afficheModifierTshirt":
                 $Affichage = new Affichage();
                 echo $Affichage->afficheModifTshirt();
+            break;
+
+            case "ModifierTshirt":
+                $id=$_GET['id'];
+                $requete = recupere_infos_untshirt($id);
+                echo json_encode($requete);
             break;
     }
