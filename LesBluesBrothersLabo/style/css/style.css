@@ -1,4 +1,4 @@
-/* line 17, D:/Programmes/Scout/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, ../../../../../../../../Program Files (x86)/Scout/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -20,45 +20,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, D:/Programmes/Scout/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../../../../Program Files (x86)/Scout/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, D:/Programmes/Scout/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../../../../Program Files (x86)/Scout/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, D:/Programmes/Scout/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../../../../Program Files (x86)/Scout/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, D:/Programmes/Scout/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../../../../Program Files (x86)/Scout/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, D:/Programmes/Scout/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../../../../Program Files (x86)/Scout/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, D:/Programmes/Scout/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../../../../../Program Files (x86)/Scout/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, D:/Programmes/Scout/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../../../../../Program Files (x86)/Scout/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, D:/Programmes/Scout/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../../../../../../Program Files (x86)/Scout/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
@@ -137,24 +137,68 @@ body .contenu .content #divAjout #buttonAjout:hover {
 }
 /* line 70, ../scss/style.scss */
 body .contenu .content #divAjout #voletAjout {
+  position: relative;
   padding: 0.5em;
 }
 /* line 76, ../scss/style.scss */
+body .contenu .content #divAjout #voletAjout form {
+  display: flex;
+}
+/* line 79, ../scss/style.scss */
+body .contenu .content #divAjout #voletAjout form section {
+  width: 30%;
+  padding: 0.5em;
+}
+/* line 84, ../scss/style.scss */
+body .contenu .content #divAjout #voletAjout form #imgPrew img {
+  width: 50%;
+}
+/* line 90, ../scss/style.scss */
+body .contenu .content #divAjout #voletAjout form #infosAjout p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+/* line 95, ../scss/style.scss */
+body .contenu .content #divAjout #voletAjout form #infosAjout #prodDesc {
+  width: 100%;
+  height: 10rem;
+}
+/* line 102, ../scss/style.scss */
+body .contenu .content #divAjout #voletAjout form #taillesAjout p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+/* line 108, ../scss/style.scss */
+body .contenu .content #divAjout #voletAjout form .boutonsFormAjout {
+  position: absolute;
+  bottom: 0;
+  right: 25%;
+}
+/* line 116, ../scss/style.scss */
+body .contenu .content #divAjout #imageAjout {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  border: 1px solid black;
+  background: #f0f0f0;
+}
+/* line 127, ../scss/style.scss */
 body .contenu .content ul#recherche {
   background: #c8c8d2;
 }
-/* line 79, ../scss/style.scss */
+/* line 130, ../scss/style.scss */
 body .contenu .content ul#recherche li {
   display: block;
   padding: 0.7em;
   border-bottom: 1px solid black;
 }
-/* line 84, ../scss/style.scss */
+/* line 135, ../scss/style.scss */
 body .contenu .content ul#recherche li ul {
   width: 30%;
   float: right;
 }
-/* line 87, ../scss/style.scss */
+/* line 138, ../scss/style.scss */
 body .contenu .content ul#recherche li ul .modif {
   background-image: url("../../icons/pencil.png");
   background-size: contain;
@@ -163,7 +207,7 @@ body .contenu .content ul#recherche li ul .modif {
   float: right;
   width: 10%;
 }
-/* line 96, ../scss/style.scss */
+/* line 147, ../scss/style.scss */
 body .contenu .content ul#recherche li ul .voir {
   background-image: url("../../icons/plus-button.png");
   background-size: contain;
@@ -172,7 +216,7 @@ body .contenu .content ul#recherche li ul .voir {
   float: right;
   width: 10%;
 }
-/* line 105, ../scss/style.scss */
+/* line 156, ../scss/style.scss */
 body .contenu .content ul#recherche li ul .supprimer {
   background-image: url("../../icons/rubbish-bin.png");
   background-size: contain;
@@ -181,4 +225,3 @@ body .contenu .content ul#recherche li ul .supprimer {
   float: right;
   width: 10%;
 }
-

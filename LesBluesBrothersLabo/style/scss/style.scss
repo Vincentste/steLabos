@@ -68,7 +68,58 @@ body{
 				#buttonAjout:hover{ cursor: pointer; }
 				
 				#voletAjout{
+					position: relative;
+
 					padding: 0.5em;
+					
+
+					form{
+						display: flex;
+
+						section{
+							width: 30%;
+							padding: 0.5em
+						}
+						
+						#imgPrew img{
+							width: 50%;
+						}
+
+						#infosAjout{
+
+							p{ 	
+								margin-top: 0.5em;
+								margin-bottom: 0.5em;
+							}
+
+							#prodDesc{
+								width: 100%;
+								height: 10rem;
+							}
+						}
+
+						#taillesAjout{
+							p{ 	
+								margin-top: 0.5em;
+								margin-bottom: 0.5em;
+							}
+						}
+
+						.boutonsFormAjout{
+							position: absolute;
+							bottom:0;
+							right: 25%;
+						}
+					}
+				}
+
+				#imageAjout{
+					position: absolute;
+					top: 0;
+					right: 0;
+					height: 100%;
+					border: 1px solid black;
+					background: rgb(240,240,240);
 				}
 			}
 
@@ -115,5 +166,4 @@ body{
 			}
 		}
 	}
->>>>>>> 044e9fac266efeb1c8b06aaeef39f50fed98d98a
 }

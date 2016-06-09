@@ -50,40 +50,79 @@ class Affichage{
     public function afficheAjoutTshirt(){
         return '
         <form>
-            <p>
-                <label for="prodNom">Nom : </label>
-                <input type="text" name="prodNom" id="prodNom"/>
-            </p>
-            <p>
-                <label for="prodPrix">Prix : </label>
-                <input type="text" name="prodPrix" id="prodPrix" />
-            </p>
-            <p>
-                <label for="prodDate">Date : </label>
-                <input type="date" name="prodDate" id="prodDate" />
-            </p>
-            <p>
-                <label for="prodDesc">Description : </label>
-                <textarea name="prodDesc" id="prodDesc"></textarea>
-            </p>
+            <section id="imgPrew">
+                <figure>
+                    <img src="images/no.jpg" alt="image liste preview" />
+                    <figcaption>Image liste</figcaption>
+                </figure>
+                <figure>
+                     <img src="images/no.jpg" alt="image détails preview"/>
+                     <figcaption>Image détails</figcaption>
+                </figure>
+            </section>
+            <section id="infosAjout">  
+                    <p>
+                        <label for="prodNom">Nom : </label>
+                        <input type="text" name="prodNom" id="prodNom"/>
+                    </p>
+                    <p>
+                        <label for="prodPrix">Prix : </label>
+                        <input type="text" name="prodPrix" id="prodPrix" />
+                    </p>
+                    <p>
+                        <label for="prodDate">Date : </label>
+                        <input type="date" name="prodDate" id="prodDate" />
+                    </p>
+                    <p>
+                        <label for="prodDesc">Description : </label>
+                        <textarea name="prodDesc" id="prodDesc"></textarea>
+                    </p>
 
-            <p>
-                <label for="prodCre">Créateurs : </label>
-                <select id="prodCre" name="prodCre"></select>
-            </p> 
-            <p>
-                <label for="prodMat">Matières : </label>
-                <select id="prodMat" name="prodMat"></select>
-            </p>
-            <p>
-                <label for="prodCat">Catégories : </label>
-                <select id="prodCat" name="prodCat"></select>
-            </p>
-            <p>
+                    <p>
+                        <label for="prodCre">Créateurs : </label>
+                        <select id="prodCre" name="prodCre"></select>
+                    </p> 
+                    <p>
+                        <label for="prodMat">Matières : </label>
+                        <select id="prodMat" name="prodMat"></select>
+                    </p>
+                    <p>
+                        <label for="prodCat">Catégories : </label>
+                        <select id="prodCat" name="prodCat"></select>
+                    </p>
+                
+            </section>
+            <section id="taillesAjout">
+                <h2>Tailles</h2> 
+                <p>
+                    <label for="tailleS">S : </label>
+                    <input type="text" name="tailleS" id="tailleS"/> <span> S </span> <span> M </span>
+                </p>
+                <p>
+                    <label for="tailleM">M : </label>
+                    <input type="text" name="tailleM" id="tailleM"/> <span> S </span> <span> M </span>
+                </p>
+                <p>
+                    <label for="tailleL">L : </label>
+                    <input type="text" name="tailleL" id="tailleL"/> <span> S </span> <span> M </span>
+                </p>
+                <p>
+                    <label for="tailleXL">XL : </label>
+                    <input type="text" name="tailleXL" id="tailleXL"/> <span> S </span> <span> M </span>
+                </p>
+                <input type="button" id="ajoutTaille" value="ajouter" autocomplete="off"/>
+            </section>
+            <div class="boutonsFormAjout">
                 <input type="button" id="boutSav" value="Sauvegarder" autocomplete="off"/>
                 <input type="button" id="boutAnn" value="Annuler" autocomplete="off"/>
-            </p>
-        </form>';
+            </div>
+        </form>
+        <section id="imageAjout">
+            <h2>IMAGES</h2>
+            <div class="voletImageAjout">
+                
+            </div>
+        </section>';
     }
 
     public function afficheModifTshirt(){
