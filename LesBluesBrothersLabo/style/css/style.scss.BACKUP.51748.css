@@ -1,9 +1,9 @@
 /*
 Syntax error: Invalid CSS after "				#voletAjout{": expected "}", was "<<<<<<< HEAD"
-        on line 71 of /Applications/XAMPP/xamppfiles/htdocs/git/steLabos/LesBluesBrothersLabo/style/scss/style.scss
+        on line 71 of /Applications/XAMPP/xamppfiles/htdocs/git/steLabos/LesBluesBrothersLabo/style/scss/style.scss.BACKUP.51748.scss
 
 Backtrace:
-/Applications/XAMPP/xamppfiles/htdocs/git/steLabos/LesBluesBrothersLabo/style/scss/style.scss:71
+/Applications/XAMPP/xamppfiles/htdocs/git/steLabos/LesBluesBrothersLabo/style/scss/style.scss.BACKUP.51748.scss:71
 /Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:1129:in `expected'
 /Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:1066:in `expected'
 /Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:1061:in `tok!'
@@ -64,16 +64,16 @@ org/jruby/RubyArray.java:1603:in `each'
 /Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
 /Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/lib/compass/compiler.rb:100:in `run'
 /Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/lib/compass/commands/watch_project.rb:147:in `recompile'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/lib/compass/commands/watch_project.rb:95:in `perform'
+org/jruby/RubyMethod.java:133:in `call'
 org/jruby/RubyProc.java:268:in `call'
 org/jruby/RubyProc.java:228:in `call'
 /Applications/Scout.app/Contents/Resources/vendor/gems/gems/fssm-0.2.9/lib/fssm/path.rb:73:in `run_callback'
 /Applications/Scout.app/Contents/Resources/vendor/gems/gems/fssm-0.2.9/lib/fssm/path.rb:55:in `callback_action'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/fssm-0.2.9/lib/fssm/path.rb:39:in `delete'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/fssm-0.2.9/lib/fssm/state/directory.rb:32:in `deleted'
+/Applications/Scout.app/Contents/Resources/vendor/gems/gems/fssm-0.2.9/lib/fssm/path.rb:31:in `create'
+/Applications/Scout.app/Contents/Resources/vendor/gems/gems/fssm-0.2.9/lib/fssm/state/directory.rb:26:in `created'
 org/jruby/RubyArray.java:1603:in `each'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/fssm-0.2.9/lib/fssm/state/directory.rb:31:in `deleted'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/fssm-0.2.9/lib/fssm/state/directory.rb:16:in `refresh'
+/Applications/Scout.app/Contents/Resources/vendor/gems/gems/fssm-0.2.9/lib/fssm/state/directory.rb:25:in `created'
+/Applications/Scout.app/Contents/Resources/vendor/gems/gems/fssm-0.2.9/lib/fssm/state/directory.rb:17:in `refresh'
 /Applications/Scout.app/Contents/Resources/vendor/gems/gems/fssm-0.2.9/lib/fssm/backends/polling.rb:17:in `run'
 org/jruby/RubyArray.java:1603:in `each'
 /Applications/Scout.app/Contents/Resources/vendor/gems/gems/fssm-0.2.9/lib/fssm/backends/polling.rb:17:in `run'
@@ -91,4 +91,4 @@ org/jruby/RubyKernel.java:1419:in `loop'
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Invalid CSS after \"				#voletAjout{\": expected \"}\", was \"<<<<<<< HEAD\"\A         on line 71 of /Applications/XAMPP/xamppfiles/htdocs/git/steLabos/LesBluesBrothersLabo/style/scss/style.scss"; }
+  content: "Syntax error: Invalid CSS after \"				#voletAjout{\": expected \"}\", was \"<<<<<<< HEAD\"\A         on line 71 of /Applications/XAMPP/xamppfiles/htdocs/git/steLabos/LesBluesBrothersLabo/style/scss/style.scss.BACKUP.51748.scss"; }
