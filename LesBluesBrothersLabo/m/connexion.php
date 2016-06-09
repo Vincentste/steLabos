@@ -88,22 +88,18 @@ function requeteInsertTshirt($nom,$prix,$img_gd,$img_pt,$des,$crea,$mat,$date_aj
     	 ':date_aj'=>$date_aj,
     	 ':cat'=>$cat
     	]);
+     
+    return $connexion->lastInsertId("prod_id");
 }
 
-function reqqueteInsertTaille($tailleS,$tailleM,$tailleL,$tailleXL){
-    $requete='INSERT INTO exemplaires(prod_nom,prod_prix,prod_img_gd,prod_img_pt,prod_desc,prod_fk_createur,prod_fk_matiere,prod_date,prod_fk_categorie) VALUES (:nom,:prix,:img_gd,:img_pt,:des,:crea,:mat,:date_aj,:cat)';
+function requeteInsertTaille($id_exem,$id_taille,$stock){
+    $requete='INSERT INTO exemplaires(exem_fk_tee,exem_fk_tail,exem_stock) VALUES (:id_exem,:id_taille,:stock)';
     $connexion=connexion_PDO();
     $resultat=$connexion->prepare($requete);
     $resultat->execute(
-        [':nom'=>$nom,
-         ':prix'=>$prix,
-         ':img_gd'=>$img_gd,
-         ':img_pt'=>$img_pt,
-         ':des'=>$des,
-         ':crea'=>$crea,
-         ':mat'=>$mat,
-         ':date_aj'=>$date_aj,
-         ':cat'=>$cat
+        [':id_exem'=>$id_exem,
+         ':id_taille'=>$id_taille,
+         ':stock'=>$stock
         ]);
 }
 

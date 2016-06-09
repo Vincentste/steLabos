@@ -201,7 +201,7 @@ function saveTshirt(){
     var tailleXL = $('#tailleXL').val();
 
     $("#voletAjout").load("dispatcher.php",
-    "op=save_tshirt&nom="+prodNom+"&prix="+prodPrix+"&img_gd="+img_gd+"&img_pt="+img_pt+"&desc="+des+"&crea="+crea+"&mat="+mat+"&date="+date_aj+"&cat="+cat+"&tailleS="+tailleS+"&tailleM"+tailleM+"&tailleL="+tailleL+"&tailleXL="+tailleXL+""); 
+    "op=save_tshirt&nom="+prodNom+"&prix="+prodPrix+"&img_gd="+img_gd+"&img_pt="+img_pt+"&desc="+des+"&crea="+crea+"&mat="+mat+"&date="+date_aj+"&cat="+cat+"&tailleS="+tailleS+"&tailleM="+tailleM+"&tailleL="+tailleL+"&tailleXL="+tailleXL+""); 
 }
 
 function annuleTshirt(){

@@ -116,13 +116,27 @@
                 $mat= $_GET['mat'];
                 $date_aj= $_GET['date'];
                 $cat= $_GET['cat'];
-                $tailleS= $_GET['tailleS'];
-                $tailleM= $_GET['tailleM'];
-                $tailleL= $_GET['tailleL'];
-                $tailleXL= $_GET['tailleXL'];
 
-                requeteInsertTshirt($nom,$prix,$img_gd,$img_pt,$des,$crea,$mat,$date_aj,$cat);
-                reqqueteInsertTaille($tailleS,$tailleM,$tailleL,$tailleXL);
+                $qtTailleS= $_GET['tailleS'];
+                $qtTailleM= $_GET['tailleM'];
+                $qtTailleL= $_GET['tailleL'];
+                $qtTailleXL= $_GET['tailleXL'];
+
+                $tabExem = ["1"=>$qtTailleS,"2"=>$qtTailleM,"3"=>$qtTailleL,"4"=>$qtTailleXL];
+
+
+                //Insérer le produit et récupérer l'id de celui-ci
+                $id_exem = requeteInsertTshirt($nom,$prix,$img_gd,$img_pt,$des,$crea,$mat,$date_aj,$cat);
+                
+                //Si le produit à bien été ajouté, insérer les exemplaires
+                if($id_exem > 0){
+                   
+                    //Boucler sur toutes les tailles
+                    foreach ($tabExem as $id_taille => $stock) {
+                        requeteInsertTaille($id_exem,$id_taille,$stock);
+                    }                    
+                }
+
             break;
 
             case "afficheModifierTshirt":
