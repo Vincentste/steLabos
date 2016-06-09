@@ -95,7 +95,11 @@ function rechercheParTexte(e){
                     //supprime le li du tshirt supprimé. 
                     $('#tshirt'+idTshirt+'').remove();
                     //confirmation que le tshirt à bien été supprimé 
-                    alert ("le tshirt a bien été supprimé !");
+                    var modal = $('#myModal');
+                    modal.css('display' ,"block");
+                    $(".close").click(function(){
+                            modal.fadeOut();
+                    });
                 });
                 //confirmation -->non
                 $('.choix').on('click','.non', function choixNon(e){
@@ -202,25 +206,44 @@ function annuleTshirt(){
 
 
 function modifTshirt(e){
-    //Ajoute ou enlève la class au clique sur le bouton modifier
-    $(".modifier").toggleClass("open");
-
-    //Ouvrire ou fermer le volet en fonction de la class "open"
-    if($(".modifier").hasClass("open")){
+   
+        var idTshirt = $(this).attr("data");
 
         $(this).parent().next().load("dispatcher.php","op=ModifierTshirt");
         
-        var idTshirt = $(this).attr("data");
-        alert($(this).parent().next().attr("class"));
-        $(this).parent().next().children().find("input#prodNom").val("shit");
+
+        $.getJSON("dispatcher.php","op=data_recherche",function(data){
+
+                        var categories=data['categories'];
+                        for(var i=0;i < categories.length;i++){
+                            var option=$('<option value="'+categories[i].cat_id+'"/>');
+                            option.text(categories[i].cat_nom);
+                            option.appendTo('#prodCat');    
+                        }
+                        
+                        var createurs=data['createurs'];
+                        for(var i=0;i < createurs.length;i++){
+                            var option=$('<option value="'+createurs[i].cre_id+'"/>');
+                            option.text(createurs[i].cre_nom);
+                            option.appendTo('#prodCre');   
+                        }
+                        
+                       var matieres=data['matieres'];
+                        for(var i=0;i < matieres.length;i++){
+                            var option=$('<option value="'+matieres[i].mat_id+'"/>');
+                            option.text(matieres[i].mat_nom);
+                            option.appendTo('#prodMat');    
+                        } 
+        
+        });
+
+
+
         $(this).parent().next().children().find("input#prodNom").focus();
-       
+        $(this).parent().next().children().find("input#prodNom").val("shit");
         
 
-    }else{
-        $(".modifier").empty(); 
-    }  
-
+    
 
 }
 
