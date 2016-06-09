@@ -1,94 +1,228 @@
-/*
-Syntax error: Invalid CSS after "				#voletAjout{": expected "}", was "<<<<<<< HEAD"
-        on line 71 of /Applications/XAMPP/xamppfiles/htdocs/git/steLabos/LesBluesBrothersLabo/style/scss/style.scss
+/* line 17, ../../../../../../../../Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
 
-Backtrace:
-/Applications/XAMPP/xamppfiles/htdocs/git/steLabos/LesBluesBrothersLabo/style/scss/style.scss:71
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:1129:in `expected'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:1066:in `expected'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:1061:in `tok!'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:519:in `block'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:512:in `ruleset'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:574:in `declaration_or_ruleset'
-org/jruby/RubyProc.java:268:in `call'
-org/jruby/RubyProc.java:228:in `call'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:1104:in `rethrow'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:575:in `declaration_or_ruleset'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:537:in `block_child'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:529:in `block_contents'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:518:in `block'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:512:in `ruleset'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:574:in `declaration_or_ruleset'
-org/jruby/RubyProc.java:268:in `call'
-org/jruby/RubyProc.java:228:in `call'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:1104:in `rethrow'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:575:in `declaration_or_ruleset'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:537:in `block_child'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:529:in `block_contents'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:518:in `block'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:512:in `ruleset'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:574:in `declaration_or_ruleset'
-org/jruby/RubyProc.java:268:in `call'
-org/jruby/RubyProc.java:228:in `call'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:1104:in `rethrow'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:575:in `declaration_or_ruleset'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:537:in `block_child'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:529:in `block_contents'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:518:in `block'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:512:in `ruleset'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:574:in `declaration_or_ruleset'
-org/jruby/RubyProc.java:268:in `call'
-org/jruby/RubyProc.java:228:in `call'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:1104:in `rethrow'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:575:in `declaration_or_ruleset'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:537:in `block_child'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:529:in `block_contents'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:518:in `block'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:512:in `ruleset'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:536:in `block_child'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:529:in `block_contents'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:70:in `stylesheet'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/scss/parser.rb:27:in `parse'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/engine.rb:342:in `_to_tree'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/engine.rb:315:in `_render'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/sass-3.2.1/lib/sass/engine.rb:262:in `render'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/lib/compass/compiler.rb:140:in `compile'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/lib/compass/compiler.rb:139:in `compile'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/lib/compass/logger.rb:45:in `red'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/lib/compass/compiler.rb:138:in `compile'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/lib/compass/compiler.rb:118:in `compile_if_required'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/lib/compass/compiler.rb:103:in `run'
-org/jruby/RubyArray.java:1603:in `each'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/lib/compass/compiler.rb:101:in `run'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/lib/compass/compiler.rb:100:in `run'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/lib/compass/commands/watch_project.rb:147:in `recompile'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/lib/compass/commands/watch_project.rb:95:in `perform'
-org/jruby/RubyProc.java:268:in `call'
-org/jruby/RubyProc.java:228:in `call'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/fssm-0.2.9/lib/fssm/path.rb:73:in `run_callback'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/fssm-0.2.9/lib/fssm/path.rb:55:in `callback_action'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/fssm-0.2.9/lib/fssm/path.rb:39:in `delete'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/fssm-0.2.9/lib/fssm/state/directory.rb:32:in `deleted'
-org/jruby/RubyArray.java:1603:in `each'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/fssm-0.2.9/lib/fssm/state/directory.rb:31:in `deleted'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/fssm-0.2.9/lib/fssm/state/directory.rb:16:in `refresh'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/fssm-0.2.9/lib/fssm/backends/polling.rb:17:in `run'
-org/jruby/RubyArray.java:1603:in `each'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/fssm-0.2.9/lib/fssm/backends/polling.rb:17:in `run'
-org/jruby/RubyKernel.java:1419:in `loop'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/fssm-0.2.9/lib/fssm/backends/polling.rb:15:in `run'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/fssm-0.2.9/lib/fssm/monitor.rb:26:in `run'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/fssm-0.2.9/lib/fssm.rb:70:in `monitor'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/lib/compass/commands/watch_project.rb:87:in `perform'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/lib/compass/commands/base.rb:18:in `execute'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/lib/compass/commands/project_base.rb:19:in `execute'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
-/Applications/Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/lib/compass/exec/sub_command_ui.rb:15:in `run!'
-/Applications/Scout.app/Contents/Resources/bin/compass:12:in `(root)'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Syntax error: Invalid CSS after \"				#voletAjout{\": expected \"}\", was \"<<<<<<< HEAD\"\A         on line 71 of /Applications/XAMPP/xamppfiles/htdocs/git/steLabos/LesBluesBrothersLabo/style/scss/style.scss"; }
+/* line 22, ../../../../../../../../Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../../../../Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../../../../Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../../../../Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../../../../Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../../../Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../../../../Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../../../../Scout.app/Contents/Resources/vendor/gems/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/*## VARIABLES ##*/
+/*## MIXINS ##*/
+/* line 7, ../scss/style.scss */
+a {
+  text-decoration: none;
+  color: black;
+}
+
+/* line 12, ../scss/style.scss */
+body {
+  width: 75%;
+  margin: 0 auto;
+  font-family: helvetica,arial,"sans-serif";
+}
+/* line 17, ../scss/style.scss */
+body .contenu {
+  border: 1px solid black;
+  margin: 1em;
+  padding: 1em;
+  min-height: 90vh;
+}
+/* line 23, ../scss/style.scss */
+body .contenu .content {
+  position: relative;
+  /*Formulaire de recherche*/
+  /*Partie ajout*/
+  /*Listing des t-shirt*/
+}
+/* line 26, ../scss/style.scss */
+body .contenu .content h1 {
+  font-size: 1.5em;
+  padding-bottom: 1em;
+  text-align: center;
+}
+/* line 33, ../scss/style.scss */
+body .contenu .content #champHaut {
+  border-bottom: 1px solid black;
+}
+/* line 36, ../scss/style.scss */
+body .contenu .content #champHaut #champTexte {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 20px;
+}
+/* line 44, ../scss/style.scss */
+body .contenu .content #champbas {
+  position: relative;
+  display: flex;
+  margin: 1em;
+}
+/* line 49, ../scss/style.scss */
+body .contenu .content #champbas #boutChampRech {
+  position: absolute;
+  right: 0;
+}
+/* line 54, ../scss/style.scss */
+body .contenu .content #champbas p {
+  margin: 0 0.5em;
+}
+/* line 60, ../scss/style.scss */
+body .contenu .content #divAjout #buttonAjout {
+  display: block;
+  text-align: center;
+  padding: 0.5em;
+  border-bottom: 1px solid black;
+  background: #c8c8c8;
+}
+/* line 68, ../scss/style.scss */
+body .contenu .content #divAjout #buttonAjout:hover {
+  cursor: pointer;
+}
+/* line 70, ../scss/style.scss */
+body .contenu .content #divAjout #voletAjout {
+  padding: 0.5em;
+  position: relative;
+  padding: 0.5em;
+}
+/* line 78, ../scss/style.scss */
+body .contenu .content #divAjout #voletAjout form {
+  display: flex;
+}
+/* line 81, ../scss/style.scss */
+body .contenu .content #divAjout #voletAjout form section {
+  width: 30%;
+  padding: 0.5em;
+}
+/* line 86, ../scss/style.scss */
+body .contenu .content #divAjout #voletAjout form #imgPrew img {
+  width: 50%;
+}
+/* line 92, ../scss/style.scss */
+body .contenu .content #divAjout #voletAjout form #infosAjout p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+/* line 97, ../scss/style.scss */
+body .contenu .content #divAjout #voletAjout form #infosAjout #prodDesc {
+  width: 100%;
+  height: 10rem;
+}
+/* line 104, ../scss/style.scss */
+body .contenu .content #divAjout #voletAjout form #taillesAjout p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+/* line 110, ../scss/style.scss */
+body .contenu .content #divAjout #voletAjout form .boutonsFormAjout {
+  position: absolute;
+  bottom: 0;
+  right: 25%;
+}
+/* line 118, ../scss/style.scss */
+body .contenu .content #divAjout #imageAjout {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  border: 1px solid black;
+  background: #f0f0f0;
+}
+/* line 130, ../scss/style.scss */
+body .contenu .content ul#recherche {
+  background: #c8c8d2;
+}
+/* line 133, ../scss/style.scss */
+body .contenu .content ul#recherche li {
+  display: block;
+  padding: 0.7em;
+  border-bottom: 1px solid black;
+}
+/* line 138, ../scss/style.scss */
+body .contenu .content ul#recherche li ul {
+  width: 30%;
+  float: right;
+}
+/* line 141, ../scss/style.scss */
+body .contenu .content ul#recherche li ul .modif {
+  background-image: url("../../icons/pencil.png");
+  background-size: contain;
+  background-position: top 50% left 50%;
+  background-repeat: no-repeat;
+  float: right;
+  width: 10%;
+}
+/* line 150, ../scss/style.scss */
+body .contenu .content ul#recherche li ul .voir {
+  background-image: url("../../icons/plus-button.png");
+  background-size: contain;
+  background-position: top 50% left 50%;
+  background-repeat: no-repeat;
+  float: right;
+  width: 10%;
+}
+/* line 159, ../scss/style.scss */
+body .contenu .content ul#recherche li ul .supprimer {
+  background-image: url("../../icons/rubbish-bin.png");
+  background-size: contain;
+  background-position: top 50% left 50%;
+  background-repeat: no-repeat;
+  float: right;
+  width: 10%;
+}
