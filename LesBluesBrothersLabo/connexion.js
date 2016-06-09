@@ -98,7 +98,7 @@ function rechercheParTexte(e){
                     $(".modalSupp").fadeOut();
                     var modal = $('#myModal');
                     modal.fadeIn();
-                    modal.fadeOut(2000);
+                    modal.fadeOut(1000);
                     
                 });
                 //confirmation -->non
@@ -135,7 +135,7 @@ function rechercheParFiltres(e){
                     $(".modalSupp").fadeOut();
                     var modal = $('#myModal');
                     modal.fadeIn();
-                    modal.fadeOut(2000);
+                    modal.fadeOut(1000);
                     
                 });
                 //confirmation -->non
@@ -147,6 +147,7 @@ function rechercheParFiltres(e){
 }
 
 function voletAjoutTshirt(e){
+    
     //Ajoute ou enlève la class au clique sur le bouton ajout tshirt
     $("#voletAjout").toggleClass("open");
 
@@ -195,9 +196,13 @@ function saveTshirt(){
     var mat = $('#prodMatAjout').val();
     var date_aj = $('#prodDateAjout').val();
     var cat = $('#prodCatAjout').val();
+    var tailleS = $('#tailleS').val();
+    var tailleM = $('#tailleM').val();
+    var tailleL = $('#tailleL').val();
+    var tailleXL = $('#tailleXL').val();
 
     $("#voletAjout").load("dispatcher.php",
-    "op=save_tshirt&nom="+prodNom+"&prix="+prodPrix+"&img_gd="+img_gd+"&img_pt="+img_pt+"&desc="+des+"&crea="+crea+"&mat="+mat+"&date="+date_aj+"&cat="+cat+""); 
+    "op=save_tshirt&nom="+prodNom+"&prix="+prodPrix+"&img_gd="+img_gd+"&img_pt="+img_pt+"&desc="+des+"&crea="+crea+"&mat="+mat+"&date="+date_aj+"&cat="+cat+"&tailleS="+tailleS+"&tailleM="+tailleM+"&tailleL="+tailleL+"&tailleXL="+tailleXL+""); 
 }
 
 function annuleTshirt(){
@@ -213,7 +218,7 @@ function annuleTshirt(){
 
 
 function modifTshirt(){
-
+    $("form.modifier").children().remove();
     //Ajoute ou enlève la class au clique sur le bouton modif tshirt
     $("form.modifier").toggleClass("open");
 

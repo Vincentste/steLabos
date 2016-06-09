@@ -88,7 +88,19 @@ function requeteInsertTshirt($nom,$prix,$img_gd,$img_pt,$des,$crea,$mat,$date_aj
     	 ':date_aj'=>$date_aj,
     	 ':cat'=>$cat
     	]);
+     
+    return $connexion->lastInsertId("prod_id");
+}
 
+function requeteInsertExem($id_exem,$id_taille,$stock){
+    $requete='INSERT INTO exemplaires(exem_fk_tee,exem_fk_tail,exem_stock) VALUES (:id_exem,:id_taille,:stock)';
+    $connexion=connexion_PDO();
+    $resultat=$connexion->prepare($requete);
+    $resultat->execute(
+        [':id_exem'=>$id_exem,
+         ':id_taille'=>$id_taille,
+         ':stock'=>$stock
+        ]);
 }
 
   function requeteTshirtFiltres($categorie,$createur,$matiere){
