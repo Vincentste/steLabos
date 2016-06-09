@@ -161,21 +161,21 @@ function voletAjoutTshirt(e){
                         for(var i=0;i < categories.length;i++){
                             var option=$('<option value="'+categories[i].cat_id+'"/>');
                             option.text(categories[i].cat_nom);
-                            option.appendTo('#prodCat');    
+                            option.appendTo('#prodCatAjout');    
                         }
                         
                         var createurs=data['createurs'];
                         for(var i=0;i < createurs.length;i++){
                             var option=$('<option value="'+createurs[i].cre_id+'"/>');
                             option.text(createurs[i].cre_nom);
-                            option.appendTo('#prodCre');   
+                            option.appendTo('#prodCreAjout');   
                         }
                         
                        var matieres=data['matieres'];
                         for(var i=0;i < matieres.length;i++){
                             var option=$('<option value="'+matieres[i].mat_id+'"/>');
                             option.text(matieres[i].mat_nom);
-                            option.appendTo('#prodMat');    
+                            option.appendTo('#prodMatAjout');    
                         }     
         });
 
@@ -186,25 +186,25 @@ function voletAjoutTshirt(e){
 
 function saveTshirt(){
 
-    var prodNom = $('#prodNom').val();
-    var prodPrix = $('#prodPrix').val();
+    var prodNom = $('#prodNomAjout').val();
+    var prodPrix = $('#prodPrixAjout').val();
     var img_gd = "vide";
     var img_pt = "vide";
-    var des = $('#prodDesc').val();
-    var crea = $('#prodCre').val();
-    var mat = $('#prodMat').val();
-    var date_aj = $('#prodDate').val();
-    var cat = $('#prodCat').val();
+    var des = $('#prodDescAjout').val();
+    var crea = $('#prodCreAjout').val();
+    var mat = $('#prodMatAjout').val();
+    var date_aj = $('#prodDateAjout').val();
+    var cat = $('#prodCatAjout').val();
 
     $("#voletAjout").load("dispatcher.php",
     "op=save_tshirt&nom="+prodNom+"&prix="+prodPrix+"&img_gd="+img_gd+"&img_pt="+img_pt+"&desc="+des+"&crea="+crea+"&mat="+mat+"&date="+date_aj+"&cat="+cat+""); 
 }
 
 function annuleTshirt(){
-    $('#prodNom').val(""); 
-    $('#prodPrix').val(""); 
-    $('#prodDesc').val("");
-    $('#prodDate').val("");
+    $('#prodNomAjout').val(""); 
+    $('#prodPrixAjout').val(""); 
+    $('#prodDescAjout').val("");
+    $('#prodDateAjout').val("");
 }
     
 
