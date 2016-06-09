@@ -77,7 +77,7 @@ function rechercheParTexte(e){
         var tshirt = data[i].prod_nom;
         $li = $("<li id=tshirt"+data[i].prod_id+"/>").text(tshirt).appendTo($ul);
         // affichage de voir / supprimer / modifier
-        $("<ul class=tshirt/>").prepend('<li data='+data[i].prod_id+' class=supprimer>supprimer</li>').prepend('<li data='+data[i].prod_id+' class=modif >modifier</li>').prepend('<li class=voir>voir</li>').appendTo($li);
+        $("<ul class=tshirt/>").prepend('<li data='+data[i].prod_id+' class="supprimer"><i class="fa fa-trash"></i></li>').prepend('<li data='+data[i].prod_id+' class=modif ><i class="fa fa-pencil"></i></li>').prepend('<li class=voir><i class="fa fa-plus"></i></li>').appendTo($li);
     }
     //form qui va servir à la modification du tshirt.
     $("<form class='modifier'/>").insertAfter(".tshirt");
@@ -98,7 +98,7 @@ function rechercheParTexte(e){
                     $(".modalSupp").fadeOut();
                     var modal = $('#myModal');
                     modal.fadeIn();
-                    modal.fadeOut(5000);
+                    modal.fadeOut(3000);
                     
                 });
                 //confirmation -->non
@@ -106,7 +106,7 @@ function rechercheParTexte(e){
                     $(".modalSupp").fadeOut(); 
                 });
     });
-});
+    });
 }
 //recherche les noms des tshirt ds la DB
 function rechercheParFiltres(e){
@@ -117,27 +117,30 @@ function rechercheParFiltres(e){
         for (var i=0; i<data.length; i++){
             var tshirt = data[i].prod_nom;
             $li = $("<li id=tshirt"+data[i].prod_id+"/>").text(tshirt).appendTo($ul);
-            $("<ul class=tshirt/>").prepend('<li data='+data[i].prod_id+' class=supprimer>supprimer</li>').prepend('<li data='+data[i].prod_id+' class=modif >modifier</li>').prepend('<li class=voir>voir</li>').appendTo($li);
+            $("<ul class=tshirt/>").prepend('<li data='+data[i].prod_id+' class="supprimer"><i class="fa fa-trash"></i></li>').prepend('<li data='+data[i].prod_id+' class=modif ><i class="fa fa-pencil"></i></li>').prepend('<li class=voir><i class="fa fa-plus"></i></li>').appendTo($li);
         }
          $("<form class='modifier'/>").insertAfter(".tshirt");
         //supprime le Tshirt clické 
          $('.contenu').on('click','.supprimer', function supprimerTshirt(e){
             var idTshirt =($(this).attr("data"));
-            $(".choix").remove();
-            //confirmation du delete
-            $choix = $('<div class=choix/>').prepend('<p class="oui">oui</p>').prepend('<p class="non">non</p>').appendTo($(this));
-                $('.choix').on('click','.oui', function choixOui(e){
-                    $.getJSON("dispatcher.php",{"op":"supprimerTshirt","id":idTshirt});
-                    //supprime le li du Tshirt 
-                    $('#tshirt'+idTshirt+'').remove();
-                   var modal = $('#myModal');
+            //confirmation de la suppression
+                var modal = $('#myModalSupp');
                     modal.css('display' ,"block");
-                    $(".close").click(function(){
-                            modal.fadeOut();
-                    });
+                //confirmation --> oui
+                $('.modal-body').on('click','.oui', function choixOui(e){
+                    $.getJSON("dispatcher.php",{"op":"supprimerTshirt","id":idTshirt});
+                    //supprime le li du tshirt supprimé. 
+                    $('#tshirt'+idTshirt+'').remove();
+                    //confirmation que le tshirt à bien été supprimé 
+                    $(".modalSupp").fadeOut();
+                    var modal = $('#myModal');
+                    modal.fadeIn();
+                    modal.fadeOut(3000);
+                    
                 });
-                $('.choix').on('click','.non', function choixNon(e){
-                   $(".choix").remove(); 
+                //confirmation -->non
+                $('.modal-body').on('click','.non', function choixNon(e){
+                    $(".modalSupp").fadeOut(); 
                 });
     });
     });
@@ -235,7 +238,35 @@ function modifTshirt(){
            $("input#prodDate").val(date);
            $("textarea#prodDesc").val(desc);
         });
-        
+       
+        $.getJSON("dispatcher.php","op=data_recherche",function(data){
+
+                        var categories=data['categories'];
+                        for(var i=0;i < categories.length;i++){
+                            var option=$('<option value="'+categories[i].cat_id+'"/>');
+                            option.text(categories[i].cat_nom);
+                            option.appendTo('#prodCat');    
+                        }
+                        
+                        var createurs=data['createurs'];
+                        for(var i=0;i < createurs.length;i++){
+                            var option=$('<option value="'+createurs[i].cre_id+'"/>');
+                            option.text(createurs[i].cre_nom);
+                            option.appendTo('#prodCre');   
+                        }
+                        
+                       var matieres=data['matieres'];
+                        for(var i=0;i < matieres.length;i++){
+                            var option=$('<option value="'+matieres[i].mat_id+'"/>');
+                            option.text(matieres[i].mat_nom);
+                            option.appendTo('#prodMat');    
+                        }     
+        });
+
+
+
+
+
     
         
     }else{
