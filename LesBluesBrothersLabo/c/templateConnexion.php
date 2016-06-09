@@ -1,4 +1,3 @@
-
 <?php
 
 class Affichage{
@@ -129,40 +128,79 @@ class Affichage{
     public function afficheModifTshirt(){
         return '
         
-           <br/>
-                <label for="prodNom">Nom : </label>
-                <input type="text" name="prodNom" id="prodNom" value=""/>
-            <br/>
-           <br/>
-                <label for="prodPrix">Prix : </label>
-                <input type="text" name="prodPrix" id="prodPrix" />
-            <br/>
-           <br/>
-                <label for="prodDate">Date : </label>
-                <input type="date" name="prodDate" id="prodDate" />
-            <br/>
-           <br/>
-                <label for="prodDesc">Description : </label>
-                <textarea name="prodDesc" id="prodDesc"></textarea>
-            <br/>
+             <section id="imgPrew">
+                <figure>
+                    <img src="images/no.jpg" alt="image liste preview" />
+                    <figcaption>Image liste</figcaption>
+                </figure>
+                <figure>
+                     <img src="images/no.jpg" alt="image détails preview"/>
+                     <figcaption>Image détails</figcaption>
+                </figure>
+            </section>
+            <section id="infosAjout">  
+                 <br/>
+                        <label for="prodNom">Nom : </label>
+                        <input type="text" name="prodNom" id="prodNom"/>
+                    <br/>
+                   <br/>
+                        <label for="prodPrix">Prix : </label>
+                        <input type="text" name="prodPrix" id="prodPrix" />
+                    <br/>
+                   <br/>
+                        <label for="prodDate">Date : </label>
+                        <input type="date" name="prodDate" id="prodDate" />
+                    <br/>
+                   <br/>
+                        <label for="prodDesc">Description : </label>
+                        <textarea name="prodDesc" id="prodDesc"></textarea>
+                    <br/>
 
-           <br/>
-                <label for="prodCre">Créateurs : </label>
-                <select id="prodCre" name="prodCre"></select>
-            <br/> 
-           <br/>
-           <br/> <label for="prodMat">Matières : </label>
-                <select id="prodMat" name="prodMat"></select>
-            <br/>
-           <br/>
-                <label for="prodCat">Catégories : </label>
-                <select id="prodCat" name="prodCat"></select>
-            <br/>
-           <br/>
+                   <br/>
+                        <label for="prodCre">Créateurs : </label>
+                        <select id="prodCre" name="prodCre"></select>
+                    <br/> 
+                   <br/>
+                        <label for="prodMat">Matières : </label>
+                        <select id="prodMat" name="prodMat"></select>
+                    <br/>
+                   <br/>
+                        <label for="prodCat">Catégories : </label>
+                        <select id="prodCat" name="prodCat"></select>
+                    <br/>
+                
+            </section>
+            <section id="taillesAjout">
+                <h2>Tailles</h2> 
+               <br/>
+                    <label for="tailleS">S : </label>
+                    <input type="text" name="tailleS" id="tailleS"/> <span> S </span> <span> M </span>
+                <br/>
+               <br/>
+                    <label for="tailleM">M : </label>
+                    <input type="text" name="tailleM" id="tailleM"/> <span> S </span> <span> M </span>
+                <br/>
+               <br/>
+                    <label for="tailleL">L : </label>
+                    <input type="text" name="tailleL" id="tailleL"/> <span> S </span> <span> M </span>
+                <br/>
+               <br/>
+                    <label for="tailleXL">XL : </label>
+                    <input type="text" name="tailleXL" id="tailleXL"/> <span> S </span> <span> M </span>
+                <br/>
+                <input type="button" id="ajoutTaille" value="ajouter" autocomplete="off"/>
+            </section>
+            <div class="boutonsFormAjout">
                 <input type="button" id="boutSav" value="Sauvegarder" autocomplete="off"/>
                 <input type="button" id="boutAnn" value="Annuler" autocomplete="off"/>
-            <br/>
-        </form>';
+            </div>
+        </form>
+        <section id="imageAjout">
+            <h2>IMAGES</h2>
+            <div class="voletImageAjout">
+                
+            </div>
+        </section>';
     }
     
     

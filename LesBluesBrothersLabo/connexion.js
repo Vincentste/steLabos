@@ -75,7 +75,7 @@ function rechercheParTexte(e){
     //affiche tous les tshirt qui corresponde à la lettre tapée
     for (var i=0; i<data.length; i++){
         var tshirt = data[i].prod_nom;
-        $li = $("<li id=tshirt"+data[i].prod_id+"/>").text(tshirt).appendTo($ul);
+        $li = $("<li id=tshirt"+data[i].prod_id+"/></h2>").text(tshirt).appendTo($ul);
         // affichage de voir / supprimer / modifier
         $("<ul class=tshirt/>").prepend('<li data='+data[i].prod_id+' class="supprimer"><i class="fa fa-trash"></i></li>').prepend('<li data='+data[i].prod_id+' class=modif ><i class="fa fa-pencil"></i></li>').prepend('<li class=voir><i class="fa fa-plus"></i></li>').appendTo($li);
     }
