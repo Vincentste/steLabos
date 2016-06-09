@@ -122,12 +122,16 @@ function recupere_exemplaire($id,$taille){
 }
 
 function recupere_infos_untshirt($id){
-    $requete='select * FROM produits where prod_id = :a ';
-    $connexion=connexion_PDO();
-        //preparation requete
-    $resultat=$connexion->prepare($requete);
-    $resultat->execute([':a'=>$id]);
-    return $resultat->fetchAll(PDO::FETCH_OBJ);
+    $requete='Select * from produits'
+         .' JOIN categories on prod_fk_categorie = cat_id'
+         .' JOIN matieres on prod_fk_matiere = mat_id'
+         .' JOIN createurs on prod_fk_createur = cre_id'
+         .' Where prod_id = :a';
+     $connexion=connexion_PDO();
+    //preparation requete
+     $resultat=$connexion->prepare($requete);
+     $resultat->execute([':a'=>$id]);
+     return $resultat->fetchAll(PDO::FETCH_OBJ);
     
 }    
 
