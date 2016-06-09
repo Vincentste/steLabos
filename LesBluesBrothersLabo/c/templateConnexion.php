@@ -63,33 +63,33 @@ class Affichage{
             </section>
             <section id="infosAjout">  
                     <p>
-                        <label for="prodNom">Nom : </label>
-                        <input type="text" name="prodNom" id="prodNom"/>
+                        <label for="prodNomAjout">Nom : </label>
+                        <input type="text" name="prodNomAjout" id="prodNomAjout"/>
                     </p>
                     <p>
-                        <label for="prodPrix">Prix : </label>
-                        <input type="text" name="prodPrix" id="prodPrix" />
+                        <label for="prodPrixAjout">Prix : </label>
+                        <input type="text" name="prodPrixAjout" id="prodPrixAjout" />
                     </p>
                     <p>
-                        <label for="prodDate">Date : </label>
-                        <input type="date" name="prodDate" id="prodDate" />
+                        <label for="prodDateAjout">Date : </label>
+                        <input type="date" name="prodDateAjout" id="prodDateAjout" />
                     </p>
                     <p>
-                        <label for="prodDesc">Description : </label>
-                        <textarea name="prodDesc" id="prodDesc"></textarea>
+                        <label for="prodDescAjout">Description : </label>
+                        <textarea name="prodDescAjout" id="prodDescAjout"></textarea>
                     </p>
 
                     <p>
-                        <label for="prodCre">Créateurs : </label>
-                        <select id="prodCre" name="prodCre"></select>
+                        <label for="prodCreAjout">Créateurs : </label>
+                        <select id="prodCreAjout" name="prodCreAjout"></select>
                     </p> 
                     <p>
-                        <label for="prodMat">Matières : </label>
-                        <select id="prodMat" name="prodMat"></select>
+                        <label for="prodMatAjout">Matières : </label>
+                        <select id="prodMatAjout" name="prodMatAjout"></select>
                     </p>
                     <p>
-                        <label for="prodCat">Catégories : </label>
-                        <select id="prodCat" name="prodCat"></select>
+                        <label for="prodCatAjout">Catégories : </label>
+                        <select id="prodCatAjout" name="prodCatAjout"></select>
                     </p>
                 
             </section>
