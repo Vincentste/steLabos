@@ -130,7 +130,11 @@ function rechercheParFiltres(e){
                     $.getJSON("dispatcher.php",{"op":"supprimerTshirt","id":idTshirt});
                     //supprime le li du Tshirt 
                     $('#tshirt'+idTshirt+'').remove();
-                    alert ("le tshirt a bien été supprimé !");
+                   var modal = $('#myModal');
+                    modal.css('display' ,"block");
+                    $(".close").click(function(){
+                            modal.fadeOut();
+                    });
                 });
                 $('.choix').on('click','.non', function choixNon(e){
                    $(".choix").remove(); 
