@@ -11,6 +11,7 @@ $('.contenu').on('click','#boutChampRech',rechercheParFiltres);
 $('.contenu').on('click','.modif',modifTshirt);
 
 
+
 function valideMotDePasse(e){
      $.getJSON("dispatcher.php",{"op":"controleConnexion","nom":$('#nom').val(),"mdp":$('#mdp').val()},function(data){
         
@@ -216,7 +217,7 @@ function annuleTshirt(){
 
 
 
-
+//ouverture du volet modifier + insertion ds les champs et sauvegarde de l update!
 function modifTshirt(){
     $("form.modifier").children().remove();
     //Ajoute ou enlève la class au clique sur le bouton modif tshirt
@@ -239,6 +240,10 @@ function modifTshirt(){
            var desc = data[0].prod_desc;
            var imgpew = data[0].prod_img_pt;
            var imglist = data[0].prod_img_gd;
+           var crea = data[0].cre_nom;
+           var mat = data[0].mat_nom;
+           var cat = data[0].cat_nom;
+
            //insertion ds les champs 
            $("input#prodNom").val(nom);
            $("input#prodPrix").val(prix);
@@ -247,43 +252,76 @@ function modifTshirt(){
            $("#imgprew").attr("src","images/"+imgpew);
            $("#imglist").attr("src","images/"+imglist);
            
-        });
        
-        $.getJSON("dispatcher.php","op=data_recherche",function(data){
-
-                        var categories=data['categories'];
+       
+        // recup et insertion ds les selects cat/crea/matiéres. 
+        $.getJSON("dispatcher.php","op=data_recherche",function(d){
+                        
+                        var categories=d['categories'];
                         for(var i=0;i < categories.length;i++){
-                            var option=$('<option value="'+categories[i].cat_id+'"/>');
-                            option.text(categories[i].cat_nom);
-                            option.appendTo('#prodCat');    
+                            //met le selected sur la bonne catégorie
+                            if(cat == categories[i].cat_nom){
+                                var option=$('<option value="'+categories[i].cat_id+'" selected/>');
+                                option.text(categories[i].cat_nom);
+                                option.appendTo('#prodCat'); 
+                            }
+                            else{
+                                var option=$('<option value="'+categories[i].cat_id+'"/>');
+                                option.text(categories[i].cat_nom);
+                                option.appendTo('#prodCat');    
+                            }
                         }
                         
-                        var createurs=data['createurs'];
+                        var createurs=d['createurs'];
                         for(var i=0;i < createurs.length;i++){
-                            var option=$('<option value="'+createurs[i].cre_id+'"/>');
-                            option.text(createurs[i].cre_nom);
-                            option.appendTo('#prodCre');   
+                            //met le selected sur le bon createur
+                            if(crea == createurs[i].cre_nom){
+                                var option=$('<option value="'+createurs[i].cre_id+'" selected/>');
+                                option.text(createurs[i].cre_nom);
+                                option.appendTo('#prodCre'); 
+                            }
+                            else{
+                                var option=$('<option value="'+createurs[i].cre_id+'"/>');
+                                option.text(createurs[i].cre_nom);
+                                option.appendTo('#prodCre');   
+                            }
                         }
                         
-                       var matieres=data['matieres'];
+                       var matieres=d['matieres'];
+                        //met le selected sur la bonne matiére.
                         for(var i=0;i < matieres.length;i++){
-                            var option=$('<option value="'+matieres[i].mat_id+'"/>');
-                            option.text(matieres[i].mat_nom);
-                            option.appendTo('#prodMat');    
+                            if(mat == matieres[i].mat_nom){
+                                var option=$('<option value="'+matieres[i].mat_id+'" selected/>');
+                                option.text(matieres[i].mat_nom);
+                                option.appendTo('#prodMat'); 
+                            }
+                            else{
+                                var option=$('<option value="'+matieres[i].mat_id+'"/>');
+                                option.text(matieres[i].mat_nom);
+                                option.appendTo('#prodMat');    
+                            }
                         }     
-        });
-
-
-
-
-
-    
         
+        });
+        });
     }else{
         $("form.modifier").children().remove(); 
     }    
 
 
+
+    $('.contenu').on('click','#boutSav', function UpdateTshirt(){
+        var nom = $("input#prodNom").val();
+        var prix = $("input#prodPrix").val();
+        var date =  $("input#prodDate").val();
+        var desc =  $("textarea#prodDesc").val();
+
+        $(this).load("dispatcher.php","op=UpadteTshirt");
+    });
+
 }
+
+
+
 
 });
