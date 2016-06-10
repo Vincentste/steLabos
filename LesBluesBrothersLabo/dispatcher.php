@@ -124,7 +124,6 @@
 
                 $tabExem = ["1"=>$qtTailleS,"2"=>$qtTailleM,"3"=>$qtTailleL,"4"=>$qtTailleXL];
 
-
                 //Insérer le produit et récupérer l'id de celui-ci
                 $id_exem = requeteInsertTshirt($nom,$prix,$img_gd,$img_pt,$des,$crea,$mat,$date_aj,$cat);
                 
