@@ -303,8 +303,8 @@ $('.contenu').on('click','#boutMod', function UpdateTshirt(){
 
         //supprime ds la DB
         $.getJSON("dispatcher.php",{"op":"UpdateTshirt","id":idTshirt,"prodNom":nom,"prodPrix":prix,"prodDate":date,"prodDesc":desc,"prodCre":crea,"prodMat":mat,"prodCat":cat});
-        //change la valeur du li ds la recherche
-         
+        //change la valeur du h2 ds la recherche
+       
         //feunêtre modal confirmation update
         var modal = $('#myModalModif');
         modal.fadeIn();
