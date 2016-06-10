@@ -151,6 +151,12 @@
             break;
 
             case "UpdateTshirt":
-                
+
+                $id= $_GET["id"];
+                $nom = $_GET['prodNom'];
+               
+
+                RequeteUpdate_Tshirt($id,$nom);
+
             break;
     }

@@ -191,8 +191,8 @@ class Affichage{
                 <input type="button" id="ajoutTaille" value="ajouter" autocomplete="off"/>
             </section>
             <div class="boutonsFormAjout">
-                <input type="button" id="boutSav" value="Sauvegarder" autocomplete="off"/>
-                <input type="button" id="boutAnn" value="Annuler" autocomplete="off"/>
+                <input type="button" id="boutMod" value="Sauvegarder" autocomplete="off"/>
+                <input type="button" id="boutAnnMod" value="Annuler" autocomplete="off"/>
             </div>
         ';
     }

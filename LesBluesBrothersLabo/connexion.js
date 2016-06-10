@@ -99,7 +99,7 @@ function rechercheParTexte(e){
                     $(".modalSupp").fadeOut();
                     var modal = $('#myModal');
                     modal.fadeIn();
-                    modal.fadeOut(1000);
+                    modal.fadeOut();
                     
                 });
                 //confirmation -->non
@@ -136,7 +136,7 @@ function rechercheParFiltres(e){
                     $(".modalSupp").fadeOut();
                     var modal = $('#myModal');
                     modal.fadeIn();
-                    modal.fadeOut(1000);
+                    modal.fadeOut();
                     
                 });
                 //confirmation -->non
@@ -215,7 +215,7 @@ function annuleTshirt(){
     
 
 
-
+//------------------------------debut modifier Tshirt----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //ouverture du volet modifier + insertion ds les champs et sauvegarde de l update!
 function modifTshirt(){
@@ -288,8 +288,8 @@ function modifTshirt(){
                         }
                         
                        var matieres=d['matieres'];
-                        //met le selected sur la bonne matiére.
                         for(var i=0;i < matieres.length;i++){
+                            //met le selected sur la bonne matiére.
                             if(mat == matieres[i].mat_nom){
                                 var option=$('<option value="'+matieres[i].mat_id+'" selected/>');
                                 option.text(matieres[i].mat_nom);
@@ -308,18 +308,30 @@ function modifTshirt(){
         $("form.modifier").children().remove(); 
     }    
 
+}
+// click pour Update Tshirt dans la DB 
+$('.contenu').on('click','#boutMod', function UpdateTshirt(){
 
-
-    $('.contenu').on('click','#boutSav', function UpdateTshirt(){
+        var idTshirt = $("li.supprimer").attr('data');
         var nom = $("input#prodNom").val();
         var prix = $("input#prodPrix").val();
         var date =  $("input#prodDate").val();
         var desc =  $("textarea#prodDesc").val();
+        var crea = $('#prodCre').val();
+        var mat = $('#prodMat').val();
+        var cat = $('#prodCat').val();
+        var tailleS = $('#tailleS').val();
+        var tailleM = $('#tailleM').val();
+        var tailleL = $('#tailleL').val();
+        var tailleXL = $('#tailleXL').val();
+        alert(idTshirt);
 
-        $(this).load("dispatcher.php","op=UpadteTshirt");
+        $(this).load("dispatcher.php","op=UpdateTshirt&$id="+idTshirt+"&prodNom="+nom+"");
     });
 
-}
+
+
+//----------------fin modifier tshirt------------------------------------------------------------------------------- 
 
 
 
