@@ -176,7 +176,7 @@ function annuleTshirt(){
     
 
 
-//------------------------------debut modifier Tshirt----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//------------------------------debuts modifier Tshirt----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //ouverture du volet modifier + insertion ds les champs et sauvegarde de l update!
 function modifTshirt(){
@@ -206,7 +206,16 @@ function modifTshirt(){
            var crea = data[0].cre_nom;
            var mat = data[0].mat_nom;
            var cat = data[0].cat_nom;
+          
+           var tailleS = data[0].exem_stock;
+           var tailleM = data[1].exem_stock;
+           var tailleL = data[2].exem_stock;
+           var tailleXL = 0;
+           
+          
 
+
+           
            //insertion ds les champs 
            $("input#prodNom").val(nom);
            $("input#prodPrix").val(prix);
@@ -214,6 +223,10 @@ function modifTshirt(){
            $("textarea#prodDesc").val(desc);
            $("#imgprew").attr("src","images/"+imgpew);
            $("#imglist").attr("src","images/"+imglist);
+           $("input#ModifTailleS").val(tailleS);
+           $("input#ModifTailleM").val(tailleM);
+           $("input#ModifTailleL").val(tailleL);
+           $("input#ModifTailleXL").val(tailleXL);
            
        
        
@@ -290,8 +303,9 @@ $('.contenu').on('click','#boutMod', function UpdateTshirt(){
 
         //supprime ds la DB
         $.getJSON("dispatcher.php",{"op":"UpdateTshirt","id":idTshirt,"prodNom":nom,"prodPrix":prix,"prodDate":date,"prodDesc":desc,"prodCre":crea,"prodMat":mat,"prodCat":cat});
-        //change la valeur du li ds la reche
+        //change la valeur du li ds la recherche
          
+        //feunêtre modal confirmation update
         var modal = $('#myModalModif');
         modal.fadeIn();
         modal.fadeOut(3000);
