@@ -67,6 +67,8 @@ function getFormulaireConnexion($ou){
     $("body>.contenu").load("dispatcher.php","op=connexion");
     
 }
+//--------------------------------------MOTEUR DE RECHERCHE---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 // barre de recherche 
 function rechercheParTexte(e){
     //efface les anciens ul de recherche
@@ -76,39 +78,19 @@ function rechercheParTexte(e){
     //affiche tous les tshirt qui corresponde à la lettre tapée
     for (var i=0; i<data.length; i++){
         var tshirt = data[i].prod_nom;
-        $li = $("<li id=tshirt"+data[i].prod_id+"/></h2>").text(tshirt).appendTo($ul);
+        $li = $("<li id=tshirt"+data[i].prod_id+"/>").html("<h2 data="+data[i].prod_id+">"+tshirt+"</h2>").appendTo($ul);
         // affichage de voir / supprimer / modifier
         $("<ul class=tshirt/>").prepend('<li data='+data[i].prod_id+' class="supprimer"><i class="fa fa-trash"></i></li>').prepend('<li data='+data[i].prod_id+' class=modif ><i class="fa fa-pencil"></i></li>').prepend('<li class=voir><i class="fa fa-plus"></i></li>').appendTo($li);
     }
-    //form qui va servir à la modification du tshirt.
-    $("<form class='modifier'/>").insertAfter(".tshirt");
-
-    //supprimer un tshirt de la DB
-    $('.contenu').on('click','.supprimer', function supprimerTshirt(e){
-
-            var idTshirt =($(this).attr("data"));
-            //confirmation de la suppression
-                var modal = $('#myModalSupp');
-                    modal.css('display' ,"block");
-                //confirmation --> oui
-                $('.modal-body').on('click','.oui', function choixOui(e){
-                    $.getJSON("dispatcher.php",{"op":"supprimerTshirt","id":idTshirt});
-                    //supprime le li du tshirt supprimé. 
-                    $('#tshirt'+idTshirt+'').remove();
-                    //confirmation que le tshirt à bien été supprimé 
-                    $(".modalSupp").fadeOut();
-                    var modal = $('#myModal');
-                    modal.fadeIn();
-                    modal.fadeOut();
-                    
-                });
-                //confirmation -->non
-                $('.modal-body').on('click','.non', function choixNon(e){
-                    $(".modalSupp").fadeOut(); 
-                });
-    });
+        //form qui va servir à la modification du tshirt.
+        $("<form class='modifier'/>").insertAfter(".tshirt");
     });
 }
+//                                          -----------------                                                                                                                                                                                                                                                                                                                                               ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
 //recherche les noms des tshirt ds la DB
 function rechercheParFiltres(e){
     $("#recherche").remove(); 
@@ -117,35 +99,14 @@ function rechercheParFiltres(e){
     //affiche les tshirt
         for (var i=0; i<data.length; i++){
             var tshirt = data[i].prod_nom;
-            $li = $("<li id=tshirt"+data[i].prod_id+"/>").text(tshirt).appendTo($ul);
+            $li = $("<li id=tshirt"+data[i].prod_id+"/>").html("<h2 data='"+data[i].prod_id+"'>"+tshirt+"</h2>").appendTo($ul);
             $("<ul class=tshirt/>").prepend('<li data='+data[i].prod_id+' class="supprimer"><i class="fa fa-trash"></i></li>').prepend('<li data='+data[i].prod_id+' class=modif ><i class="fa fa-pencil"></i></li>').prepend('<li class=voir><i class="fa fa-plus"></i></li>').appendTo($li);
         }
          $("<form class='modifier'/>").insertAfter(".tshirt");
-        //supprime le Tshirt clické 
-         $('.contenu').on('click','.supprimer', function supprimerTshirt(e){
-            var idTshirt =($(this).attr("data"));
-            //confirmation de la suppression
-                var modal = $('#myModalSupp');
-                    modal.css('display' ,"block");
-                //confirmation --> oui
-                $('.modal-body').on('click','.oui', function choixOui(e){
-                    $.getJSON("dispatcher.php",{"op":"supprimerTshirt","id":idTshirt});
-                    //supprime le li du tshirt supprimé. 
-                    $('#tshirt'+idTshirt+'').remove();
-                    //confirmation que le tshirt à bien été supprimé 
-                    $(".modalSupp").fadeOut();
-                    var modal = $('#myModal');
-                    modal.fadeIn();
-                    modal.fadeOut();
-                    
-                });
-                //confirmation -->non
-                $('.modal-body').on('click','.non', function choixNon(e){
-                    $(".modalSupp").fadeOut(); 
-                });
-    });
+       
     });
 }
+
 
 function voletAjoutTshirt(e){
     
@@ -228,8 +189,10 @@ function modifTshirt(){
    
         //recup de l'id du tshirt à modifier
         var idTshirt = $(this).attr("data");
-
+        //affiche le formulaire 
         $(this).parent().next().load("dispatcher.php","op=afficheModifierTshirt");
+        
+
         //afficher les données ds les champs 
         $.getJSON("dispatcher.php",{"op":"ModifierTshirt","id":idTshirt},function(data){
 
@@ -254,55 +217,55 @@ function modifTshirt(){
            
        
        
-        // recup et insertion ds les selects cat/crea/matiéres. 
-        $.getJSON("dispatcher.php","op=data_recherche",function(d){
-                        
-                        var categories=d['categories'];
-                        for(var i=0;i < categories.length;i++){
-                            //met le selected sur la bonne catégorie
-                            if(cat == categories[i].cat_nom){
-                                var option=$('<option value="'+categories[i].cat_id+'" selected/>');
-                                option.text(categories[i].cat_nom);
-                                option.appendTo('#prodCat'); 
+            // recup et insertion ds les selects cat/crea/matiéres. 
+            $.getJSON("dispatcher.php","op=data_recherche",function(d){
+                            
+                            var categories=d['categories'];
+                            for(var i=0;i < categories.length;i++){
+                                //met le selected sur la bonne catégorie
+                                if(cat == categories[i].cat_nom){
+                                    var option=$('<option value="'+categories[i].cat_id+'" selected/>');
+                                    option.text(categories[i].cat_nom);
+                                    option.appendTo('#prodCat'); 
+                                }
+                                else{
+                                    var option=$('<option value="'+categories[i].cat_id+'"/>');
+                                    option.text(categories[i].cat_nom);
+                                    option.appendTo('#prodCat');    
+                                }
                             }
-                            else{
-                                var option=$('<option value="'+categories[i].cat_id+'"/>');
-                                option.text(categories[i].cat_nom);
-                                option.appendTo('#prodCat');    
+                            
+                            var createurs=d['createurs'];
+                            for(var i=0;i < createurs.length;i++){
+                                //met le selected sur le bon createur
+                                if(crea == createurs[i].cre_nom){
+                                    var option=$('<option value="'+createurs[i].cre_id+'" selected/>');
+                                    option.text(createurs[i].cre_nom);
+                                    option.appendTo('#prodCre'); 
+                                }
+                                else{
+                                    var option=$('<option value="'+createurs[i].cre_id+'"/>');
+                                    option.text(createurs[i].cre_nom);
+                                    option.appendTo('#prodCre');   
+                                }
                             }
-                        }
-                        
-                        var createurs=d['createurs'];
-                        for(var i=0;i < createurs.length;i++){
-                            //met le selected sur le bon createur
-                            if(crea == createurs[i].cre_nom){
-                                var option=$('<option value="'+createurs[i].cre_id+'" selected/>');
-                                option.text(createurs[i].cre_nom);
-                                option.appendTo('#prodCre'); 
-                            }
-                            else{
-                                var option=$('<option value="'+createurs[i].cre_id+'"/>');
-                                option.text(createurs[i].cre_nom);
-                                option.appendTo('#prodCre');   
-                            }
-                        }
-                        
-                       var matieres=d['matieres'];
-                        for(var i=0;i < matieres.length;i++){
-                            //met le selected sur la bonne matiére.
-                            if(mat == matieres[i].mat_nom){
-                                var option=$('<option value="'+matieres[i].mat_id+'" selected/>');
-                                option.text(matieres[i].mat_nom);
-                                option.appendTo('#prodMat'); 
-                            }
-                            else{
-                                var option=$('<option value="'+matieres[i].mat_id+'"/>');
-                                option.text(matieres[i].mat_nom);
-                                option.appendTo('#prodMat');    
-                            }
-                        }     
-        
-        });
+                            
+                           var matieres=d['matieres'];
+                            for(var i=0;i < matieres.length;i++){
+                                //met le selected sur la bonne matiére.
+                                if(mat == matieres[i].mat_nom){
+                                    var option=$('<option value="'+matieres[i].mat_id+'" selected/>');
+                                    option.text(matieres[i].mat_nom);
+                                    option.appendTo('#prodMat'); 
+                                }
+                                else{
+                                    var option=$('<option value="'+matieres[i].mat_id+'"/>');
+                                    option.text(matieres[i].mat_nom);
+                                    option.appendTo('#prodMat');    
+                                }
+                            }     
+            
+            }); 
         });
     }else{
         $("form.modifier").children().remove(); 
@@ -311,7 +274,7 @@ function modifTshirt(){
 }
 // click pour Update Tshirt dans la DB 
 $('.contenu').on('click','#boutMod', function UpdateTshirt(){
-
+        //recup des val des champs
         var idTshirt = $("li.supprimer").attr('data');
         var nom = $("input#prodNom").val();
         var prix = $("input#prodPrix").val();
@@ -324,14 +287,46 @@ $('.contenu').on('click','#boutMod', function UpdateTshirt(){
         var tailleM = $('#tailleM').val();
         var tailleL = $('#tailleL').val();
         var tailleXL = $('#tailleXL').val();
-        alert(idTshirt);
 
-        $(this).load("dispatcher.php","op=UpdateTshirt&$id="+idTshirt+"&prodNom="+nom+"");
+        //supprime ds la DB
+        $.getJSON("dispatcher.php",{"op":"UpdateTshirt","id":idTshirt,"prodNom":nom,"prodPrix":prix,"prodDate":date,"prodDesc":desc,"prodCre":crea,"prodMat":mat,"prodCat":cat});
+        //change la valeur du li ds la reche
+         
+        var modal = $('#myModalModif');
+        modal.fadeIn();
+        modal.fadeOut(3000);
+        
+});
+
+
+$('.contenu').on('click','.supprimer', function supprimerTshirt(e){
+
+            var idTshirt =($(this).attr("data"));
+            //confirmation de la suppression
+                var modal = $('#myModalSupp');
+                    modal.css('display' ,"block");
+                //confirmation --> oui
+                $('.modal-body').on('click','.oui', function choixOui(e){
+                    $.getJSON("dispatcher.php",{"op":"supprimerTshirt","id":idTshirt});
+                    //supprime le li du tshirt supprimé. 
+                    $('#tshirt'+idTshirt+'').remove();
+                    //confirmation que le tshirt à bien été supprimé 
+                    $(".modalSupp").fadeOut();
+                    var modal = $('#myModal');
+                    modal.fadeIn();
+                    modal.fadeOut(1000);
+                    
+                });
+                //confirmation -->non
+                $('.modal-body').on('click','.non', function choixNon(e){
+                    $(".modalSupp").fadeOut(); 
+                });
     });
 
+//-----------------------------------------------------------fin modifier tshirt------------------------------------------------------------------------------- 
 
 
-//----------------fin modifier tshirt------------------------------------------------------------------------------- 
+
 
 
 

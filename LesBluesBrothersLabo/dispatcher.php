@@ -152,11 +152,17 @@
 
             case "UpdateTshirt":
 
-                $id= $_GET["id"];
+                $id= $_GET['id'];
                 $nom = $_GET['prodNom'];
+                $prix = $_GET['prodPrix'];
+                $date = $_GET['prodDate'];
+                $desc = $_GET['prodDesc'];
+                $crea = $_GET['prodCre'];
+                $mat = $_GET['prodMat'];
+                $cat = $_GET['prodCat'];
                
 
-                RequeteUpdate_Tshirt($id,$nom);
+                RequeteUpdate_Tshirt($id,$nom,$prix,$date,$desc,$crea,$mat,$cat);
 
             break;
     }
