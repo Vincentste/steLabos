@@ -46,11 +46,7 @@
         if(isset($_SESSION['connecte'])){
             if($_SESSION['connecte'] == 'oui'){
                  echo('{"authorisation":"oui"}');
-            }else{
-                 echo('{"authorisation":"non"}');
             }
-        }else{
-             echo('{"authorisation":"non"}');   
         }
         break;
         

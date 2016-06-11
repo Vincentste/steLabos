@@ -13,8 +13,6 @@ $('.contenu').on('click','.modif',modifTshirt);
 
 
 function getFormulaireConnexion($ou){
-    $ou = $ou?$ou:$("body>.contenu");
-    
     $.getJSON("dispatcher.php",{"op":"getSession"},function(data){
           if(data.authorisation == "oui"){
             $("body>.contenu").load("dispatcher.php","op=template_tshirt",function(){
@@ -53,14 +51,11 @@ function getFormulaireConnexion($ou){
                         option.appendTo('#selectMat');    
                     }
                 }); 
-            });         
-            
-        }else{
-            $("body>.contenu").load("dispatcher.php","op=connexion");
+            });             
         }
-
-       
     });
+    $ou = $ou?$ou:$("body>.contenu");
+    $("body>.contenu").load("dispatcher.php","op=connexion");
 }
 
 function valideMotDePasse(e){
