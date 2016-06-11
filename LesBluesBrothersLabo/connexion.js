@@ -71,20 +71,26 @@ function getFormulaireConnexion($ou){
 
 // barre de recherche 
 function rechercheParTexte(e){
-    //efface les anciens ul de recherche
-    $("#recherche").remove();
-    $.getJSON("dispatcher.php",{"op":"rechercheParTexte","lettre":$('#champTexte').val()},function(data){
-    $ul = $("<ul id='recherche'/>").insertAfter("#divAjout");
-    //affiche tous les tshirt qui corresponde à la lettre tapée
-    for (var i=0; i<data.length; i++){
-        var tshirt = data[i].prod_nom;
-        $li = $("<li id=tshirt"+data[i].prod_id+"/>").html("<h2 data="+data[i].prod_id+">"+tshirt+"</h2>").appendTo($ul);
-        // affichage de voir / supprimer / modifier
-        $("<ul class=tshirt/>").prepend('<li data='+data[i].prod_id+' class="supprimer"><i class="fa fa-trash"></i></li>').prepend('<li data='+data[i].prod_id+' class=modif ><i class="fa fa-pencil"></i></li>').prepend('<li class=voir><i class="fa fa-plus"></i></li>').appendTo($li);
+    //vérifie si le champ est vide.
+    if($(this).val().length == 0){
+        $("#recherche").remove();
     }
-        //form qui va servir à la modification du tshirt.
-        $("<form class='modifier'/>").insertAfter(".tshirt");
-    });
+    else{
+        //efface les anciens ul de recherche
+        $("#recherche").remove();
+        $.getJSON("dispatcher.php",{"op":"rechercheParTexte","lettre":$('#champTexte').val()},function(data){
+            $ul = $("<ul id='recherche'/>").insertAfter("#divAjout");
+            //affiche tous les tshirt qui corresponde à la lettre tapée
+                for (var i=0; i<data.length; i++){
+                    var tshirt = data[i].prod_nom;
+                    $li = $("<li id=tshirt"+data[i].prod_id+"/>").html("<h2 data="+data[i].prod_id+">"+tshirt+"</h2>").appendTo($ul);
+                    // affichage de voir / supprimer / modifier
+                    $("<ul class=tshirt/>").prepend('<li data='+data[i].prod_id+' class="supprimer"><i class="fa fa-trash"></i></li>').prepend('<li data='+data[i].prod_id+' class=modif ><i class="fa fa-pencil"></i></li>').prepend('<li class=voir><i class="fa fa-plus"></i></li>').appendTo($li);
+                }
+            //form qui va servir à la modification du tshirt.
+            $("<form class='modifier'/>").insertAfter(".tshirt");
+        });
+    } 
 }
 //                                          -----------------                                                                                                                                                                                                                                                                                                                                               ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
