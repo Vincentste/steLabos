@@ -182,7 +182,7 @@ function annuleTshirt(){
     
 
 
-//------------------------------debuts modifier Tshirt----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------modifier Tshirt----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //ouverture du volet modifier + insertion ds les champs et sauvegarde de l update!
 function modifTshirt(){
@@ -307,7 +307,7 @@ $('.contenu').on('click','#boutMod', function UpdateTshirt(){
         var tailleL = $('#tailleL').val();
         var tailleXL = $('#tailleXL').val();
 
-        //supprime ds la DB
+        //update ds la DB
         $.getJSON("dispatcher.php",{"op":"UpdateTshirt","id":idTshirt,"prodNom":nom,"prodPrix":prix,"prodDate":date,"prodDesc":desc,"prodCre":crea,"prodMat":mat,"prodCat":cat});
         //change la valeur du h2 ds la recherche
        
@@ -318,7 +318,7 @@ $('.contenu').on('click','#boutMod', function UpdateTshirt(){
         
 });
 
-
+// supprime un tshirt ds la DB
 $('.contenu').on('click','.supprimer', function supprimerTshirt(e){
 
             var idTshirt =($(this).attr("data"));
