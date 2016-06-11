@@ -4,6 +4,7 @@
 	$operation_permise=[
 	    "accueil"=>true,
         "connexion" => "accueil.html",
+        "getSession" => "accueil.html",
         "controleConnexion"=>"accueil.html",
     	"affichageAccueil" => "accueil.html",
         "template_tshirt"=>"accueil.html",
@@ -19,14 +20,15 @@
 
 	];
 
+    session_start();
+
 	//récupérer l'opération
 	$op = (isset($_GET["op"]))?$_GET["op"]:"accueil";
 	if(!isset($operation_permise[$op])){
 	    $op = "connexion";
 	}
 
-    session_start();
-    
+
 
 	require_once __DIR__.'/c/TemplateConnexion.php';
     require_once __DIR__.'/m/connexion.php';
@@ -39,13 +41,20 @@
             //affiche le menu de connecion
 			$Affichage = new Affichage();
 			echo $Affichage->afficheConnexion();
-            //control si déjà connecté
-            if ($_SESSION['connecte']='oui'){
-            $op = "template_tshirt";
+		
+        case "getSession":
+        if(isset($_SESSION['connecte'])){
+            if($_SESSION['connecte'] == 'oui'){
+                 echo('{"authorisation":"oui"}');
+            }else{
+                 echo('{"authorisation":"non"}');
             }
-			break;
-            
-		case "controleConnexion":
+        }else{
+             echo('{"authorisation":"non"}');   
+        }
+        break;
+        
+        case "controleConnexion":
 
             $nom = isset($_GET['nom'])?$_GET['nom']:"";
             $mdp = isset($_GET['mdp'])?$_GET['mdp']:"";

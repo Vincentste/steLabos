@@ -12,6 +12,57 @@ $('.contenu').on('click','.modif',modifTshirt);
 
 
 
+function getFormulaireConnexion($ou){
+    $ou = $ou?$ou:$("body>.contenu");
+    
+    $.getJSON("dispatcher.php",{"op":"getSession"},function(data){
+          if(data.authorisation == "oui"){
+            $("body>.contenu").load("dispatcher.php","op=template_tshirt",function(){
+                $.getJSON("dispatcher.php","op=data_recherche",function(data){
+
+                    var categories=data['categories'];
+                    var optionUne=$('<option/>');
+                    optionUne.val('%');
+                    optionUne.text('tous');
+                    optionUne.appendTo('#selectCat');
+                    for(var i=0;i < categories.length;i++){
+                        var option=$('<option/>');
+                        option.text(categories[i].cat_nom);
+                        option.appendTo('#selectCat');    
+                    }
+                    
+                    var createurs=data['createurs'];
+                    var optionDeux=$('<option/>');
+                    optionDeux.val('%');
+                    optionDeux.text('tous');
+                    optionDeux.appendTo('#selectCre');
+                    for(var i=0;i < createurs.length;i++){
+                        var option=$('<option/>');
+                        option.text(createurs[i].cre_nom);
+                        option.appendTo('#selectCre');   
+                    }
+                    
+                   var matieres=data['matieres'];
+                    var optionTrois=$('<option/>');
+                    optionTrois.val('%');
+                    optionTrois.text('tous');
+                    optionTrois.appendTo('#selectMat');
+                    for(var i=0;i < matieres.length;i++){
+                        var option=$('<option/>');
+                        option.text(matieres[i].mat_nom);
+                        option.appendTo('#selectMat');    
+                    }
+                }); 
+            });         
+            
+        }else{
+            $("body>.contenu").load("dispatcher.php","op=connexion");
+        }
+
+       
+    });
+}
+
 function valideMotDePasse(e){
      $.getJSON("dispatcher.php",{"op":"controleConnexion","nom":$('#nom').val(),"mdp":$('#mdp').val()},function(data){
         
@@ -50,8 +101,8 @@ function valideMotDePasse(e){
                         var option=$('<option/>');
                         option.text(matieres[i].mat_nom);
                         option.appendTo('#selectMat');    
-                    }     
-         	});	
+                    }
+                });	
     		});     	
          	
          }else{
@@ -62,11 +113,6 @@ function valideMotDePasse(e){
 }
 
 
-function getFormulaireConnexion($ou){
-    $ou = $ou?$ou:$("body>.contenu");
-    $("body>.contenu").load("dispatcher.php","op=connexion");
-    
-}
 //--------------------------------------MOTEUR DE RECHERCHE---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 // barre de recherche 
