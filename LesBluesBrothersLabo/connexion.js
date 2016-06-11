@@ -309,7 +309,7 @@ $('.contenu').on('click','#boutMod', function UpdateTshirt(e){
         alert(idTshirt)
          //change la valeur du h2 ds la recherche
         
-        $("li#tshirt"+idTshirt+" >h2").replaceWith(nom);
+        $("li#tshirt"+idTshirt+" >h2").replaceWith("<h2 data="+idTshirt+">"+nom+"</h2>");
         //update ds la DB
         $.getJSON("dispatcher.php",{"op":"UpdateTshirt","id":idTshirt,"prodNom":nom,"prodPrix":prix,"prodDate":date,"prodDesc":desc,"prodCre":crea,"prodMat":mat,"prodCat":cat});
         //feunêtre modal confirmation update
