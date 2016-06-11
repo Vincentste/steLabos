@@ -306,7 +306,7 @@ $('.contenu').on('click','#boutMod', function UpdateTshirt(e){
         var tailleM = $('#tailleM').val();
         var tailleL = $('#tailleL').val();
         var tailleXL = $('#tailleXL').val();
-        alert(idTshirt)
+       
          //change la valeur du h2 ds la recherche
         
         $("li#tshirt"+idTshirt+" >h2").replaceWith("<h2 data="+idTshirt+">"+nom+"</h2>");
