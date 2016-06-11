@@ -67,7 +67,7 @@ function requeteTshirtParNoms($lettre){
 }
 
 function requeteSupprimerTshirt($id){
-	$requete='DELETE FROM produits where prod_id = :a';
+	$requete='DELETE produits,exemplaires FROM produits  left join exemplaires ON exem_fk_tee = prod_id where prod_id = :a';
 	$connexion=connexion_PDO();
     $resultat=$connexion->prepare($requete);
     $resultat->execute([':a'=>$id]);
@@ -138,6 +138,7 @@ function recupere_infos_untshirt($id){
          .' JOIN categories on prod_fk_categorie = cat_id'
          .' JOIN matieres on prod_fk_matiere = mat_id'
          .' JOIN createurs on prod_fk_createur = cre_id'
+         .' LEFT OUTER JOIN exemplaires on prod_id = exem_fk_tee'
          .' Where prod_id = :a';
      $connexion=connexion_PDO();
     //preparation requete
@@ -146,4 +147,13 @@ function recupere_infos_untshirt($id){
      return $resultat->fetchAll(PDO::FETCH_OBJ);
     
 }    
+
+    function RequeteUpdate_Tshirt($id,$nom,$prix,$date,$desc,$crea,$mat,$cat){
+     $requete='Update produits SET prod_nom = :nom ,prod_prix = :prix,prod_date = :date, prod_desc = :desc, prod_fk_createur = :crea, prod_fk_matiere = :mat, prod_fk_categorie = :cat WHERE prod_id = :id';
+     $connexion=connexion_PDO();
+    //preparation requete
+     $resultat=$connexion->prepare($requete);
+     $resultat->execute([":id"=>$id,":nom"=>$nom,":prix"=>$prix,":date"=>$date,":desc"=>$desc,":crea"=>$crea,":mat"=>$mat,":cat"=>$cat]);
+
+ }
 

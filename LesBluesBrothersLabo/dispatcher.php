@@ -11,6 +11,7 @@
         "rechercheParTexte"=>"accueil.html",
         "supprimerTshirt"=>"accueil.html",
         "ModifierTshirt"=>"accueil.html",
+        "UpdateTshirt"=>"accueil.html",
         "afficheModifierTshirt"=>"accueil.html",
         "voletAjoutTshirt"=>"accueil.html",
         "save_tshirt"=>"accueil.html",
@@ -147,5 +148,21 @@
                 $id=$_GET['id'];
                 $requete = recupere_infos_untshirt($id);
                 echo json_encode($requete);
+            break;
+
+            case "UpdateTshirt":
+
+                $id= $_GET['id'];
+                $nom = $_GET['prodNom'];
+                $prix = $_GET['prodPrix'];
+                $date = $_GET['prodDate'];
+                $desc = $_GET['prodDesc'];
+                $crea = $_GET['prodCre'];
+                $mat = $_GET['prodMat'];
+                $cat = $_GET['prodCat'];
+               
+
+                RequeteUpdate_Tshirt($id,$nom,$prix,$date,$desc,$crea,$mat,$cat);
+
             break;
     }
