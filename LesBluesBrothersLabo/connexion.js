@@ -292,9 +292,9 @@ function modifTshirt(){
 
 }
 // click pour Update Tshirt dans la DB 
-$('.contenu').on('click','#boutMod', function UpdateTshirt(){
+$('.contenu').on('click','#boutMod', function UpdateTshirt(e){
         //recup des val des champs
-        var idTshirt = $("li.supprimer").attr('data');
+        var idTshirt = $(this).parents("li").find("h2").attr("data");
         var nom = $("input#prodNom").val();
         var prix = $("input#prodPrix").val();
         var date =  $("input#prodDate").val();
@@ -306,12 +306,12 @@ $('.contenu').on('click','#boutMod', function UpdateTshirt(){
         var tailleM = $('#tailleM').val();
         var tailleL = $('#tailleL').val();
         var tailleXL = $('#tailleXL').val();
-
+        alert(idTshirt)
+         //change la valeur du h2 ds la recherche
+        
+        $("li#tshirt"+idTshirt+" >h2").replaceWith(nom);
         //update ds la DB
         $.getJSON("dispatcher.php",{"op":"UpdateTshirt","id":idTshirt,"prodNom":nom,"prodPrix":prix,"prodDate":date,"prodDesc":desc,"prodCre":crea,"prodMat":mat,"prodCat":cat});
-        //change la valeur du h2 ds la recherche
-        $("li#tshirt"+idTshirt+" >h2").replaceWith(nom);
-
         //feunêtre modal confirmation update
         var modal = $('#myModalModif');
         modal.fadeIn();
