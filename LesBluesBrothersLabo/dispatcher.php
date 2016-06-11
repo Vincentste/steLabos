@@ -39,7 +39,7 @@
 			$Affichage = new Affichage();
 			echo $Affichage->afficheConnexion();
             //control si déjà connecté
-            if ($_SESSION['connecte']=='oui'){
+            if ($_SESSION['connecte']='oui'){
             $op = "template_tshirt";
             }
 			break;
