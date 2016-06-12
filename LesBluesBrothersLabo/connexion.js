@@ -2,6 +2,7 @@
 $(function(){
     
 getFormulaireConnexion();
+
 $('.contenu').on("click",".envoi",valideMotDePasse);
 $('.contenu').on('keyup','#champTexte',rechercheParTexte);
 $('.contenu').on('click','#buttonAjout',voletAjoutTshirt);
@@ -404,51 +405,50 @@ $('.contenu').on('click','.suppTaille', function UpdateTaille(e){
     // affiche la F. modal de confirmation
     var idTshirt = $(this).parents("li").find("h2").attr("data");
     var modal = $('#myModalSupp');
-    $('#myModalSupp').find('h2').replaceWith("<h2 id="+$(this).attr("id")+" data="+$(this).attr("data")+">Voulez vous supprimer le Stock de cette taille?</h2>");
+    $('#myModalSupp').find('h2').replaceWith("<h2 id="+$(this).attr("id")+" class="+idTshirt+" data="+$(this).attr("data")+">Voulez vous supprimer le Stock de cette taille?</h2>");
     $(".modal-body").find("p").remove();
     $('<p class="ouiTaille">OUI</p><p class="nonTaille">NON</p>').appendTo(".modal-body");
     modal.css('display' ,"block");
-    //confirmation => oui 
-    $('.modal-body').on('click','.ouiTaille', function choixOuiTaille(e){
-            var taille = $(".modal-content").find("h2").attr("data");
-            var idTaille = $(".modal-content").find("h2").attr("id");
-            $("#"+taille+"").val('0');
-            $.getJSON("dispatcher.php",{"op":"supprimerStockTaille","idTaille":idTaille,"idTshirt":idTshirt});
-            $(".modalSupp").fadeOut();
-    });
-    //confirmation => non
-    $('.modal-body').on('click','.nonTaille', function choixNonTaille(e){
-        $(".modalSupp").fadeOut(); 
-    });
 });
 
+//confirmation => oui 
+$('.modal-body').on('click','.ouiTaille', function choixOuiTaille(e){
+    var taille = $(".modal-content").find("h2").attr("data");
+    var idTshirt = $(".modal-content").find("h2").attr("class");
+    var idTaille = $(".modal-content").find("h2").attr("id");
+    $("#"+taille+"").val('0');
+    $.getJSON("dispatcher.php",{"op":"supprimerStockTaille","idTaille":idTaille,"idTshirt":idTshirt});
+    $(".modalSupp").fadeOut();
+});
+//confirmation => non
+$('.modal-body').on('click','.nonTaille', function choixNonTaille(e){
+    $(".modalSupp").fadeOut(); 
+});
 
 
 // supprime un tshirt ds la DB
 $('.contenu').on('click','.supprimer', function supprimerTshirt(e){
-
-            var idTshirt =($(this).attr("data"));
-            //confirmation de la suppression
-            var modal = $('#myModalSupp');
-            $('#myModalSupp').find('h2').replaceWith("<h2>Voulez vous supprimer ce T-shirt?</h2>");
-            $(".modal-body").find("p").remove();
-            $('<p class="ouiTshirt">OUI</p><p class="nonTshirt">NON</p>').appendTo(".modal-body");
-            modal.css('display' ,"block");
-            //confirmation --> oui
-            $('.modal-body').on('click','.ouiTshirt', function choixOuiTshirt(e){
-                $.getJSON("dispatcher.php",{"op":"supprimerTshirt","id":idTshirt});
-                //supprime le li du tshirt supprimé. 
-                $('#tshirt'+idTshirt+'').remove();
-                $(".modalSupp").fadeOut();
-            
-            });
-                //confirmation -->non
-            $('.modal-body').on('click','.nonTshirt', function choixNonTshirt(e){
-                $(".modalSupp").fadeOut(); 
-            });
+    var idTshirt =($(this).attr("data"));
+    //confirmation de la suppression
+    var modal = $('#myModalSupp');
+    $('#myModalSupp').find('h2').replaceWith("<h2 id="+idTshirt+">Voulez vous supprimer ce T-shirt?</h2>");
+    $(".modal-body").find("p").remove();
+    $('<p class="ouiTshirt">OUI</p><p class="nonTshirt">NON</p>').appendTo(".modal-body");
+    modal.css('display' ,"block");
 });
 
-
+//confirmation --> oui
+$('.modal-body').on('click','.ouiTshirt', function choixOuiTshirt(e){
+    idTshirt = $(".modal-content").find("h2").attr("id");
+    $.getJSON("dispatcher.php",{"op":"supprimerTshirt","id":idTshirt});
+    //supprime le li du tshirt supprimé. 
+    $('#tshirt'+idTshirt+'').remove();
+    $(".modalSupp").fadeOut();
+});
+//confirmation -->non
+$('.modal-body').on('click','.nonTshirt', function choixNonTshirt(e){
+    $(".modalSupp").fadeOut(); 
+});
 
 
 //-----------------------------------------------------------fin modifier tshirt------------------------------------------------------------------------------- 
