@@ -373,7 +373,7 @@ $('.contenu').on('click','.supprimer', function supprimerTshirt(e){
                     //supprime le li du tshirt supprimé. 
                     $('#tshirt'+idTshirt+'').remove();
                     //confirmation que le tshirt à bien été supprimé 
-                    $(".modalSupp").fadeOut();
+                    $(".modalSupp").fadeOut(1);
                     var modal = $('#myModal');
                     modal.fadeIn();
                     modal.fadeOut(1000);
@@ -383,7 +383,7 @@ $('.contenu').on('click','.supprimer', function supprimerTshirt(e){
                 $('.modal-body').on('click','.non', function choixNon(e){
                     $(".modalSupp").fadeOut(); 
                 });
-    });
+});
 
 //-----------------------------------------------------------fin modifier tshirt------------------------------------------------------------------------------- 
 
