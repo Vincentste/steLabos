@@ -148,12 +148,12 @@ function recupere_infos_untshirt($id){
     
 }    
 
-    function RequeteUpdate_Tshirt($id,$nom,$prix,$date,$desc,$crea,$mat,$cat){
-     $requete='Update produits SET prod_nom = :nom ,prod_prix = :prix,prod_date = :date, prod_desc = :desc, prod_fk_createur = :crea, prod_fk_matiere = :mat, prod_fk_categorie = :cat WHERE prod_id = :id';
-     $connexion=connexion_PDO();
+function RequeteUpdate_Tshirt($id,$nom,$prix,$date,$desc,$crea,$mat,$cat){
+    $requete='Update produits SET prod_nom = :nom ,prod_prix = :prix,prod_date = :date, prod_desc = :desc, prod_fk_createur = :crea, prod_fk_matiere = :mat, prod_fk_categorie = :cat WHERE prod_id = :id';
+    $connexion=connexion_PDO();
     //preparation requete
-     $resultat=$connexion->prepare($requete);
-     $resultat->execute([":id"=>$id,":nom"=>$nom,":prix"=>$prix,":date"=>$date,":desc"=>$desc,":crea"=>$crea,":mat"=>$mat,":cat"=>$cat]);
+    $resultat=$connexion->prepare($requete);
+    $resultat->execute([":id"=>$id,":nom"=>$nom,":prix"=>$prix,":date"=>$date,":desc"=>$desc,":crea"=>$crea,":mat"=>$mat,":cat"=>$cat]);
 
  }
 

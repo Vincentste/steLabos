@@ -150,7 +150,7 @@
 
             break;
 
-            //affiche les info a modifier pour un tshirt 
+            //affiche les infos à modifier pour un tshirt 
             case "afficheModifierTshirt":
                 $Affichage = new Affichage();
                 echo $Affichage->afficheModifTshirt();

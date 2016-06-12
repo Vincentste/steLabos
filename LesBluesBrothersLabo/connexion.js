@@ -277,6 +277,7 @@ function modifTshirt(){
    
         //recup de l'id du tshirt à modifier
         var idTshirt = $(this).attr("data");
+        
         //affiche le formulaire 
         $(this).parent().next().load("dispatcher.php","op=afficheModifierTshirt");
         
@@ -300,10 +301,6 @@ function modifTshirt(){
            var tailleL = data[2].exem_stock;
            var tailleXL = 0;
            
-          
-
-
-           
            //insertion ds les champs 
            $("input#prodNom").val(nom);
            $("input#prodPrix").val(prix);
@@ -315,9 +312,7 @@ function modifTshirt(){
            $("input#ModifTailleM").val(tailleM);
            $("input#ModifTailleL").val(tailleL);
            $("input#ModifTailleXL").val(tailleXL);
-           
-       
-       
+
             // recup et insertion ds les selects cat/crea/matiéres. 
             $.getJSON("dispatcher.php","op=data_recherche",function(d){
                             
@@ -390,7 +385,6 @@ $('.contenu').on('click','#boutMod', function UpdateTshirt(e){
         var tailleXL = $('#tailleXL').val();
        
          //change la valeur du h2 ds la recherche
-        
         $("li#tshirt"+idTshirt+" >h2").replaceWith("<h2 data="+idTshirt+">"+nom+"</h2>");
         //update ds la DB
         $.getJSON("dispatcher.php",{"op":"UpdateTshirt","id":idTshirt,"prodNom":nom,"prodPrix":prix,"prodDate":date,"prodDesc":desc,"prodCre":crea,"prodMat":mat,"prodCat":cat});
@@ -406,24 +400,23 @@ $('.contenu').on('click','.supprimer', function supprimerTshirt(e){
 
             var idTshirt =($(this).attr("data"));
             //confirmation de la suppression
-                var modal = $('#myModalSupp');
-                    modal.css('display' ,"block");
-                //confirmation --> oui
-                $('.modal-body').on('click','.oui', function choixOui(e){
-                    $.getJSON("dispatcher.php",{"op":"supprimerTshirt","id":idTshirt});
-                    //supprime le li du tshirt supprimé. 
-                    $('#tshirt'+idTshirt+'').remove();
-                    //confirmation que le tshirt à bien été supprimé 
-                    $(".modalSupp").fadeOut(1);
-                    var modal = $('#myModal');
-                    modal.fadeIn();
-                    modal.fadeOut(1000);
-                    
-                });
+            var modal = $('#myModalSupp');
+            modal.css('display' ,"block");
+            //confirmation --> oui
+            $('.modal-body').on('click','.oui', function choixOui(e){
+                $.getJSON("dispatcher.php",{"op":"supprimerTshirt","id":idTshirt});
+                //supprime le li du tshirt supprimé. 
+                $('#tshirt'+idTshirt+'').remove();
+                //confirmation que le tshirt à bien été supprimé 
+                $(".modalSupp").fadeOut(1);
+                var modal = $('#myModal');
+                modal.fadeIn();
+                modal.fadeOut(1000);
+            });
                 //confirmation -->non
-                $('.modal-body').on('click','.non', function choixNon(e){
-                    $(".modalSupp").fadeOut(); 
-                });
+            $('.modal-body').on('click','.non', function choixNon(e){
+                $(".modalSupp").fadeOut(); 
+            });
 });
 
 //-----------------------------------------------------------fin modifier tshirt------------------------------------------------------------------------------- 
