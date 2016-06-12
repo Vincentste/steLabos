@@ -14,6 +14,7 @@
         "UpdateTshirt"=>"accueil.html",
         "afficheModifierTshirt"=>"accueil.html",
         "voletAjoutTshirt"=>"accueil.html",
+        "voletAjoutImage"=>"accueil.html",
         "save_tshirt"=>"accueil.html",
         "rechercheParFiltre"=>"accueil.html"
 
@@ -105,6 +106,11 @@
                 $Affichage = new Affichage();
                 echo $Affichage->afficheAjoutTshirt();
             break; 
+
+            case "voletAjoutImage":
+                $Affichage = new Affichage();
+                echo $Affichage->afficheAjoutImages();
+            break;
 
             case "save_tshirt":
 

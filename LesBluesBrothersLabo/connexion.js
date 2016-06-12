@@ -9,6 +9,7 @@ $('.contenu').on('click','#boutSav',saveTshirt);
 $('.contenu').on('click','#boutAnn',annuleTshirt);
 $('.contenu').on('click','#boutChampRech',rechercheParFiltres);
 $('.contenu').on('click','.modif',modifTshirt);
+$('.contenu').on('click','#imageAjout',voletAjoutImages);
 
 
 
@@ -178,6 +179,20 @@ function annuleTshirt(){
     $('#prodPrixAjout').val(""); 
     $('#prodDescAjout').val("");
     $('#prodDateAjout').val("");
+}
+
+function voletAjoutImages(){
+    //Ajoute ou enlève la class au clique sur le bouton ajout tshirt
+    $("#voletImageAjout").toggleClass("open");
+
+    //Ouvrire ou fermer le volet en fonction de la class "open"
+    if($("#voletImageAjout").hasClass("open")){
+        
+        $("#voletImageAjout").load("dispatcher.php","op=voletAjoutImage"); 
+
+    }else{
+        $("#voletImageAjout").empty(); 
+    }    
 }
     
 
