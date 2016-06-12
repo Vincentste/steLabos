@@ -369,7 +369,7 @@ function modifTshirt(){
 
 }
 
-});
+
 
 // click pour Update Tshirt dans la DB 
 $('.contenu').on('click','#boutMod', function UpdateTshirt(e){
@@ -445,11 +445,8 @@ $('.contenu').on('click','.supprimer', function supprimerTshirt(e){
                 //confirmation -->non
             $('.modal-body').on('click','.nonTshirt', function choixNonTshirt(e){
                 $(".modalSupp").fadeOut(); 
-
+            });
 });
-
-
-
 
 
 
