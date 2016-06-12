@@ -119,7 +119,7 @@ class Affichage{
         </form>
         <section id="imageAjout">
             <h2>IMAGES</h2>
-            <div class="voletImageAjout">
+            <div id="voletImageAjout">
                 
             </div>
         </section>';
