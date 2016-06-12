@@ -2,8 +2,9 @@
 
 <?php
 	$operation_permise=[
-	   "accueil"=>true,
-    	"connexion" => "accueil.html",
+	    "accueil"=>true,
+        "connexion" => "accueil.html",
+        "getSession" => "accueil.html",
         "controleConnexion"=>"accueil.html",
     	"affichageAccueil" => "accueil.html",
         "template_tshirt"=>"accueil.html",
@@ -20,14 +21,15 @@
 
 	];
 
+    session_start();
+
 	//récupérer l'opération
 	$op = (isset($_GET["op"]))?$_GET["op"]:"accueil";
 	if(!isset($operation_permise[$op])){
 	    $op = "connexion";
 	}
 
-    session_start();
-    
+
 
 	require_once __DIR__.'/c/TemplateConnexion.php';
     require_once __DIR__.'/m/connexion.php';
@@ -40,13 +42,16 @@
             //affiche le menu de connecion
 			$Affichage = new Affichage();
 			echo $Affichage->afficheConnexion();
-            //control si déjà connecté
-            if ($_SESSION['connecte']='oui'){
-            $op = "template_tshirt";
+		
+        case "getSession":
+        if(isset($_SESSION['connecte'])){
+            if($_SESSION['connecte'] == 'oui'){
+                 echo('{"authorisation":"oui"}');
             }
-			break;
-            
-		case "controleConnexion":
+        }
+        break;
+        
+        case "controleConnexion":
 
             $nom = isset($_GET['nom'])?$_GET['nom']:"";
             $mdp = isset($_GET['mdp'])?$_GET['mdp']:"";
@@ -82,6 +87,7 @@
             echo json_encode($tab);
             break;
             
+            //recherche les correspondances avec la/les lettre(s) du moteur de recherche
             case "rechercheParTexte":
             $text=$_GET['lettre'];
             $resultat=requeteTshirtParNoms($text);
@@ -96,7 +102,7 @@
             echo json_encode($resultatFiltre);
             break;
  
-
+            //supprime un tshirt ds la DB(produits + exemplaire)
             case "supprimerTshirt":
             $id=$_GET['id'];
             requeteSupprimerTshirt($id);
@@ -145,17 +151,20 @@
 
             break;
 
+            //affiche les info a modifier pour un tshirt 
             case "afficheModifierTshirt":
                 $Affichage = new Affichage();
                 echo $Affichage->afficheModifTshirt();
             break;
 
+            //recup des info pour le volet modifié
             case "ModifierTshirt":
                 $id=$_GET['id'];
                 $requete = recupere_infos_untshirt($id);
                 echo json_encode($requete);
             break;
 
+            //update le tshirt ds la DB
             case "UpdateTshirt":
 
                 $id= $_GET['id'];
@@ -166,9 +175,7 @@
                 $crea = $_GET['prodCre'];
                 $mat = $_GET['prodMat'];
                 $cat = $_GET['prodCat'];
-               
 
                 RequeteUpdate_Tshirt($id,$nom,$prix,$date,$desc,$crea,$mat,$cat);
-
             break;
     }

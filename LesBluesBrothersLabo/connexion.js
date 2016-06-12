@@ -13,6 +13,52 @@ $('.contenu').on('click','#imageAjout',voletAjoutImages);
 
 
 
+function getFormulaireConnexion($ou){
+    $.getJSON("dispatcher.php",{"op":"getSession"},function(data){
+          if(data.authorisation == "oui"){
+            $("body>.contenu").load("dispatcher.php","op=template_tshirt",function(){
+                $.getJSON("dispatcher.php","op=data_recherche",function(data){
+
+                    var categories=data['categories'];
+                    var optionUne=$('<option/>');
+                    optionUne.val('%');
+                    optionUne.text('tous');
+                    optionUne.appendTo('#selectCat');
+                    for(var i=0;i < categories.length;i++){
+                        var option=$('<option/>');
+                        option.text(categories[i].cat_nom);
+                        option.appendTo('#selectCat');    
+                    }
+                    
+                    var createurs=data['createurs'];
+                    var optionDeux=$('<option/>');
+                    optionDeux.val('%');
+                    optionDeux.text('tous');
+                    optionDeux.appendTo('#selectCre');
+                    for(var i=0;i < createurs.length;i++){
+                        var option=$('<option/>');
+                        option.text(createurs[i].cre_nom);
+                        option.appendTo('#selectCre');   
+                    }
+                    
+                   var matieres=data['matieres'];
+                    var optionTrois=$('<option/>');
+                    optionTrois.val('%');
+                    optionTrois.text('tous');
+                    optionTrois.appendTo('#selectMat');
+                    for(var i=0;i < matieres.length;i++){
+                        var option=$('<option/>');
+                        option.text(matieres[i].mat_nom);
+                        option.appendTo('#selectMat');    
+                    }
+                }); 
+            });             
+        }
+    });
+    $ou = $ou?$ou:$("body>.contenu");
+    $("body>.contenu").load("dispatcher.php","op=connexion");
+}
+
 function valideMotDePasse(e){
      $.getJSON("dispatcher.php",{"op":"controleConnexion","nom":$('#nom').val(),"mdp":$('#mdp').val()},function(data){
         
@@ -51,8 +97,8 @@ function valideMotDePasse(e){
                         var option=$('<option/>');
                         option.text(matieres[i].mat_nom);
                         option.appendTo('#selectMat');    
-                    }     
-         	});	
+                    }
+                });	
     		});     	
          	
          }else{
@@ -63,11 +109,6 @@ function valideMotDePasse(e){
 }
 
 
-function getFormulaireConnexion($ou){
-    $ou = $ou?$ou:$("body>.contenu");
-    $("body>.contenu").load("dispatcher.php","op=connexion");
-    
-}
 //--------------------------------------MOTEUR DE RECHERCHE---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 // barre de recherche 
@@ -307,9 +348,9 @@ function modifTshirt(){
 
 }
 // click pour Update Tshirt dans la DB 
-$('.contenu').on('click','#boutMod', function UpdateTshirt(){
+$('.contenu').on('click','#boutMod', function UpdateTshirt(e){
         //recup des val des champs
-        var idTshirt = $("li.supprimer").attr('data');
+        var idTshirt = $(this).parents("li").find("h2").attr("data");
         var nom = $("input#prodNom").val();
         var prix = $("input#prodPrix").val();
         var date =  $("input#prodDate").val();
@@ -321,11 +362,12 @@ $('.contenu').on('click','#boutMod', function UpdateTshirt(){
         var tailleM = $('#tailleM').val();
         var tailleL = $('#tailleL').val();
         var tailleXL = $('#tailleXL').val();
-
+       
+         //change la valeur du h2 ds la recherche
+        
+        $("li#tshirt"+idTshirt+" >h2").replaceWith("<h2 data="+idTshirt+">"+nom+"</h2>");
         //update ds la DB
         $.getJSON("dispatcher.php",{"op":"UpdateTshirt","id":idTshirt,"prodNom":nom,"prodPrix":prix,"prodDate":date,"prodDesc":desc,"prodCre":crea,"prodMat":mat,"prodCat":cat});
-        //change la valeur du h2 ds la recherche
-       
         //feunêtre modal confirmation update
         var modal = $('#myModalModif');
         modal.fadeIn();
