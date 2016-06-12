@@ -157,3 +157,12 @@ function recupere_infos_untshirt($id){
 
  }
 
+function requeteSelectImg(){
+    $requete='SELECT DISTINCT prod_img_gd,prod_img_pt FROM produits 
+              WHERE prod_img_gd !="" AND prod_img_pt !=""';
+    $connexion=connexion_PDO();
+    $resultat=$connexion->prepare($requete);
+    $resultat->execute();
+    return $resultat->fetchAll(PDO::FETCH_OBJ);
+}
+

@@ -125,10 +125,6 @@ class Affichage{
         </section>';
     }
 
-    public function afficheAjoutImages(){
-        return '<p>Ajout des images</p>';
-    }
-
     public function afficheModifTshirt(){
         return '
         

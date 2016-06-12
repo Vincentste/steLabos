@@ -15,10 +15,9 @@
         "UpdateTshirt"=>"accueil.html",
         "afficheModifierTshirt"=>"accueil.html",
         "voletAjoutTshirt"=>"accueil.html",
-        "voletAjoutImage"=>"accueil.html",
+        "recherche_image"=>"accueil.html",
         "save_tshirt"=>"accueil.html",
         "rechercheParFiltre"=>"accueil.html"
-
 	];
 
     session_start();
@@ -113,9 +112,9 @@
                 echo $Affichage->afficheAjoutTshirt();
             break; 
 
-            case "voletAjoutImage":
-                $Affichage = new Affichage();
-                echo $Affichage->afficheAjoutImages();
+            case "recherche_image":
+            $resultat=requeteSelectImg();
+            echo json_encode($resultat);
             break;
 
             case "save_tshirt":

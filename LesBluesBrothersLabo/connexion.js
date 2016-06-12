@@ -10,6 +10,7 @@ $('.contenu').on('click','#boutAnn',annuleTshirt);
 $('.contenu').on('click','#boutChampRech',rechercheParFiltres);
 $('.contenu').on('click','.modif',modifTshirt);
 $('.contenu').on('click','#imageAjout',voletAjoutImages);
+//$('.contenu').on('click','.lienPg',voletAjoutImages);
 
 
 
@@ -215,21 +216,46 @@ function saveTshirt(){
     "op=save_tshirt&nom="+prodNom+"&prix="+prodPrix+"&img_gd="+img_gd+"&img_pt="+img_pt+"&desc="+des+"&crea="+crea+"&mat="+mat+"&date="+date_aj+"&cat="+cat+"&tailleS="+tailleS+"&tailleM="+tailleM+"&tailleL="+tailleL+"&tailleXL="+tailleXL+""); 
 }
 
-function annuleTshirt(){
+function annuleTshirt(e){
     $('#prodNomAjout').val(""); 
     $('#prodPrixAjout').val(""); 
     $('#prodDescAjout').val("");
     $('#prodDateAjout').val("");
 }
 
-function voletAjoutImages(){
+function voletAjoutImages(e){
     //Ajoute ou enlève la class au clique sur le bouton ajout tshirt
     $("#voletImageAjout").toggleClass("open");
 
     //Ouvrire ou fermer le volet en fonction de la class "open"
     if($("#voletImageAjout").hasClass("open")){
-        
-        $("#voletImageAjout").load("dispatcher.php","op=voletAjoutImage"); 
+      
+
+        $.getJSON("dispatcher.php",{"op":"recherche_image","pg":"3"},function(data){            
+            var src = "images/";
+            var nbrImage = (data.length)*2;
+            var nbrPage = Math.round(nbrImage/4);
+            var em = $("<em/>").addClass("lienPgBefore").text("<");
+            var pagination = em.text()+" ";
+
+            for(var i=0;i < 2;i++){
+                $("<img/>").appendTo("#voletImageAjout").attr("src",src+data[i].prod_img_pt);
+                $("<img/>").appendTo("#voletImageAjout").attr("src",src+data[i].prod_img_gd);
+            }
+
+            $("<div/>").appendTo("#voletImageAjout").attr("id","paginationImg");
+
+            for(var i=1;i <= nbrPage;i++){
+                var em = $("<em/>").addClass("lienPg").text(i);
+                pagination += em.text()+" ";
+            }
+
+            var em = $("<em/>").addClass("lienPgAfter").text(" >");
+            pagination += em.text();
+
+            $("#paginationImg").text(pagination);
+
+        });
 
     }else{
         $("#voletImageAjout").empty(); 
