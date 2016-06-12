@@ -53,10 +53,10 @@
 
 .modal-body {padding: 2px 16px;}
 
-p.oui:hover{
+p:hover{
     cursor:pointer;
 }
-p.non:hover{
+p:hover{
     cursor:pointer;
 }
 

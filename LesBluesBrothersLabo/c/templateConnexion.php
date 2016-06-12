@@ -96,19 +96,19 @@ class Affichage{
                 <h2>Tailles</h2> 
                 <p>
                     <label for="tailleS">S : </label>
-                    <input type="text" name="tailleS" id="tailleS"/> <span class="fa fa-trash"></span> <span class="fa fa-plus"></span>
+                    <input type="text" name="tailleS" id="tailleS"/> <span class="fa fa-trash"></span> <span class="fa fa-pencil"></span>
                 </p>
                 <p>
                     <label for="tailleM">M : </label>
-                    <input type="text" name="tailleM" id="tailleM"/> <span class="fa fa-trash"></span> <span class="fa fa-plus"></span>
+                    <input type="text" name="tailleM" id="tailleM"/> <span class="fa fa-trash"></span> <span class="fa fa-pencil"></span>
                 </p>
                 <p>
                     <label for="tailleL">L : </label>
-                    <input type="text" name="tailleL" id="tailleL"/> <span class="fa fa-trash"></span> <span class="fa fa-plus"></span>
+                    <input type="text" name="tailleL" id="tailleL"/> <span class="fa fa-trash"></span> <span class="fa fa-pencil"></span>
                 </p>
                 <p>
                     <label for="tailleXL">XL : </label>
-                    <input type="text" name="tailleXL" id="tailleXL"/> <span class="fa fa-trash"></span> <span class="fa fa-plus"></span>
+                    <input type="text" name="tailleXL" id="tailleXL"/> <span class="fa fa-trash"></span> <span class="fa fa-pencil"></span>
                 </p>
                 <input type="button" id="ajoutTaille" value="ajouter" autocomplete="off"/>
             </section>
@@ -174,19 +174,19 @@ class Affichage{
                 <h2>Tailles</h2> 
                <br/>
                     <label for="tailleS">S : </label>
-                    <input type="text" name="tailleS" id="ModifTailleS"/> <span class="fa fa-trash"></span> <span class="fa fa-plus"></span>
+                    <input type="text" name="tailleS" id="ModifTailleS"/> <span data="ModifTailleS" id="1" class="suppTaille fa fa-trash"></span> <span class="fa fa-pencil"></span>
                 <br/>
                <br/>
                     <label for="tailleM">M : </label>
-                    <input type="text" name="tailleM" id="ModifTailleM"/> <span class="fa fa-trash"></span> <span class="fa fa-plus"></span>
+                    <input type="text" name="tailleM" id="ModifTailleM"/> <span data="ModifTailleM" id="2" class="suppTaille fa fa-trash"></span> <span class="fa fa-pencil"></span>
                 <br/>
                <br/>
                     <label for="tailleL">L : </label>
-                    <input type="text" name="tailleL" id="ModifTailleL"/> <span class="fa fa-trash"></span> <span class="fa fa-plus"></span>
+                    <input type="text" name="tailleL" id="ModifTailleL"/> <span data="ModifTailleL" id="3" class="suppTaille fa fa-trash"></span> <span class="fa fa-pencil"></span>
                 <br/>
                <br/>
                     <label for="tailleXL">XL : </label>
-                    <input type="text" name="tailleXL" id="ModifTailleXL"/> <span class="fa fa-trash"></span> <span class="fa fa-plus"></span>
+                    <input type="text" name="tailleXL" id="ModifTailleXL"/> <span data="ModifTailleXL" id="4" class="suppTaille fa fa-trash"></span> <span class="fa fa-pencil"></span>
                 <br/>
                 <input type="button" id="ajoutTaille" value="ajouter" autocomplete="off"/>
             </section>

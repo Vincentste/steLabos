@@ -148,6 +148,7 @@ function recupere_infos_untshirt($id){
     
 }    
 
+//update (nom,prix,date,desc,crea,mat,cat) dans la DB d un t-shirt
 function RequeteUpdate_Tshirt($id,$nom,$prix,$date,$desc,$crea,$mat,$cat){
     $requete='Update produits SET prod_nom = :nom ,prod_prix = :prix,prod_date = :date, prod_desc = :desc, prod_fk_createur = :crea, prod_fk_matiere = :mat, prod_fk_categorie = :cat WHERE prod_id = :id';
     $connexion=connexion_PDO();
@@ -156,6 +157,16 @@ function RequeteUpdate_Tshirt($id,$nom,$prix,$date,$desc,$crea,$mat,$cat){
     $resultat->execute([":id"=>$id,":nom"=>$nom,":prix"=>$prix,":date"=>$date,":desc"=>$desc,":crea"=>$crea,":mat"=>$mat,":cat"=>$cat]);
 
  }
+
+//supprime le stock d'une taille d'un tshirt
+function  RequeteSupprimeStockTaille($idTaille,$idTshirt){
+    $requete='Update exemplaires SET exem_stock = null WHERE  exem_fk_tail= :idTaille AND exem_fk_tee = :idTshirt';
+    $connexion=connexion_PDO();
+    //preparation requete
+    $resultat=$connexion->prepare($requete);
+    $resultat->execute([":idTaille"=>$idTaille,":idTshirt"=>$idTshirt]);
+}
+
 
 function requeteSelectImg(){
     $requete='SELECT DISTINCT prod_img_gd,prod_img_pt FROM produits 

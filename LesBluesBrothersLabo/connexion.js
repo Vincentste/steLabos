@@ -368,6 +368,9 @@ function modifTshirt(){
     }    
 
 }
+
+});
+
 // click pour Update Tshirt dans la DB 
 $('.contenu').on('click','#boutMod', function UpdateTshirt(e){
         //recup des val des champs
@@ -395,29 +398,61 @@ $('.contenu').on('click','#boutMod', function UpdateTshirt(e){
         
 });
 
+
+//supprime le stock d'une taille d'un tshirt ds la DB
+$('.contenu').on('click','.suppTaille', function UpdateTaille(e){
+    // affiche la F. modal de confirmation
+    var idTshirt = $(this).parents("li").find("h2").attr("data");
+    var modal = $('#myModalSupp');
+    $('#myModalSupp').find('h2').replaceWith("<h2 id="+$(this).attr("id")+" data="+$(this).attr("data")+">Voulez vous supprimer le Stock de cette taille?</h2>");
+    $(".modal-body").find("p").remove();
+    $('<p class="ouiTaille">OUI</p><p class="nonTaille">NON</p>').appendTo(".modal-body");
+    modal.css('display' ,"block");
+    //confirmation => oui 
+    $('.modal-body').on('click','.ouiTaille', function choixOuiTaille(e){
+            var taille = $(".modal-content").find("h2").attr("data");
+            var idTaille = $(".modal-content").find("h2").attr("id");
+            $("#"+taille+"").val('0');
+            $.getJSON("dispatcher.php",{"op":"supprimerStockTaille","idTaille":idTaille,"idTshirt":idTshirt});
+            $(".modalSupp").fadeOut();
+    });
+    //confirmation => non
+    $('.modal-body').on('click','.nonTaille', function choixNonTaille(e){
+        $(".modalSupp").fadeOut(); 
+    });
+});
+
+
+
 // supprime un tshirt ds la DB
 $('.contenu').on('click','.supprimer', function supprimerTshirt(e){
 
             var idTshirt =($(this).attr("data"));
             //confirmation de la suppression
             var modal = $('#myModalSupp');
+            $('#myModalSupp').find('h2').replaceWith("<h2>Voulez vous supprimer ce T-shirt?</h2>");
+            $(".modal-body").find("p").remove();
+            $('<p class="ouiTshirt">OUI</p><p class="nonTshirt">NON</p>').appendTo(".modal-body");
             modal.css('display' ,"block");
             //confirmation --> oui
-            $('.modal-body').on('click','.oui', function choixOui(e){
+            $('.modal-body').on('click','.ouiTshirt', function choixOuiTshirt(e){
                 $.getJSON("dispatcher.php",{"op":"supprimerTshirt","id":idTshirt});
                 //supprime le li du tshirt supprimé. 
                 $('#tshirt'+idTshirt+'').remove();
-                //confirmation que le tshirt à bien été supprimé 
-                $(".modalSupp").fadeOut(1);
-                var modal = $('#myModal');
-                modal.fadeIn();
-                modal.fadeOut(1000);
+                $(".modalSupp").fadeOut();
+            
             });
                 //confirmation -->non
-            $('.modal-body').on('click','.non', function choixNon(e){
+            $('.modal-body').on('click','.nonTshirt', function choixNonTshirt(e){
                 $(".modalSupp").fadeOut(); 
-            });
+
 });
+
+
+
+
+
+
 
 //-----------------------------------------------------------fin modifier tshirt------------------------------------------------------------------------------- 
 

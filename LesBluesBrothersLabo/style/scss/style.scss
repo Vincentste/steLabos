@@ -169,6 +169,7 @@ body{
 							width: 30%;
 							padding: 0.5em;
 						}
+						
 						input{
     						padding:5px; 
     						border:2px solid grey; 
@@ -201,6 +202,10 @@ body{
     						border-radius: 5px;
 							height: 60px;
 							width: 230px;
+						}
+
+						span:hover{
+							cursor:pointer;
 						}
 
 						#imglist{
