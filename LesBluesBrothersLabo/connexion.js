@@ -425,6 +425,9 @@ $('.modal-body').on('click','.ouiTaille', function choixOuiTaille(e){
     $("#"+taille+"").val('0');
     $.getJSON("dispatcher.php",{"op":"supprimerStockTaille","idTaille":idTaille,"idTshirt":idTshirt});
     $(".modalSupp").fadeOut();
+    $("#myModal").find("h2").replaceWith("<h2> Le stock à bien été mis à jour</h2>");
+    $('#myModal').fadeIn();
+    $('#myModal').fadeOut(2000);
 });
 //confirmation => non
 $('.modal-body').on('click','.nonTaille', function choixNonTaille(e){
@@ -450,6 +453,9 @@ $('.modal-body').on('click','.ouiTshirt', function choixOuiTshirt(e){
     //supprime le li du tshirt supprimé. 
     $('#tshirt'+idTshirt+'').remove();
     $(".modalSupp").fadeOut();
+    $("#myModal").find("h2").replaceWith("<h2> Le T-shirt a bien été supprimé !</h2>");
+    $('#myModal').fadeIn();
+    $('#myModal').fadeOut(2000);
 });
 //confirmation -->non
 $('.modal-body').on('click','.nonTshirt', function choixNonTshirt(e){
@@ -463,9 +469,10 @@ $(".contenu").on("click",".UpdateTaille",function UpdateTaille(e){
     var valeurTaille = $("#"+taille+"").val();
     var idTshirt = $(this).parents("li").find("h2").attr("data");
     var idTaille = $(this).attr("id");
-    alert(valeurTaille);
     $.getJSON("dispatcher.php",{"op":"UpdateTaille","idTaille":idTaille,"idTshirt":idTshirt,"valeur":valeurTaille});
-
+    $("#myModal").find("h2").replaceWith("<h2> Le stock à bien été mis à jour</h2>");
+    $('#myModal').fadeIn();
+    $('#myModal').fadeOut(2000);
 })
 
 
