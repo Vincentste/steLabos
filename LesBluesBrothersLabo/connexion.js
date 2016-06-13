@@ -446,10 +446,15 @@ $('.modal-body').on('click','.ouiTshirt', function choixOuiTshirt(e){
     $(".modalSupp").fadeOut();
 });
 //confirmation -->non
-$('.modal-body').on('click','.nonTshirt', function choixNonTshirt(e){
-    $(".modalSupp").fadeOut(); 
+
 });
 
+// update d'un taille 
+$(".contenu").on("click",".UpdateTaille",function updateTaille(e){
+    var idTshirt = $(this).parents("li").find("h2").attr("data");
+    var idTaille = $(this).attr("id");
+    $.getJSON("dispatcher.php",{"op":"UpdateTaille","idTshirt":idTshirt,"idTaille":idTaille}); 
+});
 
 //-----------------------------------------------------------fin modifier tshirt------------------------------------------------------------------------------- 
 
