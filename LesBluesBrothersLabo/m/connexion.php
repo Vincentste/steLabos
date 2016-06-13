@@ -167,6 +167,14 @@ function  RequeteSupprimeStockTaille($idTaille,$idTshirt){
     $resultat->execute([":idTaille"=>$idTaille,":idTshirt"=>$idTshirt]);
 }
 
+function nbrImg(){
+    $requete='SELECT COUNT(DISTINCT prod_img_gd) + COUNT(DISTINCT prod_img_gd) FROM produits';
+    $connexion=connexion_PDO();
+    $resultat=$connexion->prepare($requete);
+    $resultat->execute();
+    return $resultat->fetchAll(PDO::FETCH_OBJ);
+}
+
 
 function requeteSelectImg(){
     $requete='SELECT DISTINCT prod_img_gd,prod_img_pt FROM produits 

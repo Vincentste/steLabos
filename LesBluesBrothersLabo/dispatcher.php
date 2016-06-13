@@ -114,6 +114,7 @@
             break; 
 
             case "recherche_image":
+            $nbrImg = nbrImg();
             $resultat=requeteSelectImg();
             echo json_encode($resultat);
             break;
