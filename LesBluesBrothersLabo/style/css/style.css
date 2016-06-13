@@ -316,6 +316,6 @@ body .contenu .content ul#recherche li form #ajoutTaille {
 /* line 260, ../scss/style.scss */
 body .contenu .content ul#recherche li form .boutonsFormModifier {
   position: absolute;
-  bottom: 3%;
-  right: 25%;
+  bottom: 1%;
+  right: 43%;
 }

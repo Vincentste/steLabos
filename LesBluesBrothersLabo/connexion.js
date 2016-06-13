@@ -302,11 +302,6 @@ function modifTshirt(){
            var crea = data[0].cre_nom;
            var mat = data[0].mat_nom;
            var cat = data[0].cat_nom;
-          
-           var tailleS = data[0].exem_stock;
-           var tailleM = data[1].exem_stock;
-           var tailleL = data[2].exem_stock;
-           var tailleXL = 0;
            
            //insertion ds les champs 
            $("input#prodNom").val(nom);
@@ -315,10 +310,7 @@ function modifTshirt(){
            $("textarea#prodDesc").val(desc);
            $("#imgprew").attr("src","images/"+imgpew);
            $("#imglist").attr("src","images/"+imglist);
-           $("input#ModifTailleS").val(tailleS);
-           $("input#ModifTailleM").val(tailleM);
-           $("input#ModifTailleL").val(tailleL);
-           $("input#ModifTailleXL").val(tailleXL);
+           
 
             // recup et insertion ds les selects cat/crea/matiéres. 
             $.getJSON("dispatcher.php","op=data_recherche",function(d){
@@ -367,13 +359,16 @@ function modifTshirt(){
                                     option.appendTo('#prodMat');    
                                 }
                             }     
-            
+            });
+            $.getJSON("dispatcher.php",{"op":"tailleTshirt","idTshirt":idTshirt},function(a){
+                for(var i=0; i < a.length; i++){
+                    $('<br/><label for=taille'+a[i].taille+'>'+a[i].taille+'</label><input name=taille'+a[i].taille+' id=ModifTaille'+a[i].taille+' value='+a[i].stock+' type=text/> <span data=ModifTaille'+a[i].taille+' id='+(i+1)+' class="suppTaille fa fa-trash"></span> <span data="ModifTaille'+a[i].taille+'" id='+(i+1)+' class="UpdateTaille fa fa-pencil"></span><br/>').appendTo("#taillesModif>h2");   
+                }   
             }); 
-        });
+        });   
     }else{
         $("form.modifier").children().remove(); 
     }    
-
 }
 
 

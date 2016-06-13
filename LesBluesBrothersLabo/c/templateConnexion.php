@@ -170,24 +170,9 @@ class Affichage{
                     <br/>
                 
             </section>
-            <section id="taillesAjout">
+            <section id="taillesModif">
                 <h2>Tailles</h2> 
-               <br/>
-                    <label for="tailleS">S : </label>
-                    <input type="text" name="tailleS" id="ModifTailleS"/> <span data="ModifTailleS" id="1" class="suppTaille fa fa-trash"></span> <span data="ModifTailleS" id="1" class="UpdateTaille fa fa-pencil"></span>
-                <br/>
-               <br/>
-                    <label for="tailleM">M : </label>
-                    <input type="text" name="tailleM" id="ModifTailleM"/> <span data="ModifTailleM" id="2" class="suppTaille fa fa-trash"></span> <span data="ModifTailleM" id="2" class="UpdateTaille fa fa-pencil"></span>
-                <br/>
-               <br/>
-                    <label for="tailleL">L : </label>
-                    <input type="text" name="tailleL" id="ModifTailleL"/> <span data="ModifTailleL" id="3" class="suppTaille fa fa-trash"></span> <span data="ModifTailleL" id="3" class="UpdateTaille fa fa-pencil"></span>
-                <br/>
-               <br/>
-                    <label for="tailleXL">XL : </label>
-                    <input type="text" name="tailleXL" id="ModifTailleXL"/> <span data="ModifTailleXL" id="4" class="suppTaille fa fa-trash"></span> <span data="ModifTailleXL" id="4" class="UpdateTaille fa fa-pencil"></span>
-                <br/>
+        
                 <input type="button" id="ajoutTaille" value="ajouter" autocomplete="off"/>
             </section>
             <div class="boutonsFormModifier">

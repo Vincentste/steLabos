@@ -67,7 +67,7 @@ function requeteTshirtParNoms($lettre){
 }
 
 function requeteSupprimerTshirt($id){
-	$requete='DELETE produits,exemplaires FROM produits  left join exemplaires ON exem_fk_tee = prod_id where prod_id = :a';
+	$requete='DELETE produits,exemplaires FROM produits where prod_id = :a';
 	$connexion=connexion_PDO();
     $resultat=$connexion->prepare($requete);
     $resultat->execute([':a'=>$id]);
@@ -147,6 +147,15 @@ function recupere_infos_untshirt($id){
      return $resultat->fetchAll(PDO::FETCH_OBJ);
     
 }    
+
+function requeteTailleTshirt($idTshirt){
+    $requete='SELECT tail_nom as taille,exem_stock as stock FROM exemplaires LEFT OUTER JOIN tailles on tail_id = exem_fk_tail  WHERE exem_fk_tee = :idTshirt  ';
+    $connexion=connexion_PDO();
+    $resultat=$connexion->prepare($requete);
+    $resultat->execute([":idTshirt"=>$idTshirt]);
+    return $resultat->fetchAll(PDO::FETCH_OBJ);
+}
+
 
 //update (nom,prix,date,desc,crea,mat,cat) dans la DB d un t-shirt
 function RequeteUpdate_Tshirt($id,$nom,$prix,$date,$desc,$crea,$mat,$cat){

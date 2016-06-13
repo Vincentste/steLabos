@@ -13,6 +13,7 @@
         "supprimerTshirt"=>"accueil.html",
         "supprimerStockTaille"=>"accueil.html",
         "ModifierTshirt"=>"accueil.html",
+        "tailleTshirt"=>"accueil.html",
         "UpdateTshirt"=>"accueil.html",
         "UpdateTaille"=>"accueil.html",
         "afficheModifierTshirt"=>"accueil.html",
@@ -115,12 +116,11 @@
             break; 
 
             case "recherche_image":
-
-            $limite = ($_GET['pg']-1)*2;
-            $offset = $_GET['pg']*2;
-            $nbrImg = nbrImg();
-            $images=requeteSelectImg($limite,$offset);
-            $tabImg = ["nbrImg"=>$nbrImg,"images"=>$images];
+                $limite = ($_GET['pg']-1)*2;
+                $offset = $_GET['pg']*2;
+                $nbrImg = nbrImg();
+                $images=requeteSelectImg($limite,$offset);
+                $tabImg = ["nbrImg"=>$nbrImg,"images"=>$images];
             echo json_encode($tabImg);
             break;
 
@@ -163,16 +163,22 @@
                 echo $Affichage->afficheModifTshirt();
             break;
 
-            //recup des info pour le volet modifié
+            //recup les info pour le volet modifié
             case "ModifierTshirt":
                 $id=$_GET['id'];
                 $requete = recupere_infos_untshirt($id);
                 echo json_encode($requete);
             break;
 
+            //recup. des tailles d'un tshirt
+            case"tailleTshirt":
+                $idTshirt = $_GET['idTshirt'];
+                $requete = requeteTailleTshirt($idTshirt);
+                echo json_encode($requete);
+            break;
+           
             //update le tshirt ds la DB
             case "UpdateTshirt":
-
                 $id= $_GET['id'];
                 $nom = $_GET['prodNom'];
                 $prix = $_GET['prodPrix'];
@@ -181,7 +187,6 @@
                 $crea = $_GET['prodCre'];
                 $mat = $_GET['prodMat'];
                 $cat = $_GET['prodCat'];
-
                 RequeteUpdate_Tshirt($id,$nom,$prix,$date,$desc,$crea,$mat,$cat);
             break;
 
