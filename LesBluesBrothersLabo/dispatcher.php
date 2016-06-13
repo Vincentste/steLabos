@@ -11,7 +11,7 @@
         "data_recherche"=>"accueil.html",
         "rechercheParTexte"=>"accueil.html",
         "supprimerTshirt"=>"accueil.html",
-        "supprimerStockTaille"=>"accueil.html",
+        "supprimerTaille"=>"accueil.html",
         "ModifierTshirt"=>"accueil.html",
         "tailleTshirt"=>"accueil.html",
         "UpdateTshirt"=>"accueil.html",
@@ -199,9 +199,9 @@
             break;
 
              // supprime le stock de la taille d'un tshirt 
-            case "supprimerStockTaille":
+            case "supprimerTaille":
                 $idTshirt = $_GET['idTshirt'];
                 $idTaille = $_GET['idTaille'];
-                RequeteSupprimeStockTaille($idTaille,$idTshirt);
+                RequeteSupprimeTaille($idTaille,$idTshirt);
             break;
     }

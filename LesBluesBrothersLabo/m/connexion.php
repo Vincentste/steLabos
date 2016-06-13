@@ -170,8 +170,8 @@ function RequeteUpdate_Tshirt($id,$nom,$prix,$date,$desc,$crea,$mat,$cat){
 //supprime le stock d'une taille d'un tshirt
 
 
-function RequeteSupprimeStockTaille($idTaille,$idTshirt){
-    $requete='UPDATE exemplaires SET exem_stock=0 WHERE exem_fk_tail= :idTaille AND exem_fk_tee = :idTshirt';
+function RequeteSupprimeTaille($idTaille,$idTshirt){
+    $requete='DELETE FROM exemplaires WHERE exem_fk_tail= :idTaille AND exem_fk_tee = :idTshirt';
     $connexion=connexion_PDO();
     $resultat=$connexion->prepare($requete);
     $resultat->execute([":idTaille"=>$idTaille,":idTshirt"=>$idTshirt]);
