@@ -168,6 +168,14 @@ function RequeteSupprimeStockTaille($idTaille,$idTshirt){
     $resultat->execute([":idTaille"=>$idTaille,":idTshirt"=>$idTshirt]);
 }
 
+//update la taille d'un tshirt 
+function RequeteUpdate_Taille($idTshirt,$idTaille,$valeur){
+    $requete='UPDATE exemplaires SET exem_stock = :valeur WHERE exem_fk_tail= :idTaille AND exem_fk_tee = :idTshirt';
+    $connexion=connexion_PDO();
+    $resultat=$connexion->prepare($requete);
+    $resultat->execute([":valeur"=>$valeur,":idTaille"=>$idTaille,":idTshirt"=>$idTshirt]);
+}
+
 function nbrImg(){
     $requete='SELECT (COUNT(DISTINCT prod_img_gd) + COUNT(DISTINCT prod_img_gd)) AS nbrImgs FROM produits';
     $connexion=connexion_PDO();

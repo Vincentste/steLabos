@@ -14,6 +14,7 @@
         "supprimerStockTaille"=>"accueil.html",
         "ModifierTshirt"=>"accueil.html",
         "UpdateTshirt"=>"accueil.html",
+        "UpdateTaille"=>"accueil.html",
         "afficheModifierTshirt"=>"accueil.html",
         "voletAjoutTshirt"=>"accueil.html",
         "recherche_image"=>"accueil.html",
@@ -184,6 +185,13 @@
                 RequeteUpdate_Tshirt($id,$nom,$prix,$date,$desc,$crea,$mat,$cat);
             break;
 
+            // update le stock d'une taille ds la DB
+            case "UpdateTaille":
+                $idTshirt = $_GET['idTshirt'];
+                $idTaille = $_GET['idTaille'];
+                $valeur = $_GET['valeur'];
+                RequeteUpdate_Taille($idTshirt,$idTaille,$valeur);
+            break;
 
              // supprime le stock de la taille d'un tshirt 
             case "supprimerStockTaille":

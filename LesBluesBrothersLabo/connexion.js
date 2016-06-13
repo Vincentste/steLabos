@@ -266,6 +266,11 @@ function voletAjoutImages(e){
     
 
 
+
+
+
+
+
 //-----------------------------------------------------------modifier Tshirt----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //ouverture du volet modifier + insertion ds les champs et sauvegarde de l update!
@@ -450,5 +455,22 @@ $('.modal-body').on('click','.ouiTshirt', function choixOuiTshirt(e){
 $('.modal-body').on('click','.nonTshirt', function choixNonTshirt(e){
     $(".modalSupp").fadeOut(); 
 });
+
+
+//update une taille d'un t-shirt 
+$(".contenu").on("click",".UpdateTaille",function UpdateTaille(e){
+    var taille = $(this).attr("data");
+    var valeurTaille = $("#"+taille+"").val();
+    var idTshirt = $(this).parents("li").find("h2").attr("data");
+    var idTaille = $(this).attr("id");
+    alert(valeurTaille);
+    $.getJSON("dispatcher.php",{"op":"UpdateTaille","idTaille":idTaille,"idTshirt":idTshirt,"valeur":valeurTaille});
+
+})
+
+
+
+
+/*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 });
