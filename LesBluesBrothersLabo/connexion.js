@@ -1,4 +1,3 @@
-
 $(function(){
     
 getFormulaireConnexion();
@@ -451,14 +450,5 @@ $('.modal-body').on('click','.ouiTshirt', function choixOuiTshirt(e){
 $('.modal-body').on('click','.nonTshirt', function choixNonTshirt(e){
     $(".modalSupp").fadeOut(); 
 });
-
-
-//-----------------------------------------------------------fin modifier tshirt------------------------------------------------------------------------------- 
-
-
-
-
-
-
 
 });

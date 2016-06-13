@@ -114,6 +114,7 @@
             break; 
 
             case "recherche_image":
+
             $limite = ($_GET['pg']-1)*2;
             $offset = $_GET['pg']*2;
             $nbrImg = nbrImg();
