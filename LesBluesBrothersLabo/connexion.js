@@ -400,8 +400,9 @@ $('.contenu').on('click','#boutMod', function UpdateTshirt(e){
         $.getJSON("dispatcher.php",{"op":"UpdateTshirt","id":idTshirt,"prodNom":nom,"prodPrix":prix,"prodDate":date,"prodDesc":desc,"prodCre":crea,"prodMat":mat,"prodCat":cat});
         //feunêtre modal confirmation update
         var modal = $('#myModalModif');
-        modal.fadeIn();
-        modal.fadeOut(3000);
+        $("#myModal").find("h2").replaceWith("<h2>Le T-shirt a bien été mis à jour !</h2>");
+        $('#myModal').fadeIn();
+        $('#myModal').fadeOut(1000);
         
 });
 
