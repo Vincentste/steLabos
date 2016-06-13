@@ -11,9 +11,7 @@ $('.contenu').on('click','#boutAnn',annuleTshirt);
 $('.contenu').on('click','#boutChampRech',rechercheParFiltres);
 $('.contenu').on('click','.modif',modifTshirt);
 $('.contenu').on('click','#imageAjout',voletAjoutImages);
-//$('.contenu').on('click','.lienPg',voletAjoutImages);
-
-
+$('.contenu').on('click','.lienPg',voletAjoutImages);
 
 function getFormulaireConnexion($ou){
     $.getJSON("dispatcher.php",{"op":"getSession"},function(data){
@@ -159,7 +157,6 @@ function rechercheParFiltres(e){
 
 
 function voletAjoutTshirt(e){
-    
     //Ajoute ou enlève la class au clique sur le bouton ajout tshirt
     $("#voletAjout").toggleClass("open");
 
@@ -225,36 +222,41 @@ function annuleTshirt(e){
 }
 
 function voletAjoutImages(e){
-    //Ajoute ou enlève la class au clique sur le bouton ajout tshirt
-    $("#voletImageAjout").toggleClass("open");
+
+    e.stopPropagation();
+    $("#voletImageAjout").empty();
+
+    var page = parseInt($(this).text());
+    
+    if(isNaN(page)){
+        page = 1; 
+        //Ajoute ou enlève la class au clique sur le bouton ajout tshirt
+        $("#voletImageAjout").toggleClass("open");
+    }else{
+        page = $(this).text();
+    }  
 
     //Ouvrire ou fermer le volet en fonction de la class "open"
     if($("#voletImageAjout").hasClass("open")){
       
 
-        $.getJSON("dispatcher.php",{"op":"recherche_image","pg":"3"},function(data){            
+        $.getJSON("dispatcher.php",{"op":"recherche_image","pg":page},function(data){             
             var src = "images/";
-            var nbrImage = (data.length)*2;
+            var nbrImage = (data["nbrImg"].nbrImgs);
+            console.log(data);
             var nbrPage = Math.round(nbrImage/4);
-            var em = $("<em/>").addClass("lienPgBefore").text("<");
-            var pagination = em.text()+" ";
-
+           
             for(var i=0;i < 2;i++){
-                $("<img/>").appendTo("#voletImageAjout").attr("src",src+data[i].prod_img_pt);
-                $("<img/>").appendTo("#voletImageAjout").attr("src",src+data[i].prod_img_gd);
+                $("<img/>").appendTo("#voletImageAjout").attr("src",src+data["images"][i].prod_img_pt);
+                $("<img/>").appendTo("#voletImageAjout").attr("src",src+data["images"][i].prod_img_gd);
             }
 
             $("<div/>").appendTo("#voletImageAjout").attr("id","paginationImg");
-
+            
             for(var i=1;i <= nbrPage;i++){
-                var em = $("<em/>").addClass("lienPg").text(i);
-                pagination += em.text()+" ";
+                var em = $("<em/>").appendTo("#paginationImg").addClass("lienPg").text(i);
             }
 
-            var em = $("<em/>").addClass("lienPgAfter").text(" >");
-            pagination += em.text();
-
-            $("#paginationImg").text(pagination);
 
         });
 
