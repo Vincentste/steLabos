@@ -1,0 +1,272 @@
+@import "compass";
+@import "compass/reset";
+
+/*## VARIABLES ##*/
+
+/*## MIXINS ##*/
+a{ 
+	text-decoration: none; 
+	color: black;
+}
+
+body{
+	width: 75%;
+	margin: 0 auto;
+	font-family: helvetica,arial,"sans-serif";
+
+	.contenu{
+		border: 1px solid black;
+		margin: 1em;
+		padding: 1em;
+		min-height: 90vh;
+		
+		.content{
+			position: relative;
+			
+			h1{ 
+				font-size: 1.5em;
+				padding-bottom: 1em;
+				text-align: center; 
+			}
+			
+			/*Formulaire de recherche*/
+			#champHaut{	
+				border-bottom: 1px solid black;
+
+				#champTexte{
+					position: absolute;
+					top:0;
+					right: 0;
+					border-radius: 20px; 
+				}
+			}
+
+			#champbas{
+				position: relative;
+				display: flex;
+				margin: 1em;
+
+				#boutChampRech{
+					position: absolute;
+					right: 0;
+				}
+
+				p{ margin: 0 0.5em; }
+			}
+
+			/*Partie ajout*/			
+			#divAjout{
+			
+				#buttonAjout{
+					display: block;
+					text-align:center;
+					padding: 0.5em;
+					border-bottom: 1px solid black;
+					background: rgb(200,200,200);
+				}
+
+				#buttonAjout:hover{ cursor: pointer; }
+				
+				#voletAjout{
+					padding: 0.5em;
+
+					position: relative;
+
+					padding: 0.5em;
+					
+
+					form{
+						display: flex;
+
+						section{
+							width: 30%;
+							padding: 0.5em
+						}
+							
+						#imgPrew img{
+							width: 50%;
+						}
+
+						#infosAjout{
+
+							p{ 	
+								margin-top: 0.5em;
+								margin-bottom: 0.5em;
+							}
+
+							#prodDesc{
+								width: 100%;
+								height: 10rem;
+							}
+						}
+
+						#taillesAjout{
+							p{ 	
+								margin-top: 0.5em;
+								margin-bottom: 0.5em;
+							}
+						}
+
+						.boutonsFormAjout{
+							position: absolute;
+							bottom:0;
+							right: 25%;
+						}
+					}
+				}
+
+				#imageAjout{
+					position: absolute;
+					top: 0;
+					right: 0;
+					height: 100%;
+					border: 1px solid black;
+					background: rgb(240,240,240);
+
+				}
+			}
+
+			/*Listing des t-shirt*/
+			ul#recherche{
+				background: #E9E9ED;
+
+				li{
+					display: block;
+					padding: 0.7em;
+					margin: 0;
+					border-bottom: 1px solid black;
+                    
+                    ul.tshirt{
+                        float: right;
+                        width:10;
+                        	
+                        	li{
+                        		margin:0 0 3% 0;
+                        		padding:0 9px 0 0;
+                        		display:inline-block;
+  								border:none;
+							}
+
+                    		li.modif:hover{
+								cursor:pointer; 
+							}
+							li.voir:hover{ 
+								cursor:pointer; 
+							}
+							li.supprimer:hover{
+									cursor:pointer; 
+							}
+					}
+
+					/*formulaire modifier*/
+					form{
+						padding: 0.5em;
+						position: relative;
+						padding: 0.5em;
+						display: flex;
+					
+						section{
+							width: 30%;
+							padding: 0.5em;
+						}
+						
+						input{
+    						padding:5px; 
+    						border:2px solid grey; 
+    						-webkit-border-radius: 5px;
+    						border-radius: 5px;
+						}
+
+						input:focus {
+    						border-color:#5cb85c;
+    					}
+
+						input[type=button] {
+   		 					padding:5px 15px; 
+    						background:#ccc; 
+   	 						border:0 none;
+    						cursor:pointer;
+    						-webkit-border-radius: 5px;
+    						border-radius: 5px; 
+						}
+
+						label{
+    						display: inline-block;
+    						width: 150px;
+						}
+
+						textarea{
+							overflow: hidden;
+							border:2px solid grey; 
+   	 						-webkit-border-radius: 5px;
+    						border-radius: 5px;
+							height: 60px;
+							width: 230px;
+						}
+
+						span:hover{
+							cursor:pointer;
+						}
+
+						#imglist{
+								width:100%;
+						}
+
+						#infosAjout{
+							select {
+    							padding:3px;
+   					 			margin: 0;
+    							-webkit-border-radius:4px;
+   				 				-moz-border-radius:4px;
+    							border-radius:4px;
+   	 							-webkit-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+    							-moz-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+    							box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+    							background: #f8f8f8;
+    							color:#888;
+    							border:none;
+    							outline:none;
+    							display: inline-block;
+    							-webkit-appearance:none;
+    							-moz-appearance:none;
+    							appearance:none;
+    							cursor:pointer;
+							}
+
+							p{ 	
+								margin-top: 0.5em;
+								margin-bottom: 0.5em;
+							}
+
+							#prodDesc{
+								width: 100%;
+								height: 10rem;
+							}
+						}
+
+						#taillesAjout{
+
+							p{ 	
+								margin-top: 0.5em;
+								margin-bottom: 0.5em;
+							}
+						}
+
+						#ajoutTaille{
+							margin:3%;
+
+						}
+
+						.boutonsFormModifier{
+							
+							position: absolute;
+							bottom:3%;
+							right: 25%;
+						}
+					}
+				}		
+            }
+		}
+	}
+}
+
