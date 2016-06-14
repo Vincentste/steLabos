@@ -172,7 +172,6 @@ class Affichage{
             </section>
             <section id="taillesModif">
                 <h2>Tailles</h2> 
-        
                 <input type="button" id="ajoutTaille" value="ajouter" autocomplete="off"/>
             </section>
             <div class="boutonsFormModifier">

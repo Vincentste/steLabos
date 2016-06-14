@@ -360,9 +360,10 @@ function modifTshirt(){
                                 }
                             }     
             });
+            // recup des tailles du tshirt et injection.
             $.getJSON("dispatcher.php",{"op":"tailleTshirt","idTshirt":idTshirt},function(a){
                 for(var i=0; i < a.length; i++){
-                    $('<br/><label for=taille'+a[i].taille+'>'+a[i].taille+'</label><input name=taille'+a[i].taille+' id=ModifTaille'+a[i].taille+' value='+a[i].stock+' type=text/> <span data=ModifTaille'+a[i].taille+' id='+(i+1)+' class="suppTaille fa fa-trash"></span> <span data="ModifTaille'+a[i].taille+'" id='+(i+1)+' class="UpdateTaille fa fa-pencil"></span><br/>').appendTo("#taillesModif>h2");   
+                    $('<br/><label for=taille'+a[i].taille+'>'+a[i].taille+'</label><input name=taille'+a[i].taille+' id=ModifTaille'+a[i].taille+' value='+a[i].stock+' type=text/> <span data=ModifTaille'+a[i].taille+' name='+a[i].idTaille+' class="suppTaille fa fa-trash"></span> <span data="ModifTaille'+a[i].taille+'" name='+a[i].idTaille+' class="UpdateTaille fa fa-pencil"></span><br/>').appendTo("#taillesModif>h2");   
                 }   
             }); 
         });   
@@ -402,12 +403,12 @@ $('.contenu').on('click','#boutMod', function UpdateTshirt(e){
 });
 
 
-//supprime le stock d'une taille d'un tshirt ds la DB
+//supprime la taille d'un tshirt ds la DB
 $('.contenu').on('click','.suppTaille', function UpdateTaille(e){
     // affiche la F. modal de confirmation
     var idTshirt = $(this).parents("li").find("h2").attr("data");
     var modal = $('#myModalSupp');
-    $('#myModalSupp').find('h2').replaceWith("<h2 id="+$(this).attr("id")+" class="+idTshirt+" data="+$(this).attr("data")+">Voulez vous supprimer le Stock de cette taille?</h2>");
+    $('#myModalSupp').find('h2').replaceWith("<h2 id="+$(this).attr("name")+" class="+idTshirt+" data="+$(this).attr("data")+">Voulez vous supprimer le Stock de cette taille?</h2>");
     $(".modal-body").find("p").remove();
     $('<p class="ouiTaille">OUI</p><p class="nonTaille">NON</p>').appendTo(".modal-body");
     modal.css('display' ,"block");
@@ -464,7 +465,7 @@ $(".contenu").on("click",".UpdateTaille",function UpdateTaille(e){
     var taille = $(this).attr("data");
     var valeurTaille = $("#"+taille+"").val();
     var idTshirt = $(this).parents("li").find("h2").attr("data");
-    var idTaille = $(this).attr("id");
+    var idTaille = $(this).attr("name");
     $.getJSON("dispatcher.php",{"op":"UpdateTaille","idTaille":idTaille,"idTshirt":idTshirt,"valeur":valeurTaille});
     $("#myModal").find("h2").replaceWith("<h2> Le stock à bien été mis à jour</h2>");
     $('#myModal').fadeIn();
