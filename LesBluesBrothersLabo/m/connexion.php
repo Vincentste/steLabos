@@ -193,7 +193,7 @@ function AjoutTailleVoletModif($idTshirt,$ValTaille){
         $resultat=$connexion->prepare($requete);
         $resultat->execute([":idTshirt"=>$idTshirt,":ValTaille"=>$ValTaille]);
     }
-    
+    return requeteTailleTshirt($idTshirt);
 }
 
 

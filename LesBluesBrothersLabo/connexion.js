@@ -274,8 +274,19 @@ function voletAjoutImages(e){
 
 //-----------------------------------------------------------modifier Tshirt----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+function recupTaille(idTshirt){
+    $.getJSON("dispatcher.php",{"op":"tailleTshirt","idTshirt":idTshirt},function(a){
+        $("<div id='tailleMod'></div>").insertAfter("#taillesModif>h2")
+        for(var i=0; i < a.length; i++){
+            $('<br/><label for=taille'+a[i].taille+'>'+a[i].taille+'</label><input name=taille'+a[i].taille+' id=ModifTaille'+a[i].taille+' value='+a[i].stock+' type=text/> <span data=ModifTaille'+a[i].taille+' name='+a[i].idTaille+' class="suppTaille fa fa-trash"></span> <span data="ModifTaille'+a[i].taille+'" name='+a[i].idTaille+' class="UpdateTaille fa fa-pencil"></span><br/>').appendTo("#tailleMod");   
+        }   
+    }); 
+}
+
+
 //ouverture du volet modifier + insertion ds les champs et sauvegarde de l update!
-function modifTshirt(){
+function modifTshirt(e){
+
     $("form.modifier").children().remove();
     //Ajoute ou enlève la class au clique sur le bouton modif tshirt
     $("form.modifier").toggleClass("open");
@@ -361,14 +372,11 @@ function modifTshirt(){
                                 }
                             }     
             });
-            // recup des tailles du tshirt et injection.
-            $.getJSON("dispatcher.php",{"op":"tailleTshirt","idTshirt":idTshirt},function(a){
-                for(var i=0; i < a.length; i++){
-                    $('<br/><label for=taille'+a[i].taille+'>'+a[i].taille+'</label><input name=taille'+a[i].taille+' id=ModifTaille'+a[i].taille+' value='+a[i].stock+' type=text/> <span data=ModifTaille'+a[i].taille+' name='+a[i].idTaille+' class="suppTaille fa fa-trash"></span> <span data="ModifTaille'+a[i].taille+'" name='+a[i].idTaille+' class="UpdateTaille fa fa-pencil"></span><br/>').insertAfter("#taillesModif>h2");   
-                }   
-            }); 
         });   
-    }else{
+        // recup des tailles du tshirt et injection.
+        recupTaille(idTshirt);
+    }
+    else{
         $("form.modifier").children().remove(); 
     }    
 }
@@ -415,19 +423,22 @@ $('.contenu').on('click','.suppTaille', function UpdateTaille(e){
     modal.css('display' ,"block");
 });
 //confirmation => oui 
-$('.modal-body').on('click','.ouiTaille', function choixOuiTaille(e){
+$('.modal-body').on('click','.ouiTaille', function ChoixOuiTaille(e){
+    $("#tailleMod").remove();
     var taille = $(".modal-content").find("h2").attr("data");
     var idTshirt = $(".modal-content").find("h2").attr("class");
     var idTaille = $(".modal-content").find("h2").attr("id");
     $("#"+taille+"").val('0');
-    $.getJSON("dispatcher.php",{"op":"supprimerTaille","idTaille":idTaille,"idTshirt":idTshirt});
+    $.getJSON("dispatcher.php",{"op":"supprimerTaille","idTaille":idTaille,"idTshirt":idTshirt},function(){
+        recupTaille(idTshirt);
+    });
     $(".modalSupp").fadeOut();
     $("#myModal").find("h2").replaceWith("<h2> Le stock à bien été mis à jour</h2>");
     $('#myModal').fadeIn();
     $('#myModal').fadeOut(2000);
 });
 //confirmation => non
-$('.modal-body').on('click','.nonTaille', function choixNonTaille(e){
+$('.modal-body').on('click','.nonTaille', function ChoixNonTaille(e){
     $(".modalSupp").fadeOut(); 
 });
 
@@ -481,14 +492,17 @@ $(".contenu").on("click","#ajoutTailleModif",function OuvreVoletTailleModif(e){
 });
 //valide l'ajout d'une taille
 $("#myModalTaille").on("click",".submit",function AjouteTailleModif(e){
+    $("#tailleMod").remove();
     var idTshirt = $(this).attr("id");
     var ValTaille = $(".valeur").val().toUpperCase();
-    $.getJSON("dispatcher.php",{"op":"AjoutTaille","idTshirt":idTshirt,"ValTaille":ValTaille});
     $("#myModalTaille").css('display','none');
-
+    $.getJSON("dispatcher.php",{"op":"AjoutTaille","idTshirt":idTshirt,"ValTaille":ValTaille},function(){
+        recupTaille(idTshirt);
+    });
+    
 });
 //ferme la modal ajout d'une Taille
- $(".close-taille").on("click",function(){
+$(".close-taille").on("click",function close(){
         $("#myModalTaille").css('display','none');
 });
 
