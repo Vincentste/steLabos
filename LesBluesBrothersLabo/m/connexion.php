@@ -200,10 +200,10 @@ function nbrImg(){
     return $resultat->fetch(PDO::FETCH_OBJ);
 }
 
-
-function requeteSelectImg($limite,$offset){
+function requeteSelectImg($limite){
     $requete='SELECT DISTINCT prod_img_gd,prod_img_pt FROM produits 
-              WHERE prod_img_gd !="" AND prod_img_pt !="" LIMIT '.$limite.','.$offset.'';
+              WHERE prod_img_gd !="" AND prod_img_pt !="" LIMIT '.$limite.',3';
+
     $connexion=connexion_PDO();
     $resultat=$connexion->prepare($requete);
     $resultat->execute();
