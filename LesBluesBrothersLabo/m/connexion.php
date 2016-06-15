@@ -55,6 +55,15 @@ function recupAllCategories(){
     //dans résultat on a l'ensemble des résultats de la requete
      return $resultat->fetchAll(PDO::FETCH_OBJ);
 }
+
+// recup les tailles 
+function recupTaille(){
+    $requete='SELECT tail_nom as taille FROM tailles';
+    $connexion=connexion_PDO();
+    $resultat=$connexion->prepare($requete);
+    $resultat->execute([]);
+    return $resultat->fetchAll(PDO::FETCH_OBJ);
+}
 	
 function requeteTshirtParNoms($lettre){
 	$requete='SELECT * FROM produits where prod_nom like :a';
@@ -148,20 +157,13 @@ function recupere_infos_untshirt($id){
 }    
 //recup les tailles d'un t-shirt
 function requeteTailleTshirt($idTshirt){
-    $requete='SELECT tail_id as idTaille,tail_nom as taille,exem_stock as stock FROM exemplaires LEFT OUTER JOIN tailles on tail_id = exem_fk_tail  WHERE exem_fk_tee = :idTshirt  ';
+    $requete='SELECT tail_id as idTaille,tail_nom as taille,exem_stock as stock FROM exemplaires LEFT OUTER JOIN tailles on tail_id = exem_fk_tail  WHERE exem_fk_tee = :idTshirt ORDER BY `exemplaires`.`exem_fk_tee` ASC ';
     $connexion=connexion_PDO();
     $resultat=$connexion->prepare($requete);
     $resultat->execute([":idTshirt"=>$idTshirt]);
     return $resultat->fetchAll(PDO::FETCH_OBJ);
 }
-// recup les tailles 
-function recupTaille(){
-    $requete='SELECT tail_nom as taille FROM tailles';
-    $connexion=connexion_PDO();
-    $resultat=$connexion->prepare($requete);
-    $resultat->execute([]);
-    return $resultat->fetchAll(PDO::FETCH_OBJ);
-}
+
 function InsertTaille($ValTaille){
     $requete='INSERT INTO tailles (tail_nom) VALUES (:ValTaille)';
     $connexion=connexion_PDO();

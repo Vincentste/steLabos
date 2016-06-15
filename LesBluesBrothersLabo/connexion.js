@@ -6,6 +6,9 @@ $('.contenu').on("click",".envoi",valideMotDePasse);
 $('.contenu').on('keyup','#champTexte',rechercheParTexte);
 $('.contenu').on('click','#buttonAjout',voletAjoutTshirt);
 $('.contenu').on('click','#boutSav',saveTshirt);
+$('.contenu').on('click','.suppTailleAjout',suppTailleAjout)
+$('.contenu').on('click','#ajoutTaille',AfficheAjouterTaille);
+$('#myModalTaille').on('click','.ajouter',AjouterTaille),
 $('.contenu').on('click','#boutAnn',annuleTshirt);
 $('.contenu').on('click','#boutChampRech',rechercheParFiltres);
 $('.contenu').on('click','.modif',modifTshirt);
@@ -108,7 +111,7 @@ function valideMotDePasse(e){
 }
 
 
-//--------------------------------------MOTEUR DE RECHERCHE---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------MOTEUR DE RECHERCHE---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 // barre de recherche 
 function rechercheParTexte(e){
@@ -133,10 +136,12 @@ function rechercheParTexte(e){
         });
     } 
 }
-//                                          -----------------                                                                                                                                                                                                                                                                                                                                               ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//                                                           -----------------                                                                                                                                                                                                                                                                                                                                               ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
+
+/*-----------------------------------------------------------RECHERCHE PAR FILTRE-------------------------------------------------------------------------------------------------*/
 
 //recherche les noms des tshirt ds la DB
 function rechercheParFiltres(e){
@@ -153,19 +158,14 @@ function rechercheParFiltres(e){
        
     });
 }
-/*-------------------------------------------------------VOLET AJOUT---------------------------------------------------------*/
+//                                                             ---------------------
 
 
-function voletAjoutTshirt(e){
-    //Ajoute ou enlève la class au clique sur le bouton ajout tshirt
-    $("#voletAjout").toggleClass("open");
 
-    //Ouvrire ou fermer le volet en fonction de la class "open"
-    if($("#voletAjout").hasClass("open")){
-        
-        $("#voletAjout").load("dispatcher.php","op=voletAjoutTshirt"); 
-        
-        $.getJSON("dispatcher.php","op=data_recherche",function(data){
+/*-------------------------------------------------------------------VOLET AJOUT----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+function recupData_affiche(){
+    $.getJSON("dispatcher.php","op=data_recherche",function(data){
 
                         var categories=data['categories'];
                         for(var i=0;i < categories.length;i++){
@@ -189,15 +189,49 @@ function voletAjoutTshirt(e){
                         }     
                         
                         var tailles=data['taille'];
+                        //ajout de la div qui va contenir les tailles 
                         $("<div id=taillesAj></div").insertAfter("#taillesAjout>h2")
+                        //recup tt les tailles de la DB et les injectes
                         for(var i=0;i < tailles.length;i++){
-                            $("<p><label for=taille"+tailles[i].taille+">"+tailles[i].taille+" : </label><input type=text name=tailleS id=tailleS/> <span class=fa fa-trash></span> <span class=fa fa-pencil></span></p>").appendTo("#taillesAj"); 
+                            $("<p id="+tailles[i].taille+"><label for=taille"+tailles[i].taille+">"+tailles[i].taille+" : </label><input type=text name=taille"+tailles[i].taille+" id=taille"+tailles[i].taille+"/> <span class='suppTailleAjout fa fa-trash'></span> <span class='fa fa-pencil'></span></p>").appendTo("#taillesAj"); 
                         } 
         });
+}
+
+
+
+
+function voletAjoutTshirt(e){
+    //Ajoute ou enlève la class au clique sur le bouton ajout tshirt
+    $("#voletAjout").toggleClass("open");
+
+    //Ouvrire ou fermer le volet en fonction de la class "open"
+    if($("#voletAjout").hasClass("open")){
+        
+        $("#voletAjout").load("dispatcher.php","op=voletAjoutTshirt"); 
+            recupData_affiche();
     }else{
         $("#voletAjout").empty(); 
     }    
 }
+
+
+function suppTailleAjout(e){
+    $(this).parents("p").remove();
+}
+
+//ouvre la fenêtre modal pour saisir la taille à ajouter 
+function AfficheAjouterTaille(e){
+    $("#myModalTaille").css('display','block');
+    $(".modal-footer-taille >input").removeClass();
+    $(".modal-footer-taille >input").attr("class","ajouter");
+}
+//confirmation
+function AjouterTaille(){
+
+    alert("ok");
+}
+
 
 function saveTshirt(){
 
@@ -273,12 +307,12 @@ function voletAjoutImages(e){
     
 
 
-/*---------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 
 
 
-//-----------------------------------------------------------VOLET MODIFIER Tshirt----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/*-----------------------------------------------------------VOLET MODIFIER Tshirt-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 // fonction qui affiche les tailles d un tshirt 
 function recupTaille(idTshirt){
@@ -495,6 +529,8 @@ $(".contenu").on("click","#ajoutTailleModif",function OuvreVoletTailleModif(e){
     var idTshirt = $(this).parents("li").find("h2").attr("data");
     $("#myModalTaille").css('display','block');
     $("#myModalTaille").find(".submit").attr("id",idTshirt);
+    $(".modal-footer-taille >input").removeClass();
+    $(".modal-footer-taille >input").attr("class","submit");
 });
 //valide l'ajout d'une taille
 $("#myModalTaille").on("click",".submit",function AjouteTailleModif(e){
@@ -512,6 +548,8 @@ $(".close-taille").on("click",function close(){
         $("#myModalTaille").css('display','none');
 });
 
-/*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+
 
 });
