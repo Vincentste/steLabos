@@ -310,8 +310,8 @@ body .contenu .content ul#recherche li form #taillesAjout p {
   margin-bottom: 0.5em;
 }
 /* line 255, ../scss/style.scss */
-body .contenu .content ul#recherche li form #ajoutTaille {
-  margin: 3%;
+body .contenu .content ul#recherche li form #ajoutTailleModif {
+  margin: 3% 0 0 0;
 }
 /* line 260, ../scss/style.scss */
 body .contenu .content ul#recherche li form .boutonsFormModifier {

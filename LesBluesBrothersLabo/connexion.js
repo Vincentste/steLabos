@@ -363,7 +363,7 @@ function modifTshirt(){
             // recup des tailles du tshirt et injection.
             $.getJSON("dispatcher.php",{"op":"tailleTshirt","idTshirt":idTshirt},function(a){
                 for(var i=0; i < a.length; i++){
-                    $('<br/><label for=taille'+a[i].taille+'>'+a[i].taille+'</label><input name=taille'+a[i].taille+' id=ModifTaille'+a[i].taille+' value='+a[i].stock+' type=text/> <span data=ModifTaille'+a[i].taille+' name='+a[i].idTaille+' class="suppTaille fa fa-trash"></span> <span data="ModifTaille'+a[i].taille+'" name='+a[i].idTaille+' class="UpdateTaille fa fa-pencil"></span><br/>').appendTo("#taillesModif>h2");   
+                    $('<br/><label for=taille'+a[i].taille+'>'+a[i].taille+'</label><input name=taille'+a[i].taille+' id=ModifTaille'+a[i].taille+' value='+a[i].stock+' type=text/> <span data=ModifTaille'+a[i].taille+' name='+a[i].idTaille+' class="suppTaille fa fa-trash"></span> <span data="ModifTaille'+a[i].taille+'" name='+a[i].idTaille+' class="UpdateTaille fa fa-pencil"></span><br/>').insertAfter("#taillesModif>h2");   
                 }   
             }); 
         });   
@@ -413,7 +413,6 @@ $('.contenu').on('click','.suppTaille', function UpdateTaille(e){
     $('<p class="ouiTaille">OUI</p><p class="nonTaille">NON</p>').appendTo(".modal-body");
     modal.css('display' ,"block");
 });
-
 //confirmation => oui 
 $('.modal-body').on('click','.ouiTaille', function choixOuiTaille(e){
     var taille = $(".modal-content").find("h2").attr("data");
@@ -432,6 +431,7 @@ $('.modal-body').on('click','.nonTaille', function choixNonTaille(e){
 });
 
 
+
 // supprime un tshirt ds la DB
 $('.contenu').on('click','.supprimer', function supprimerTshirt(e){
     var idTshirt =($(this).attr("data"));
@@ -442,7 +442,6 @@ $('.contenu').on('click','.supprimer', function supprimerTshirt(e){
     $('<p class="ouiTshirt">OUI</p><p class="nonTshirt">NON</p>').appendTo(".modal-body");
     modal.css('display' ,"block");
 });
-
 //confirmation --> oui
 $('.modal-body').on('click','.ouiTshirt', function choixOuiTshirt(e){
     idTshirt = $(".modal-content").find("h2").attr("id");
@@ -470,10 +469,26 @@ $(".contenu").on("click",".UpdateTaille",function UpdateTaille(e){
     $("#myModal").find("h2").replaceWith("<h2> Le stock à bien été mis à jour</h2>");
     $('#myModal').fadeIn();
     $('#myModal').fadeOut(2000);
-})
+});
 
 
+//ajouter une taille 
+$(".contenu").on("click","#ajoutTailleModif",function OuvreVoletTailleModif(e){
+    var idTshirt = $(this).parents("li").find("h2").attr("data");
+    $("#myModalTaille").css('display','block');
+    $("#myModalTaille").find(".submit").attr("id",idTshirt);
+});
+//valide l'ajout d'une taille
+$("#myModalTaille").on("click",".submit",function AjouteTailleModif(e){
+    var idTshirt = $(this).attr("id");
+    var ValTaille = $(".valeur").val().toUpperCase();
+    $.getJSON("dispatcher.php",{"op":"AjoutTaille","idTshirt":idTshirt,"ValTaille":ValTaille});
 
+});
+//ferme la modal ajout d'une Taille
+ $(".close-taille").on("click",function(){
+        $("#myModalTaille").css('display','none');
+});
 
 /*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 

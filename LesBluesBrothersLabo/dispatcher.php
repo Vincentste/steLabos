@@ -16,6 +16,7 @@
         "tailleTshirt"=>"accueil.html",
         "UpdateTshirt"=>"accueil.html",
         "UpdateTaille"=>"accueil.html",
+        "AjoutTaille"=>"accueil.html",
         "afficheModifierTshirt"=>"accueil.html",
         "voletAjoutTshirt"=>"accueil.html",
         "recherche_image"=>"accueil.html",
@@ -198,10 +199,18 @@
                 RequeteUpdate_Taille($idTshirt,$idTaille,$valeur);
             break;
 
-             // supprime le stock de la taille d'un tshirt 
+             // supprime la taille d'un tshirt 
             case "supprimerTaille":
                 $idTshirt = $_GET['idTshirt'];
                 $idTaille = $_GET['idTaille'];
                 RequeteSupprimeTaille($idTaille,$idTshirt);
+            break;
+
+            // ajoute une taille ds le volet modifier
+            case "AjoutTaille":
+                $idTshirt = $_GET['idTshirt'];
+                $ValTaille = $_GET['ValTaille'];
+                $requete = AjoutTailleVoletModif($idTshirt,$ValTaille);
+                echo json_encode($requete);
             break;
     }
