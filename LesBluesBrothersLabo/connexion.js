@@ -153,6 +153,7 @@ function rechercheParFiltres(e){
        
     });
 }
+/*-------------------------------------------------------VOLET AJOUT---------------------------------------------------------*/
 
 
 function voletAjoutTshirt(e){
@@ -186,8 +187,13 @@ function voletAjoutTshirt(e){
                             option.text(matieres[i].mat_nom);
                             option.appendTo('#prodMatAjout');    
                         }     
+                        
+                        var tailles=data['taille'];
+                        $("<div id=taillesAj></div").insertAfter("#taillesAjout>h2")
+                        for(var i=0;i < tailles.length;i++){
+                            $("<p><label for=taille"+tailles[i].taille+">"+tailles[i].taille+" : </label><input type=text name=tailleS id=tailleS/> <span class=fa fa-trash></span> <span class=fa fa-pencil></span></p>").appendTo("#taillesAj"); 
+                        } 
         });
-
     }else{
         $("#voletAjout").empty(); 
     }    
@@ -267,13 +273,14 @@ function voletAjoutImages(e){
     
 
 
+/*---------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 
 
 
+//-----------------------------------------------------------VOLET MODIFIER Tshirt----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-//-----------------------------------------------------------modifier Tshirt----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+// fonction qui affiche les tailles d un tshirt 
 function recupTaille(idTshirt){
     $.getJSON("dispatcher.php",{"op":"tailleTshirt","idTshirt":idTshirt},function(a){
         $("<div id='tailleMod'></div>").insertAfter("#taillesModif>h2")

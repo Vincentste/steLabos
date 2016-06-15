@@ -84,9 +84,11 @@
             $tabCat = recupAllCategories();
             $tabMat = recupAllMatieres();
             $tabCrea = recupAllCreateurs();
+            $tabTaille = recupTaille();
             $tab = ["categories"=>$tabCat,
                 "matieres"=>$tabMat,
-                "createurs"=>$tabCrea];
+                "createurs"=>$tabCrea,
+                "taille"=>$tabTaille];
             echo json_encode($tab);
             break;
             
