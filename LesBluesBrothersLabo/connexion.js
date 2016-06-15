@@ -242,10 +242,11 @@ function voletAjoutImages(e){
         $.getJSON("dispatcher.php",{"op":"recherche_image","pg":page},function(data){             
             var src = "images/";
             var nbrImage = (data["nbrImg"].nbrImgs);
-            console.log(data);
-            var nbrPage = Math.round(nbrImage/4);
+            console.log(data["images"].length);
+            var boucle = (data["images"].length)-1;
+            var nbrPage = Math.floor(nbrImage/4);
            
-            for(var i=0;i < 2;i++){
+            for(var i=0;i < boucle;i++){
                 $("<img/>").appendTo("#voletImageAjout").attr("src",src+data["images"][i].prod_img_pt);
                 $("<img/>").appendTo("#voletImageAjout").attr("src",src+data["images"][i].prod_img_gd);
             }
