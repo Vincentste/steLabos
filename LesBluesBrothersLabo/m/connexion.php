@@ -154,14 +154,45 @@ function requeteTailleTshirt($idTshirt){
     $resultat->execute([":idTshirt"=>$idTshirt]);
     return $resultat->fetchAll(PDO::FETCH_OBJ);
 }
+// recup les tailles 
+function recupTaille(){
+    $requete='SELECT tail_nom as taille FROM tailles';
+    $connexion=connexion_PDO();
+    $resultat=$connexion->prepare($requete);
+    $resultat->execute([]);
+    return $resultat->fetchAll(PDO::FETCH_OBJ);
+}
+function InsertTaille($ValTaille){
+    $requete='INSERT INTO tailles (tail_nom) VALUES (:ValTaille)';
+    $connexion=connexion_PDO();
+    $resultat=$connexion->prepare($requete);
+    $resultat->execute([":ValTaille"=>$ValTaille]);
+}
 
+// ajoute une taille au volet Modif 
 function AjoutTailleVoletModif($idTshirt,$ValTaille){
-    $Taille = requeteTailleTshirt($idTshirt);
-    $tab=[];
-    foreach ($Taille as $keys => $value) {
-        $tab = $Taille->$value;
+    $Taille = recupTaille();
+    $tab = [];
+    for ($i=0; $i < count($Taille); $i++) { 
+        array_push($tab, $Taille[$i]->taille);
     }
-    return $tab;
+    //si la taille est déjà dans la DB
+    if(in_array($ValTaille, $tab)){
+        //insert dans exemplaire de la nouvelle taille avec stock à zéro
+        $requete='INSERT INTO exemplaires (exem_fk_tail,exem_fk_tee,exem_stock) SELECT tail_id,:idTshirt,0 FROM tailles WHERE tail_nom LIKE :ValTaille ';
+        $connexion=connexion_PDO();
+        $resultat=$connexion->prepare($requete);
+        $resultat->execute([":idTshirt"=>$idTshirt,":ValTaille"=>$ValTaille]);
+    //si la taille n'existe pas dans la DB
+    }else{
+        //insert de la nouvelle Taille 
+        InsertTaille($ValTaille);
+        //insert dans exemplaire de la nouvelle taille avec stock à zéro
+        $requete='INSERT INTO exemplaires (exem_fk_tail,exem_fk_tee,exem_stock) SELECT tail_id,:idTshirt,0 FROM tailles WHERE tail_nom LIKE :ValTaille ';
+        $connexion=connexion_PDO();
+        $resultat=$connexion->prepare($requete);
+        $resultat->execute([":idTshirt"=>$idTshirt,":ValTaille"=>$ValTaille]);
+    }
     
 }
 

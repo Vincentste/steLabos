@@ -484,6 +484,7 @@ $("#myModalTaille").on("click",".submit",function AjouteTailleModif(e){
     var idTshirt = $(this).attr("id");
     var ValTaille = $(".valeur").val().toUpperCase();
     $.getJSON("dispatcher.php",{"op":"AjoutTaille","idTshirt":idTshirt,"ValTaille":ValTaille});
+    $("#myModalTaille").css('display','none');
 
 });
 //ferme la modal ajout d'une Taille
