@@ -429,9 +429,8 @@ $('.modal-body').on('click','.ouiTaille', function ChoixOuiTaille(e){
     var idTshirt = $(".modal-content").find("h2").attr("class");
     var idTaille = $(".modal-content").find("h2").attr("id");
     $("#"+taille+"").val('0');
-    $.getJSON("dispatcher.php",{"op":"supprimerTaille","idTaille":idTaille,"idTshirt":idTshirt},function(){
-        recupTaille(idTshirt);
-    });
+    $.getJSON("dispatcher.php",{"op":"supprimerTaille","idTaille":idTaille,"idTshirt":idTshirt});
+    recupTaille(idTshirt);
     $(".modalSupp").fadeOut();
     $("#myModal").find("h2").replaceWith("<h2> Le stock à bien été mis à jour</h2>");
     $('#myModal').fadeIn();
