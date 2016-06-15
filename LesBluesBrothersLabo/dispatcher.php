@@ -119,8 +119,9 @@
                 $limite = ($_GET['pg']-1)*2;
                 $nbrImg = nbrImg();
                 $images=requeteSelectImg($limite);
+
                 $tabImg = ["nbrImg"=>$nbrImg,"images"=>$images];
-            echo json_encode($tabImg);
+                echo json_encode($tabImg);
             break;
 
             case "save_tshirt":
