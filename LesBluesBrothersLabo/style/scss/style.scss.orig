@@ -1,0 +1,177 @@
+@import "compass";
+@import "compass/reset";
+
+/*## VARIABLES ##*/
+
+/*## MIXINS ##*/
+a{ 
+	text-decoration: none; 
+	color: black;
+}
+
+body{
+	width: 75%;
+	margin: 0 auto;
+	font-family: helvetica,arial,"sans-serif";
+
+	.contenu{
+		border: 1px solid black;
+		margin: 1em;
+		padding: 1em;
+		min-height: 90vh;
+		
+		.content{
+			position: relative;
+			
+			h1{ 
+				font-size: 1.5em;
+				padding-bottom: 1em;
+				text-align: center; 
+			}
+			
+			/*Formulaire de recherche*/
+			#champHaut{	
+				border-bottom: 1px solid black;
+
+				#champTexte{
+					position: absolute;
+					top:0;
+					right: 0;
+					border-radius: 20px; 
+				}
+			}
+
+			#champbas{
+				position: relative;
+				display: flex;
+				margin: 1em;
+
+				#boutChampRech{
+					position: absolute;
+					right: 0;
+				}
+
+				p{ margin: 0 0.5em; }
+			}
+
+			/*Partie ajout*/			
+			#divAjout{
+			
+				#buttonAjout{
+					display: block;
+					text-align:center;
+					padding: 0.5em;
+					border-bottom: 1px solid black;
+					background: rgb(200,200,200);
+				}
+
+				#buttonAjout:hover{ cursor: pointer; }
+				
+				#voletAjout{
+<<<<<<< HEAD
+					padding: 0.5em;
+=======
+					position: relative;
+
+					padding: 0.5em;
+					
+
+					form{
+						display: flex;
+
+						section{
+							width: 30%;
+							padding: 0.5em
+						}
+						
+						#imgPrew img{
+							width: 50%;
+						}
+
+						#infosAjout{
+
+							p{ 	
+								margin-top: 0.5em;
+								margin-bottom: 0.5em;
+							}
+
+							#prodDesc{
+								width: 100%;
+								height: 10rem;
+							}
+						}
+
+						#taillesAjout{
+							p{ 	
+								margin-top: 0.5em;
+								margin-bottom: 0.5em;
+							}
+						}
+
+						.boutonsFormAjout{
+							position: absolute;
+							bottom:0;
+							right: 25%;
+						}
+					}
+				}
+
+				#imageAjout{
+					position: absolute;
+					top: 0;
+					right: 0;
+					height: 100%;
+					border: 1px solid black;
+					background: rgb(240,240,240);
+>>>>>>> 4b25272f8ef2449f4ebff2748c2fbe243609521d
+				}
+			}
+
+			/*Listing des t-shirt*/
+			ul#recherche{
+				background: rgb(200,200,210);
+
+				li{
+					display: block;
+					padding: 0.7em;
+					border-bottom: 1px solid black;
+                    
+                    ul{
+                        width:30%;
+                        float:right;
+                        .modif{
+                            background-image:url('../../icons/pencil.png');
+                            background-size:contain;
+                            background-position:top 50% left 50%;
+                            background-repeat:no-repeat;
+                            float:right;
+                            width:10%;
+                            
+                        }
+                        .voir{
+                            background-image:url('../../icons/plus-button.png');
+                            background-size:contain;
+                            background-position:top 50% left 50%;
+                            background-repeat:no-repeat;
+                            float:right;
+                            width:10%;
+                            
+                        }
+                        .supprimer{
+                            background-image:url('../../icons/rubbish-bin.png');
+                            background-size:contain;
+                            background-position:top 50% left 50%;
+                            background-repeat:no-repeat;
+                            float:right;
+                            width:10%;
+                        }
+                    }
+				}
+			}
+		}
+	}
+<<<<<<< HEAD
+
+=======
+>>>>>>> 4b25272f8ef2449f4ebff2748c2fbe243609521d
+}
