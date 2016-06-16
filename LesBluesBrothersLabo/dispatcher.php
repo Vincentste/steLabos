@@ -139,26 +139,19 @@
                 $mat= $_GET['mat'];
                 $date_aj= $_GET['date'];
                 $cat= $_GET['cat'];
+                $StockTaille = $_GET['taille'];
 
-                $qtTailleS= $_GET['tailleS'];
-                $qtTailleM= $_GET['tailleM'];
-                $qtTailleL= $_GET['tailleL'];
-                $qtTailleXL= $_GET['tailleXL'];
-
-                $tabExem = ["1"=>$qtTailleS,"2"=>$qtTailleM,"3"=>$qtTailleL,"4"=>$qtTailleXL];
-
-                //Insérer le produit et récupérer l'id de celui-ci
+                 //Insérer le produit et récupérer l'id de celui-ci
                 $id_exem = requeteInsertTshirt($nom,$prix,$img_gd,$img_pt,$des,$crea,$mat,$date_aj,$cat);
                 
                 //Si le produit à bien été ajouté, insérer les exemplaires
                 if($id_exem > 0){
-                   
                     //Boucler sur toutes les tailles
-                    foreach ($tabExem as $id_taille => $stock) {
-                        requeteInsertExem($id_exem,$id_taille,$stock);
+                    foreach($StockTaille as $idtaille=>$stock){
+                        requeteInsertExem($id_exem,$idtaille,$stock);
                     }                    
-                }
-
+               }
+               
             break;
 
             //affiche les infos à modifier pour un tshirt 
@@ -197,10 +190,7 @@
                   RequeteUpdate_Taille($idTshirt,$taille,$stock);
                 }
                RequeteUpdate_Tshirt($idTshirt,$nom,$prix,$date,$desc,$crea,$mat,$cat);
-
-                echo json_encode($StockTaille);
             break;
-
 
              // supprime la taille d'un tshirt 
             case "supprimerTaille":
@@ -209,13 +199,14 @@
                 RequeteSupprimeTaille($idTaille,$idTshirt);
             break;
 
-            // ajoute une taille ds le volet modifier
+            // ajoute une taille ds le volet Modifier
             case "AjoutTaille":
                 $idTshirt = $_GET['idTshirt'];
                 $ValTaille = $_GET['ValTaille'];
                 $requete = AjoutTailleVoletModif($idTshirt,$ValTaille);
             break;
 
+            //ajoute une taille ds le volet Ajout 
             case "AjoutTailleAjout":
                 $ValTaille = $_GET['ValTaille'];
                 $requete = AjoutTailleVoletAjout($ValTaille);

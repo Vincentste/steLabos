@@ -102,7 +102,7 @@ function requeteInsertTshirt($nom,$prix,$img_gd,$img_pt,$des,$crea,$mat,$date_aj
 }
 
 function requeteInsertExem($id_exem,$id_taille,$stock){
-    $requete='INSERT INTO exemplaires(exem_fk_tee,exem_fk_tail,exem_stock) VALUES (:id_exem,:id_taille,:stock)';
+    $requete='INSERT INTO exemplaires (exem_fk_tail,exem_fk_tee,exem_stock) SELECT tail_id,:id_exem,:stock FROM tailles WHERE tail_nom = :id_taille ';
     $connexion=connexion_PDO();
     $resultat=$connexion->prepare($requete);
     $resultat->execute(

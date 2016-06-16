@@ -227,21 +227,25 @@ function AfficheAjouterTaille(e){
     $(".modal-footer-taille >input").attr("class","ajouter");
 }
 //confirmation
-function AjouterTaille(){
+function AjouterTaille(e){
    var ValTaille = $(".valeur").val().toUpperCase();
    //$.getJSON("dispatcher.php",{"op":"AjoutTailleAjout","ValTaille":ValTaille},function(taille));
 
    $("<p id="+ValTaille+"><label for=taille"+ValTaille+">"+ValTaille+" : </label><input type=text name=taille"+ValTaille+" id=taille"+ValTaille+"/> <span class='suppTailleAjout fa fa-trash'></span> <span class='fa fa-pencil'></span></p>").appendTo("#taillesAj"); 
 }
 
+// ajoute un T-shirt dans la bd
+function saveTshirt(e){
 
-function saveTshirt(){
-
-    //trouve tous les tailles existantes
+    //recup le stock des tailles
+    var tab = new Object();
     $("#taillesAj").find("p").each(function(){
-               console.log($(this).attr("id"));
+            var taille =($(this).attr("id"));
+            var stock =($(this).find("input").val());
+            tab[taille] = stock;
     });
 
+    //recup autre champ
     var prodNom = $('#prodNomAjout').val();
     var prodPrix = $('#prodPrixAjout').val();
     var img_gd = "vide";
@@ -251,13 +255,8 @@ function saveTshirt(){
     var mat = $('#prodMatAjout').val();
     var date_aj = $('#prodDateAjout').val();
     var cat = $('#prodCatAjout').val();
-    var tailleS = $('#tailleS').val();
-    var tailleM = $('#tailleM').val();
-    var tailleL = $('#tailleL').val();
-    var tailleXL = $('#tailleXL').val();
 
-    $("#voletAjout").load("dispatcher.php",
-    "op=save_tshirt&nom="+prodNom+"&prix="+prodPrix+"&img_gd="+img_gd+"&img_pt="+img_pt+"&desc="+des+"&crea="+crea+"&mat="+mat+"&date="+date_aj+"&cat="+cat+"&tailleS="+tailleS+"&tailleM="+tailleM+"&tailleL="+tailleL+"&tailleXL="+tailleXL+""); 
+    $.getJSON("dispatcher.php",{"op":"save_tshirt","nom":prodNom,"prix":prodPrix,"img_gd":img_gd,"img_pt":img_pt,"desc":des,"crea":crea,"mat":mat,"date":date_aj,"cat":cat,"taille":tab}); 
 }
 
 function annuleTshirt(e){
