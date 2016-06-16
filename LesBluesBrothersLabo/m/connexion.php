@@ -76,7 +76,7 @@ function requeteTshirtParNoms($lettre){
 }
 
 function requeteSupprimerTshirt($id){
-	$requete='DELETE produits,exemplaires FROM produits where prod_id = :a';
+	$requete='DELETE produits,exemplaires FROM produits INNER JOIN exemplaires where prod_id = :a and exem_fk_tee= :a';
 	$connexion=connexion_PDO();
     $resultat=$connexion->prepare($requete);
     $resultat->execute([':a'=>$id]);
@@ -198,10 +198,10 @@ function AjoutTailleVoletModif($idTshirt,$ValTaille){
     return requeteTailleTshirt($idTshirt);
 }
 
-
-function AjoutTailleVoletAjout($ValTaille){
-  $Taille = recupTaille();
-  $tab = [];
+  //ajoute une taille au volet Ajout
+  function AjoutTailleVoletAjout($ValTaille){
+    $Taille = recupTaille();
+    $tab = [];
     for ($i=0; $i < count($Taille); $i++) { 
         array_push($tab, $Taille[$i]->taille);
     }

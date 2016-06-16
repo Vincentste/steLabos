@@ -229,9 +229,10 @@ function AfficheAjouterTaille(e){
 //confirmation
 function AjouterTaille(e){
    var ValTaille = $(".valeur").val().toUpperCase();
-   //$.getJSON("dispatcher.php",{"op":"AjoutTailleAjout","ValTaille":ValTaille},function(taille));
+   $.getJSON("dispatcher.php",{"op":"AjoutTailleAjout","ValTaille":ValTaille});
 
    $("<p id="+ValTaille+"><label for=taille"+ValTaille+">"+ValTaille+" : </label><input type=text name=taille"+ValTaille+" id=taille"+ValTaille+"/> <span class='suppTailleAjout fa fa-trash'></span> <span class='fa fa-pencil'></span></p>").appendTo("#taillesAj"); 
+   $("#myModalTaille").css('display','none');
 }
 
 // ajoute un T-shirt dans la bd
@@ -534,9 +535,7 @@ $("#myModalTaille").on("click",".submit",function AjouteTailleModif(e){
     var idTshirt = $(this).attr("id");
     var ValTaille = $(".valeur").val().toUpperCase();
     $("#myModalTaille").css('display','none');
-    $.getJSON("dispatcher.php",{"op":"AjoutTaille","idTshirt":idTshirt,"ValTaille":ValTaille},function(z){
-    
-    });
+    $.getJSON("dispatcher.php",{"op":"AjoutTaille","idTshirt":idTshirt,"ValTaille":ValTaille});
     recupTaille(idTshirt);
 });
 //ferme la modal ajout d'une Taille
