@@ -230,11 +230,17 @@ function AfficheAjouterTaille(e){
 function AjouterTaille(){
    var ValTaille = $(".valeur").val().toUpperCase();
    //$.getJSON("dispatcher.php",{"op":"AjoutTailleAjout","ValTaille":ValTaille},function(taille));
+
    $("<p id="+ValTaille+"><label for=taille"+ValTaille+">"+ValTaille+" : </label><input type=text name=taille"+ValTaille+" id=taille"+ValTaille+"/> <span class='suppTailleAjout fa fa-trash'></span> <span class='fa fa-pencil'></span></p>").appendTo("#taillesAj"); 
 }
 
 
 function saveTshirt(){
+
+    //trouve tous les tailles existantes
+    $("#taillesAj").find("p").each(function(){
+               console.log($(this).attr("id"));
+    });
 
     var prodNom = $('#prodNomAjout').val();
     var prodPrix = $('#prodPrixAjout').val();
@@ -320,7 +326,7 @@ function recupTaille(idTshirt){
     $.getJSON("dispatcher.php",{"op":"tailleTshirt","idTshirt":idTshirt},function(a){
         $("<div id='tailleMod'></div>").insertAfter("#taillesModif>h2")
         for(var i=0; i < a.length; i++){
-            $('<br/><label for=taille'+a[i].taille+'>'+a[i].taille+'</label><input name=taille'+a[i].taille+' id=ModifTaille'+a[i].taille+' value='+a[i].stock+' type=text/> <span data=ModifTaille'+a[i].taille+' name='+a[i].idTaille+' class="suppTaille fa fa-trash"></span> <span data="ModifTaille'+a[i].taille+'" name='+a[i].idTaille+' class="UpdateTaille fa fa-pencil"></span><br/>').appendTo("#tailleMod");   
+            $('<p id='+a[i].taille+'><label for=taille'+a[i].taille+'>'+a[i].taille+'</label><input name=taille'+a[i].taille+' id=ModifTaille'+a[i].taille+' value='+a[i].stock+' type=text/> <span data=ModifTaille'+a[i].taille+' name='+a[i].idTaille+' class="suppTaille fa fa-trash"></span> <span data="ModifTaille'+a[i].taille+'" class="UpdateTaille fa fa-pencil"></span></p>').appendTo("#tailleMod");   
         }   
     }); 
 }
@@ -427,6 +433,13 @@ function modifTshirt(e){
 
 // click pour Update Tshirt dans la DB 
 $('.contenu').on('click','#boutMod', function UpdateTshirt(e){
+        //recup des Stocks des tailles
+        var tab = new Object();
+        $("#tailleMod").find("p").each(function(){
+               var taille =($(this).attr("id"));
+               var stock =($(this).find("input").val());
+                tab[taille] = stock
+        });
         //recup des val des champs
         var idTshirt = $(this).parents("li").find("h2").attr("data");
         var nom = $("input#prodNom").val();
@@ -440,7 +453,7 @@ $('.contenu').on('click','#boutMod', function UpdateTshirt(e){
          //change la valeur du h2 ds la recherche
         $("li#tshirt"+idTshirt+" >h2").replaceWith("<h2 data="+idTshirt+">"+nom+"</h2>");
         //update ds la DB
-        $.getJSON("dispatcher.php",{"op":"UpdateTshirt","id":idTshirt,"prodNom":nom,"prodPrix":prix,"prodDate":date,"prodDesc":desc,"prodCre":crea,"prodMat":mat,"prodCat":cat});
+        $.getJSON("dispatcher.php",{"op":"UpdateTshirt","id":idTshirt,"prodNom":nom,"prodPrix":prix,"prodDate":date,"prodDesc":desc,"prodCre":crea,"prodMat":mat,"prodCat":cat,"StockTaille":tab});
         //feunêtre modal confirmation update
         var modal = $('#myModalModif');
         $("#myModal").find("h2").replaceWith("<h2>Le T-shirt a bien été mis à jour !</h2>");
@@ -448,6 +461,35 @@ $('.contenu').on('click','#boutMod', function UpdateTshirt(e){
         $('#myModal').fadeOut(1000);
         
 });
+
+// supprime un tshirt ds la DB
+$('.contenu').on('click','.supprimer', function supprimerTshirt(e){
+    var idTshirt =($(this).attr("data"));
+    //confirmation de la suppression
+    var modal = $('#myModalSupp');
+    $('#myModalSupp').find('h2').replaceWith("<h2 id="+idTshirt+">Voulez vous supprimer ce T-shirt?</h2>");
+    $(".modal-body").find("p").remove();
+    $('<p class="ouiTshirt">OUI</p><p class="nonTshirt">NON</p>').appendTo(".modal-body");
+    modal.css('display' ,"block");
+});
+//confirmation --> oui
+$('.modal-body').on('click','.ouiTshirt', function choixOuiTshirt(e){
+    idTshirt = $(".modal-content").find("h2").attr("id");
+    $.getJSON("dispatcher.php",{"op":"supprimerTshirt","id":idTshirt});
+    //supprime le li du tshirt supprimé. 
+    $('#tshirt'+idTshirt+'').remove();
+    $(".modalSupp").fadeOut();
+    $("#myModal").find("h2").replaceWith("<h2> Le T-shirt a bien été supprimé !</h2>");
+    $('#myModal').fadeIn();
+    $('#myModal').fadeOut(2000);
+});
+//confirmation -->non
+$('.modal-body').on('click','.nonTshirt', function choixNonTshirt(e){
+    $(".modalSupp").fadeOut(); 
+});
+
+
+
 
 
 //supprime la taille d'un tshirt ds la DB
@@ -482,45 +524,6 @@ $('.modal-body').on('click','.nonTaille', function ChoixNonTaille(e){
 });
 
 
-
-// supprime un tshirt ds la DB
-$('.contenu').on('click','.supprimer', function supprimerTshirt(e){
-    var idTshirt =($(this).attr("data"));
-    //confirmation de la suppression
-    var modal = $('#myModalSupp');
-    $('#myModalSupp').find('h2').replaceWith("<h2 id="+idTshirt+">Voulez vous supprimer ce T-shirt?</h2>");
-    $(".modal-body").find("p").remove();
-    $('<p class="ouiTshirt">OUI</p><p class="nonTshirt">NON</p>').appendTo(".modal-body");
-    modal.css('display' ,"block");
-});
-//confirmation --> oui
-$('.modal-body').on('click','.ouiTshirt', function choixOuiTshirt(e){
-    idTshirt = $(".modal-content").find("h2").attr("id");
-    $.getJSON("dispatcher.php",{"op":"supprimerTshirt","id":idTshirt});
-    //supprime le li du tshirt supprimé. 
-    $('#tshirt'+idTshirt+'').remove();
-    $(".modalSupp").fadeOut();
-    $("#myModal").find("h2").replaceWith("<h2> Le T-shirt a bien été supprimé !</h2>");
-    $('#myModal').fadeIn();
-    $('#myModal').fadeOut(2000);
-});
-//confirmation -->non
-$('.modal-body').on('click','.nonTshirt', function choixNonTshirt(e){
-    $(".modalSupp").fadeOut(); 
-});
-
-
-//update une taille d'un t-shirt 
-$(".contenu").on("click",".UpdateTaille",function UpdateTaille(e){
-    var taille = $(this).attr("data");
-    var valeurTaille = $("#"+taille+"").val();
-    var idTshirt = $(this).parents("li").find("h2").attr("data");
-    var idTaille = $(this).attr("name");
-    $.getJSON("dispatcher.php",{"op":"UpdateTaille","idTaille":idTaille,"idTshirt":idTshirt,"valeur":valeurTaille});
-    $("#myModal").find("h2").replaceWith("<h2> Le stock à bien été mis à jour</h2>");
-    $('#myModal').fadeIn();
-    $('#myModal').fadeOut(2000);
-});
 
 
 //ajouter une taille 

@@ -210,7 +210,7 @@ function AjoutTailleVoletAjout($ValTaille){
         //insert de la nouvelle Taille 
         InsertTaille($ValTaille);
     }
-    
+
     $requete='SELECT tail_id as IdTaille FROM tailles WHERE tail_nom = :ValTaille';
     $connexion=connexion_PDO();
     $resultat=$connexion->prepare($requete);
@@ -241,7 +241,7 @@ function RequeteSupprimeTaille($idTaille,$idTshirt){
 
 //update la taille d'un tshirt 
 function RequeteUpdate_Taille($idTshirt,$idTaille,$valeur){
-    $requete='UPDATE exemplaires SET exem_stock = :valeur WHERE exem_fk_tail= :idTaille AND exem_fk_tee = :idTshirt';
+    $requete='UPDATE exemplaires JOIN tailles ON exem_fk_tail = tail_id SET exem_stock = :valeur where exem_fk_tee = :idTshirt and tail_nom = :idTaille ';
     $connexion=connexion_PDO();
     $resultat=$connexion->prepare($requete);
     $resultat->execute([":valeur"=>$valeur,":idTaille"=>$idTaille,":idTshirt"=>$idTshirt]);

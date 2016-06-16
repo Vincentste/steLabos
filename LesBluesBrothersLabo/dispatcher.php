@@ -183,7 +183,7 @@
            
             //update le tshirt ds la DB
             case "UpdateTshirt":
-                $id= $_GET['id'];
+                $idTshirt= $_GET['id'];
                 $nom = $_GET['prodNom'];
                 $prix = $_GET['prodPrix'];
                 $date = $_GET['prodDate'];
@@ -191,16 +191,16 @@
                 $crea = $_GET['prodCre'];
                 $mat = $_GET['prodMat'];
                 $cat = $_GET['prodCat'];
-                RequeteUpdate_Tshirt($id,$nom,$prix,$date,$desc,$crea,$mat,$cat);
+                $StockTaille = $_GET['StockTaille'];
+                
+                foreach($StockTaille as $taille => $stock){
+                  RequeteUpdate_Taille($idTshirt,$taille,$stock);
+                }
+               RequeteUpdate_Tshirt($idTshirt,$nom,$prix,$date,$desc,$crea,$mat,$cat);
+
+                echo json_encode($StockTaille);
             break;
 
-            // update le stock d'une taille ds la DB
-            case "UpdateTaille":
-                $idTshirt = $_GET['idTshirt'];
-                $idTaille = $_GET['idTaille'];
-                $valeur = $_GET['valeur'];
-                RequeteUpdate_Taille($idTshirt,$idTaille,$valeur);
-            break;
 
              // supprime la taille d'un tshirt 
             case "supprimerTaille":
