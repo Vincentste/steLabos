@@ -503,17 +503,13 @@ $('.contenu').on('click','.suppTaille', function UpdateTaille(e){
 });
 //confirmation => oui 
 $('.modal-body').on('click','.ouiTaille', function ChoixOuiTaille(e){
-    $("#tailleMod").remove();
     var taille = $(".modal-content").find("h2").attr("data");
     var idTshirt = $(".modal-content").find("h2").attr("class");
     var idTaille = $(".modal-content").find("h2").attr("id");
-    $("#"+taille+"").val('0');
-    $.getJSON("dispatcher.php",{"op":"supprimerTaille","idTaille":idTaille,"idTshirt":idTshirt},function(e){
-        
-    });
+    $("#"+taille+"").parents("p").remove();
+    $.getJSON("dispatcher.php",{"op":"supprimerTaille","idTaille":idTaille,"idTshirt":idTshirt});
     $(".modalSupp").fadeOut();
     $("#myModal").find("h2").replaceWith("<h2> Le stock à bien été mis à jour</h2>");
-    recupTaille(idTshirt);
     $('#myModal').fadeIn();
     $('#myModal').fadeOut(2000);
 });
@@ -521,7 +517,6 @@ $('.modal-body').on('click','.ouiTaille', function ChoixOuiTaille(e){
 $('.modal-body').on('click','.nonTaille', function ChoixNonTaille(e){
     $(".modalSupp").fadeOut(); 
 });
-
 
 
 
