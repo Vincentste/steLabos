@@ -195,7 +195,7 @@ function recupData_affiche(){
                         for(var i=0;i < tailles.length;i++){
                             $("<p id="+tailles[i].taille+"><label for=taille"+tailles[i].taille+">"+tailles[i].taille+" : </label><input type=text name=taille"+tailles[i].taille+" id=taille"+tailles[i].taille+"/> <span class='suppTailleAjout fa fa-trash'></span> <span class='fa fa-pencil'></span></p>").appendTo("#taillesAj"); 
                         } 
-        });
+    });
 }
 
 
@@ -228,8 +228,9 @@ function AfficheAjouterTaille(e){
 }
 //confirmation
 function AjouterTaille(){
-
-    alert("ok");
+   var ValTaille = $(".valeur").val().toUpperCase();
+   //$.getJSON("dispatcher.php",{"op":"AjoutTailleAjout","ValTaille":ValTaille},function(taille));
+   $("<p id="+ValTaille+"><label for=taille"+ValTaille+">"+ValTaille+" : </label><input type=text name=taille"+ValTaille+" id=taille"+ValTaille+"/> <span class='suppTailleAjout fa fa-trash'></span> <span class='fa fa-pencil'></span></p>").appendTo("#taillesAj"); 
 }
 
 
@@ -435,11 +436,7 @@ $('.contenu').on('click','#boutMod', function UpdateTshirt(e){
         var crea = $('#prodCre').val();
         var mat = $('#prodMat').val();
         var cat = $('#prodCat').val();
-        var tailleS = $('#tailleS').val();
-        var tailleM = $('#tailleM').val();
-        var tailleL = $('#tailleL').val();
-        var tailleXL = $('#tailleXL').val();
-       
+    
          //change la valeur du h2 ds la recherche
         $("li#tshirt"+idTshirt+" >h2").replaceWith("<h2 data="+idTshirt+">"+nom+"</h2>");
         //update ds la DB
@@ -470,10 +467,12 @@ $('.modal-body').on('click','.ouiTaille', function ChoixOuiTaille(e){
     var idTshirt = $(".modal-content").find("h2").attr("class");
     var idTaille = $(".modal-content").find("h2").attr("id");
     $("#"+taille+"").val('0');
-    $.getJSON("dispatcher.php",{"op":"supprimerTaille","idTaille":idTaille,"idTshirt":idTshirt});
-    recupTaille(idTshirt);
+    $.getJSON("dispatcher.php",{"op":"supprimerTaille","idTaille":idTaille,"idTshirt":idTshirt},function(e){
+        
+    });
     $(".modalSupp").fadeOut();
     $("#myModal").find("h2").replaceWith("<h2> Le stock à bien été mis à jour</h2>");
+    recupTaille(idTshirt);
     $('#myModal').fadeIn();
     $('#myModal').fadeOut(2000);
 });
@@ -538,10 +537,10 @@ $("#myModalTaille").on("click",".submit",function AjouteTailleModif(e){
     var idTshirt = $(this).attr("id");
     var ValTaille = $(".valeur").val().toUpperCase();
     $("#myModalTaille").css('display','none');
-    $.getJSON("dispatcher.php",{"op":"AjoutTaille","idTshirt":idTshirt,"ValTaille":ValTaille},function(){
-        recupTaille(idTshirt);
-    });
+    $.getJSON("dispatcher.php",{"op":"AjoutTaille","idTshirt":idTshirt,"ValTaille":ValTaille},function(z){
     
+    });
+    recupTaille(idTshirt);
 });
 //ferme la modal ajout d'une Taille
 $(".close-taille").on("click",function close(){

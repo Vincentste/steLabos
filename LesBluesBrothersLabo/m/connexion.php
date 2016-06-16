@@ -199,6 +199,28 @@ function AjoutTailleVoletModif($idTshirt,$ValTaille){
 }
 
 
+function AjoutTailleVoletAjout($ValTaille){
+  $Taille = recupTaille();
+  $tab = [];
+    for ($i=0; $i < count($Taille); $i++) { 
+        array_push($tab, $Taille[$i]->taille);
+    }
+
+    if(!in_array($ValTaille, $tab)){
+        //insert de la nouvelle Taille 
+        InsertTaille($ValTaille);
+    }
+    
+    $requete='SELECT tail_id as IdTaille FROM tailles WHERE tail_nom = :ValTaille';
+    $connexion=connexion_PDO();
+    $resultat=$connexion->prepare($requete);
+    $resultat->execute([":ValTaille"=>$ValTaille]);
+    return $resultat->fetchAll(PDO::FETCH_OBJ);
+}
+
+
+
+
 //update (nom,prix,date,desc,crea,mat,cat) dans la DB d un t-shirt
 function RequeteUpdate_Tshirt($id,$nom,$prix,$date,$desc,$crea,$mat,$cat){
     $requete='Update produits SET prod_nom = :nom ,prod_prix = :prix,prod_date = :date, prod_desc = :desc, prod_fk_createur = :crea, prod_fk_matiere = :mat, prod_fk_categorie = :cat WHERE prod_id = :id';

@@ -17,6 +17,7 @@
         "UpdateTshirt"=>"accueil.html",
         "UpdateTaille"=>"accueil.html",
         "AjoutTaille"=>"accueil.html",
+        "AjoutTailleAjout"=>"accueil.html",
         "afficheModifierTshirt"=>"accueil.html",
         "voletAjoutTshirt"=>"accueil.html",
         "recherche_image"=>"accueil.html",
@@ -213,6 +214,11 @@
                 $idTshirt = $_GET['idTshirt'];
                 $ValTaille = $_GET['ValTaille'];
                 $requete = AjoutTailleVoletModif($idTshirt,$ValTaille);
+            break;
+
+            case "AjoutTailleAjout":
+                $ValTaille = $_GET['ValTaille'];
+                $requete = AjoutTailleVoletAjout($ValTaille);
                 echo json_encode($requete);
             break;
     }
