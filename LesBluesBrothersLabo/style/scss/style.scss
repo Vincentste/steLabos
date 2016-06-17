@@ -21,19 +21,18 @@ body{
 		#menu{
 			display: block;
 			float: left;
-			margin: 3% 0 0 0;
+			margin: 8% 0 0 0;
 			
 			ul {
     			list-style-type: none;
     			margin: 0;
     			padding: 0;
+    			background-color: #f1f1f1;
     			overflow: auto;
 			}
 			li{
-				margin: 8% 0 0 0;
     			display: block;
     			color: #000;
-    			background-color: #f1f1f1;
     			padding: 8px 0 8px 16px;
     			text-decoration: none;
 			}
@@ -50,7 +49,7 @@ body{
 			border: 1px solid black;
 			min-height: 90vh;
 			float: left;
-			width: 90%;
+			width: 80%;
 			
 			/*Formulaire de recherche*/
 			#champHaut{	
@@ -60,7 +59,6 @@ body{
 				margin: 4% 1%;
 
 					.moteur{
-						
 						text-align: center;
 					}
 
