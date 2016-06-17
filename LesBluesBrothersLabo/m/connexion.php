@@ -265,3 +265,12 @@ function requeteSelectImg($limite){
     return $resultat->fetchAll(PDO::FETCH_OBJ);
 }
 
+//supp une catégorie => tshirt et exemplaire lié
+
+function suppCat($idCat){
+    $requete='DELETE categories,produits,exemplaires FROM categories INNER JOIN produits,exemplaires where cat_id = :idCat AND prod_fk_categorie = :idCat AND exem_fk_tee = prod_id';
+    $connexion=connexion_PDO();
+    $resultat=$connexion->prepare($requete);
+    $resultat->execute([":idCat"=>$idCat]);
+    return $resultat->fetchAll(PDO::FETCH_OBJ);
+}

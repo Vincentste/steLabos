@@ -19,10 +19,10 @@ class Affichage{
     public function afficheMenu(){
           return'<nav id="menu">
                 <ul>
-                    <li id="T-shirt">T-shirt</li>
-                    <li id="Catégories">Catégories</li>
-                    <li id="Créateurs">Créateurs</li>
-                    <li id="Matières">Matières</li>
+                    <li class="t-shirt">T-shirt</li>
+                    <li class="categories">Catégories</li>
+                    <li class="createurs">Créateurs</li>
+                    <li class="matières">Matières</li>
                 </ul>
             </nav>';
     }

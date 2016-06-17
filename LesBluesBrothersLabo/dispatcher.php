@@ -22,6 +22,7 @@
         "voletAjoutTshirt"=>"accueil.html",
         "recherche_image"=>"accueil.html",
         "save_tshirt"=>"accueil.html",
+        "suppCat"=>"accueil.html",
         "rechercheParFiltre"=>"accueil.html"
 	];
 
@@ -213,4 +214,13 @@
                 $requete = AjoutTailleVoletAjout($ValTaille);
                 echo json_encode($requete);
             break;
+            
+            //Suprime une catégorie => t-shirt et stock lié
+            case "suppCat":
+            $idCat = $_GET['idCat'];
+            $requete = suppCat($idCat);
+            echo json_encode($requete);
+            break; 
+
+
     }

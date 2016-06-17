@@ -542,8 +542,52 @@ $(".close-taille").on("click",function close(){
         $("#myModalTaille").css('display','none');
 });
 
-/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
+
+/*------------------------------------------------------Volet Modfi Categorie---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+/* function */
+function getMenuCat(){
+    $.getJSON("dispatcher.php","op=data_recherche",function(d){
+        var categories=d['categories'];
+        $("<section><ul class=cate></ul></section>").appendTo(".modal-body-menu");
+        for (var i = 0; i <categories.length; i++){
+          $('<li id='+categories[i].cat_nom+'>'+categories[i].cat_nom+'</li><span data='+categories[i].cat_id+' id=suppCat class="fa fa-trash"></span><br/>').appendTo(".cate");
+        }
+        $("<input type=text></input>").appendTo(".modal-body-menu");
+    });
+}
+/*-----------*/
+
+// affiche la modal des catégories  
+$(".contenu").on("click",".categories",function modifCategorie(){
+    $("#myModalMenu").find("h2").replaceWith("<h2>Catégories</h2>");
+    $(".modal-body-menu").children().remove();
+    getMenuCat();
+    $("#myModalMenu").css("display","block");
+});
+
+//supprime la categorie mais aussi les t-shirt lié a cette catégorie 
+$(".modal-body-menu").on("click","#suppCat",function SuppCat(){
+    idCat = $(this).attr("data");
+    $.getJSON("dispatcher.php",{"op":"suppCat","idCat":idCat});
+    $("#myModalMenu").fadeOut(1000);
+})
+
+
+
+
+
+
+//ferme la modal 
+$("#myModalMenu").on("click",".close-menu",function fermeModal(e){
+    $("#myModalMenu").fadeOut(1000);
+});
+
+
+
+/*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 
 });
