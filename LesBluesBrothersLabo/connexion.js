@@ -556,6 +556,7 @@ function getMenuCat(){
           $('<li id='+categories[i].cat_nom+'>'+categories[i].cat_nom+'</li><span data='+categories[i].cat_id+' id=suppCat class="fa fa-trash"></span><br/>').appendTo(".cate");
         }
         $("<input type=text></input>").appendTo(".modal-body-menu");
+        $(".save").attr("class","SaveCat");
     });
 }
 /*-----------*/

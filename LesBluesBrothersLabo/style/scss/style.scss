@@ -46,24 +46,30 @@ body{
 
 
 		.content{
-			border: 1px solid black;
-			min-height: 90vh;
+
 			float: left;
 			width: 85%;
+			border: 1px solid #888;
+			border-radius: 15px;
+			min-height: 90vh;
 			
 			/*Formulaire de recherche*/
 			#champHaut{	
-
+				display: block;
 				height: 3em;
 				border-bottom: 1px solid black;
 				margin: 4% 1%;
-
+				
 					.moteur{
-						text-align: center;
+						padding: 0 0 0 56%;
+						display: inline-block;
+						
 					}
 
 					#champTexte{
+					
 						border-radius: 20px; 
+						
 						
 					}
 			}

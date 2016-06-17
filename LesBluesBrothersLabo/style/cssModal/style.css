@@ -246,4 +246,11 @@ p:hover{
     color: white;
 }
 
-
+.modal-footer-menu>input{
+     background:#fefefe none repeat scroll 0 0;
+    border: 0 none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px 15px;
+}
+}
