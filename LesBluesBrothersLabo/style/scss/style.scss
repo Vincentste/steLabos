@@ -11,34 +11,63 @@ a{
 
 body{
 	width: 75%;
-	margin: 0 auto;
+	margin: 3% auto;
 	font-family: helvetica,arial,"sans-serif";
 
 	.contenu{
-		border: 1px solid black;
-		margin: 1em;
-		padding: 1em;
-		min-height: 90vh;
 		
-		.content{
-			position: relative;
+		
+
+		#menu{
+			display: block;
+			float: left;
+			margin: 3% 0 0 0;
 			
-			h1{ 
-				font-size: 1.5em;
-				padding-bottom: 1em;
-				text-align: center; 
+			ul {
+    			list-style-type: none;
+    			margin: 0;
+    			padding: 0;
+    			overflow: auto;
 			}
+			li{
+				margin: 8% 0 0 0;
+    			display: block;
+    			color: #000;
+    			background-color: #f1f1f1;
+    			padding: 8px 0 8px 16px;
+    			text-decoration: none;
+			}
+			li:hover{
+    			background-color: #555;
+    			color: white;
+			}
+
+
+		}
+
+
+		.content{
+			border: 1px solid black;
+			min-height: 90vh;
+			float: left;
+			width: 90%;
 			
 			/*Formulaire de recherche*/
 			#champHaut{	
-				border-bottom: 1px solid black;
 
-				#champTexte{
-					position: absolute;
-					top:0;
-					right: 0;
-					border-radius: 20px; 
-				}
+				height: 3em;
+				border-bottom: 1px solid black;
+				margin: 4% 1%;
+
+					.moteur{
+						
+						text-align: center;
+					}
+
+					#champTexte{
+						border-radius: 20px; 
+						
+					}
 			}
 
 			#champbas{
@@ -260,7 +289,7 @@ body{
 						.boutonsFormModifier{
 							position: absolute;
 							bottom: 1%;
-							right: 43%;
+							right: 5%;
 						}
 					}
 				}		

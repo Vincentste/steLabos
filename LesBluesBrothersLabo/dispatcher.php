@@ -78,6 +78,7 @@
             
             case "template_tshirt":
             $Affichage = new Affichage();
+            echo $Affichage->afficheMenu();
             echo $Affichage->afficheChampsRecherche();
             break;
             

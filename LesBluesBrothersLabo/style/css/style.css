@@ -74,56 +74,76 @@ a {
 /* line 12, ../scss/style.scss */
 body {
   width: 75%;
-  margin: 0 auto;
+  margin: 3% auto;
   font-family: helvetica,arial,"sans-serif";
 }
-/* line 17, ../scss/style.scss */
-body .contenu {
-  border: 1px solid black;
-  margin: 1em;
-  padding: 1em;
-  min-height: 90vh;
+/* line 21, ../scss/style.scss */
+body .contenu #menu {
+  display: block;
+  float: left;
+  margin: 3% 0 0 0;
 }
-/* line 23, ../scss/style.scss */
+/* line 26, ../scss/style.scss */
+body .contenu #menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+}
+/* line 32, ../scss/style.scss */
+body .contenu #menu li {
+  margin: 8% 0 0 0;
+  display: block;
+  color: #000;
+  background-color: #f1f1f1;
+  padding: 8px 0 8px 16px;
+  text-decoration: none;
+}
+/* line 40, ../scss/style.scss */
+body .contenu #menu li:hover {
+  background-color: #555;
+  color: white;
+}
+/* line 49, ../scss/style.scss */
 body .contenu .content {
-  position: relative;
+  border: 1px solid black;
+  min-height: 90vh;
+  float: left;
+  width: 90%;
   /*Formulaire de recherche*/
   /*Partie ajout*/
   /*Listing des t-shirt*/
 }
-/* line 26, ../scss/style.scss */
-body .contenu .content h1 {
-  font-size: 1.5em;
-  padding-bottom: 1em;
+/* line 56, ../scss/style.scss */
+body .contenu .content #champHaut {
+  height: 3em;
+  border-bottom: 1px solid black;
+  margin: 4% 1%;
+}
+/* line 62, ../scss/style.scss */
+body .contenu .content #champHaut .moteur {
   text-align: center;
 }
-/* line 33, ../scss/style.scss */
-body .contenu .content #champHaut {
-  border-bottom: 1px solid black;
-}
-/* line 36, ../scss/style.scss */
+/* line 67, ../scss/style.scss */
 body .contenu .content #champHaut #champTexte {
-  position: absolute;
-  top: 0;
-  right: 0;
   border-radius: 20px;
 }
-/* line 44, ../scss/style.scss */
+/* line 73, ../scss/style.scss */
 body .contenu .content #champbas {
   position: relative;
   display: flex;
   margin: 1em;
 }
-/* line 49, ../scss/style.scss */
+/* line 78, ../scss/style.scss */
 body .contenu .content #champbas #boutChampRech {
   position: absolute;
   right: 0;
 }
-/* line 54, ../scss/style.scss */
+/* line 83, ../scss/style.scss */
 body .contenu .content #champbas p {
   margin: 0 0.5em;
 }
-/* line 60, ../scss/style.scss */
+/* line 89, ../scss/style.scss */
 body .contenu .content #divAjout #buttonAjout {
   display: block;
   text-align: center;
@@ -131,51 +151,51 @@ body .contenu .content #divAjout #buttonAjout {
   border-bottom: 1px solid black;
   background: #c8c8c8;
 }
-/* line 68, ../scss/style.scss */
+/* line 97, ../scss/style.scss */
 body .contenu .content #divAjout #buttonAjout:hover {
   cursor: pointer;
 }
-/* line 70, ../scss/style.scss */
+/* line 99, ../scss/style.scss */
 body .contenu .content #divAjout #voletAjout {
   padding: 0.5em;
   position: relative;
   padding: 0.5em;
 }
-/* line 78, ../scss/style.scss */
+/* line 107, ../scss/style.scss */
 body .contenu .content #divAjout #voletAjout form {
   display: flex;
 }
-/* line 81, ../scss/style.scss */
+/* line 110, ../scss/style.scss */
 body .contenu .content #divAjout #voletAjout form section {
   width: 30%;
   padding: 0.5em;
 }
-/* line 86, ../scss/style.scss */
+/* line 115, ../scss/style.scss */
 body .contenu .content #divAjout #voletAjout form #imgPrew img {
   width: 50%;
 }
-/* line 92, ../scss/style.scss */
+/* line 121, ../scss/style.scss */
 body .contenu .content #divAjout #voletAjout form #infosAjout p {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
 }
-/* line 97, ../scss/style.scss */
+/* line 126, ../scss/style.scss */
 body .contenu .content #divAjout #voletAjout form #infosAjout #prodDesc {
   width: 100%;
   height: 10rem;
 }
-/* line 104, ../scss/style.scss */
+/* line 133, ../scss/style.scss */
 body .contenu .content #divAjout #voletAjout form #taillesAjout p {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
 }
-/* line 110, ../scss/style.scss */
+/* line 139, ../scss/style.scss */
 body .contenu .content #divAjout #voletAjout form .boutonsFormAjout {
   position: absolute;
   bottom: 0;
   right: 25%;
 }
-/* line 118, ../scss/style.scss */
+/* line 147, ../scss/style.scss */
 body .contenu .content #divAjout #imageAjout {
   position: absolute;
   top: 0;
@@ -184,11 +204,11 @@ body .contenu .content #divAjout #imageAjout {
   border: 1px solid black;
   background: #f0f0f0;
 }
-/* line 130, ../scss/style.scss */
+/* line 159, ../scss/style.scss */
 body .contenu .content ul#recherche {
   background: #E9E9ED;
 }
-/* line 133, ../scss/style.scss */
+/* line 162, ../scss/style.scss */
 body .contenu .content ul#recherche li {
   display: block;
   padding: 0.7em;
@@ -196,54 +216,54 @@ body .contenu .content ul#recherche li {
   border-bottom: 1px solid black;
   /*formulaire modifier*/
 }
-/* line 139, ../scss/style.scss */
+/* line 168, ../scss/style.scss */
 body .contenu .content ul#recherche li ul.tshirt {
   float: right;
   width: 10;
 }
-/* line 143, ../scss/style.scss */
+/* line 172, ../scss/style.scss */
 body .contenu .content ul#recherche li ul.tshirt li {
   margin: 0 0 3% 0;
   padding: 0 9px 0 0;
   display: inline-block;
   border: none;
 }
-/* line 150, ../scss/style.scss */
+/* line 179, ../scss/style.scss */
 body .contenu .content ul#recherche li ul.tshirt li.modif:hover {
   cursor: pointer;
 }
-/* line 153, ../scss/style.scss */
+/* line 182, ../scss/style.scss */
 body .contenu .content ul#recherche li ul.tshirt li.voir:hover {
   cursor: pointer;
 }
-/* line 156, ../scss/style.scss */
+/* line 185, ../scss/style.scss */
 body .contenu .content ul#recherche li ul.tshirt li.supprimer:hover {
   cursor: pointer;
 }
-/* line 162, ../scss/style.scss */
+/* line 191, ../scss/style.scss */
 body .contenu .content ul#recherche li form {
   padding: 0.5em;
   position: relative;
   padding: 0.5em;
   display: flex;
 }
-/* line 168, ../scss/style.scss */
+/* line 197, ../scss/style.scss */
 body .contenu .content ul#recherche li form section {
   width: 30%;
   padding: 0.5em;
 }
-/* line 173, ../scss/style.scss */
+/* line 202, ../scss/style.scss */
 body .contenu .content ul#recherche li form input {
   padding: 5px;
   border: 2px solid grey;
   -webkit-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 180, ../scss/style.scss */
+/* line 209, ../scss/style.scss */
 body .contenu .content ul#recherche li form input:focus {
   border-color: #5cb85c;
 }
-/* line 184, ../scss/style.scss */
+/* line 213, ../scss/style.scss */
 body .contenu .content ul#recherche li form input[type=button] {
   padding: 5px 15px;
   background: #ccc;
@@ -252,12 +272,12 @@ body .contenu .content ul#recherche li form input[type=button] {
   -webkit-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 193, ../scss/style.scss */
+/* line 222, ../scss/style.scss */
 body .contenu .content ul#recherche li form label {
   display: inline-block;
   width: 150px;
 }
-/* line 198, ../scss/style.scss */
+/* line 227, ../scss/style.scss */
 body .contenu .content ul#recherche li form textarea {
   overflow: hidden;
   border: 2px solid grey;
@@ -266,15 +286,15 @@ body .contenu .content ul#recherche li form textarea {
   height: 60px;
   width: 230px;
 }
-/* line 207, ../scss/style.scss */
+/* line 236, ../scss/style.scss */
 body .contenu .content ul#recherche li form span:hover {
   cursor: pointer;
 }
-/* line 211, ../scss/style.scss */
+/* line 240, ../scss/style.scss */
 body .contenu .content ul#recherche li form #imglist {
   width: 100%;
 }
-/* line 216, ../scss/style.scss */
+/* line 245, ../scss/style.scss */
 body .contenu .content ul#recherche li form #infosAjout select {
   padding: 3px;
   margin: 0;
@@ -294,28 +314,28 @@ body .contenu .content ul#recherche li form #infosAjout select {
   appearance: none;
   cursor: pointer;
 }
-/* line 236, ../scss/style.scss */
+/* line 265, ../scss/style.scss */
 body .contenu .content ul#recherche li form #infosAjout p {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
 }
-/* line 241, ../scss/style.scss */
+/* line 270, ../scss/style.scss */
 body .contenu .content ul#recherche li form #infosAjout #prodDesc {
   width: 100%;
   height: 10rem;
 }
-/* line 249, ../scss/style.scss */
+/* line 278, ../scss/style.scss */
 body .contenu .content ul#recherche li form #taillesAjout p {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
 }
-/* line 255, ../scss/style.scss */
+/* line 284, ../scss/style.scss */
 body .contenu .content ul#recherche li form #ajoutTailleModif {
   margin: 3% 0 0 0;
 }
-/* line 260, ../scss/style.scss */
+/* line 289, ../scss/style.scss */
 body .contenu .content ul#recherche li form .boutonsFormModifier {
   position: absolute;
   bottom: 1%;
-  right: 43%;
+  right: 5%;
 }

@@ -15,12 +15,25 @@ class Affichage{
         <form/>
         </div>';
     }
+
+    public function afficheMenu(){
+          return'<nav id="menu">
+                <ul>
+                    <li id="T-shirt">T-shirt</li>
+                    <li id="Catégories">Catégories</li>
+                    <li id="Créateurs">Créateurs</li>
+                    <li id="Matières">Matières</li>
+                </ul>
+            </nav>';
+    }
+
+
     
     public function afficheChampsRecherche(){
         return '
             <section class="content">
-            <h1>Moteur de recherche</h1>
-            <form><fieldset id="champHaut">  
+            <form><fieldset id="champHaut"> 
+            <label class=moteur>Moteur de recherche</label> 
             <input type="text" id="champTexte" name="champTexte"/>
             </fieldset>
             <fieldset id="champbas">

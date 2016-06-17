@@ -326,7 +326,7 @@ function recupTaille(idTshirt){
     $.getJSON("dispatcher.php",{"op":"tailleTshirt","idTshirt":idTshirt},function(a){
         $("<div id='tailleMod'></div>").insertAfter("#taillesModif>h2")
         for(var i=0; i < a.length; i++){
-            $('<p id='+a[i].taille+'><label for=taille'+a[i].taille+'>'+a[i].taille+'</label><input name=taille'+a[i].taille+' id=ModifTaille'+a[i].taille+' value='+a[i].stock+' type=text/> <span data=ModifTaille'+a[i].taille+' name='+a[i].idTaille+' class="suppTaille fa fa-trash"></span> <span data="ModifTaille'+a[i].taille+'" class="UpdateTaille fa fa-pencil"></span></p>').appendTo("#tailleMod");   
+            $('<p id='+a[i].taille+'><br/><label for=taille'+a[i].taille+'>'+a[i].taille+'</label><input name=taille'+a[i].taille+' id=ModifTaille'+a[i].taille+' value='+a[i].stock+' type=text/> <span data=ModifTaille'+a[i].taille+' name='+a[i].idTaille+' class="suppTaille fa fa-trash"></span> <span data="ModifTaille'+a[i].taille+'" class="UpdateTaille fa fa-pencil"></span><br/></p>').appendTo("#tailleMod");   
         }   
     }); 
 }
@@ -531,12 +531,11 @@ $(".contenu").on("click","#ajoutTailleModif",function OuvreVoletTailleModif(e){
 });
 //valide l'ajout d'une taille
 $("#myModalTaille").on("click",".submit",function AjouteTailleModif(e){
-    $("#tailleMod").remove();
     var idTshirt = $(this).attr("id");
     var ValTaille = $(".valeur").val().toUpperCase();
     $("#myModalTaille").css('display','none');
     $.getJSON("dispatcher.php",{"op":"AjoutTaille","idTshirt":idTshirt,"ValTaille":ValTaille});
-    recupTaille(idTshirt);
+    $('<p id='+ValTaille+'><br/><label for=taille'+ValTaille+'>'+ValTaille+'</label><input name=taille'+ValTaille+' id=ModifTaille'+ValTaille+'  type=text/> <span data=ModifTaille'+ValTaille+'  class="suppTaille fa fa-trash"></span> <span data="ModifTaille'+ValTaille+'" class="UpdateTaille fa fa-pencil"></span><br/></p>').appendTo("#tailleMod");
 });
 //ferme la modal ajout d'une Taille
 $(".close-taille").on("click",function close(){
