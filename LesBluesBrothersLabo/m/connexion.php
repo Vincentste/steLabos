@@ -180,6 +180,17 @@ function InsertCat($idCat){
     $resultat->execute([":idCat"=>$idCat]);
 }
 
+//insert un dréateur
+function InsertCrea($idCrea){
+    $requete='INSERT INTO createurs (cre_nom) VALUES (:idCrea)';
+    $connexion=connexion_PDO();
+    $resultat=$connexion->prepare($requete);
+    $resultat->execute([":idCrea"=>$idCrea]);
+
+}
+
+
+
 // ajoute une taille au volet Modif 
 function AjoutTailleVoletModif($idTshirt,$ValTaille){
     $Taille = recupTaille();
@@ -327,3 +338,20 @@ function suppCrea($idCrea){
 
 }
 
+
+//ajoute un créateur si il n'existe pas 
+function ajouCrea($idCrea){
+    $crea = recupAllCategories();
+    $tab = [];
+    for ($i=0; $i < count($crea); $i++) { 
+        array_push($tab, $crea[$i]->cre_nom);
+    }
+    if(!in_array($idCrea, $tab)){
+        //insert de le nouveau créateur 
+        InsertCrea($idCrea);
+        return "o";
+    }else{
+        return "n";
+    }
+
+}

@@ -25,6 +25,7 @@
         "suppCat"=>"accueil.html",
         "suppCrea"=>"accueil.html",
         "ajouteCat"=>"accueil.html",
+        "ajouteCrea"=>"accueil.html",
         "rechercheParFiltre"=>"accueil.html"
 	];
 
@@ -214,25 +215,31 @@
             case "AjoutTailleAjout":
                 $ValTaille = $_GET['ValTaille'];
                 $requete = AjoutTailleVoletAjout($ValTaille);
-                echo json_encode($requete);
             break;
-            
+           
+            //categorie
             //Suprime une catégorie => t-shirt et stock lié
             case "suppCat":
             $idCat = $_GET['idCat'];
             $requete = suppCat($idCat);
-            echo json_encode($requete);
             break; 
-
+            //ajoute une cat si elle n'existe pas 
             case "ajouteCat":
             $idCat = $_GET['ValCat'];
             $requete = ajouCat($idCat);
             echo json_encode($requete);
             break;
-
+           
+            //createtur
+            //Suprime un createur => t-shirt et stock lié
             case "suppCrea":
             $idCrea = $_GET['idCrea'];
             $requete = suppCrea($idCrea);
+            break;
+
+            case "ajouteCrea":
+            $idCrea = $_GET['ValCrea'];
+            $requete = ajouCrea($idCrea);
             echo json_encode($requete);
             break;
     }

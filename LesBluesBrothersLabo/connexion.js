@@ -568,7 +568,7 @@ function getMenuCrea(){
           $('<li id='+createurs[i].cre_nom+'>'+createurs[i].cre_nom+'</li><span data='+createurs[i].cre_id+' id=suppCrea class="fa fa-trash"></span><br/>').appendTo(".crea");
         }
         $("<input type=text></input>").appendTo(".modal-body-menu");
-        $(".save").attr("class","SaveCat");
+        $(".save").attr("class","SaveCrea");
     });
 
 }
@@ -621,6 +621,17 @@ $(".modal-body-menu").on("click","#suppCrea",function SuppCrea(){
     getMenuCrea();
 })
 
+//ajoute une catégorie ds la DB
+$(".modal-footer-menu").on("click",".SaveCrea",function SaveCrea(){
+    var idCrea = $(".modal-body-menu>input").val();
+    $.getJSON("dispatcher.php",{"op":"ajouteCrea","ValCrea":idCrea},function(a){
+        if(a[0] == "n"){
+            $("<br/><p class='msg'>Ce Créateur existe déjà</p>").insertAfter(".annule")
+        }else{
+           getMenuCrea(); 
+        }
+    });   
+});
 
 
 
