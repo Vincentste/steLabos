@@ -554,7 +554,7 @@ function getMenuCat(){
           $('<li id='+categories[i].cat_nom+'>'+categories[i].cat_nom+'</li><span data='+categories[i].cat_id+' id=suppCat class="fa fa-trash"></span><br/>').appendTo(".cate");
         }
         $("<input type=text></input>").appendTo(".modal-body-menu");
-        $(".save").attr("class","SaveCat");
+        $("#save").attr("class","SaveCat");
     });
 }
 
@@ -568,7 +568,7 @@ function getMenuCrea(){
           $('<li id='+createurs[i].cre_nom+'>'+createurs[i].cre_nom+'</li><span data='+createurs[i].cre_id+' id=suppCrea class="fa fa-trash"></span><br/>').appendTo(".crea");
         }
         $("<input type=text></input>").appendTo(".modal-body-menu");
-        $(".save").attr("class","SaveCrea");
+        $("#save").attr("class","SaveCrea");
     });
 
 }
@@ -624,8 +624,8 @@ $(".modal-body-menu").on("click","#suppCrea",function SuppCrea(){
 //ajoute une catégorie ds la DB
 $(".modal-footer-menu").on("click",".SaveCrea",function SaveCrea(){
     var idCrea = $(".modal-body-menu>input").val();
-    $.getJSON("dispatcher.php",{"op":"ajouteCrea","ValCrea":idCrea},function(a){
-        if(a[0] == "n"){
+    $.getJSON("dispatcher.php",{"op":"ajouteCrea","ValCrea":idCrea},function(d){
+        if(d[0] == "n"){
             $("<br/><p class='msg'>Ce Créateur existe déjà</p>").insertAfter(".annule")
         }else{
            getMenuCrea(); 

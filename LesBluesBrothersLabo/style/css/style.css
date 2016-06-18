@@ -109,7 +109,7 @@ body .contenu #menu li:hover {
 body .contenu .content {
   float: left;
   width: 85%;
-  border: 1px solid #888;
+  border: 0.5px solid #888;
   border-radius: 15px;
   min-height: 90vh;
   /*Formulaire de recherche*/
@@ -120,7 +120,7 @@ body .contenu .content {
 body .contenu .content #champHaut {
   display: block;
   height: 3em;
-  border-bottom: 1px solid black;
+  border-bottom: 0.5px solid #888;
   margin: 4% 1%;
 }
 /* line 65, ../scss/style.scss */
@@ -152,7 +152,7 @@ body .contenu .content #divAjout #buttonAjout {
   display: block;
   text-align: center;
   padding: 0.5em;
-  border-bottom: 1px solid black;
+  border-bottom: 0.5px solid #888;
   background: #f1f1f1;
 }
 /* line 103, ../scss/style.scss */
@@ -205,7 +205,7 @@ body .contenu .content #divAjout #imageAjout {
   top: 0;
   right: 0;
   height: 100%;
-  border: 1px solid black;
+  border: 0.5px solid #888;
   background: #f0f0f0;
 }
 /* line 165, ../scss/style.scss */
@@ -217,7 +217,7 @@ body .contenu .content ul#recherche li {
   display: block;
   padding: 0.7em;
   margin: 0;
-  border-bottom: 1px solid black;
+  border-bottom: 0.5px solid #888;
   /*formulaire modifier*/
 }
 /* line 174, ../scss/style.scss */

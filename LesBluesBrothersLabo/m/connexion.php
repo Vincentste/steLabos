@@ -341,7 +341,7 @@ function suppCrea($idCrea){
 
 //ajoute un créateur si il n'existe pas 
 function ajouCrea($idCrea){
-    $crea = recupAllCategories();
+    $crea = recupAllCreateurs();
     $tab = [];
     for ($i=0; $i < count($crea); $i++) { 
         array_push($tab, $crea[$i]->cre_nom);

@@ -51,7 +51,7 @@ body{
 
 			float: left;
 			width: 85%;
-			border: 1px solid #888;
+			border: 0.5px solid #888;
 			border-radius: 15px;
 			min-height: 90vh;
 			
@@ -59,7 +59,7 @@ body{
 			#champHaut{	
 				display: block;
 				height: 3em;
-				border-bottom: 1px solid black;
+				border-bottom:  0.5px solid #888;
 				margin: 4% 1%;
 				
 					.moteur{
@@ -96,7 +96,7 @@ body{
 					display: block;
 					text-align:center;
 					padding: 0.5em;
-					border-bottom: 1px solid black;
+					border-bottom:  0.5px solid #888;
 					background:  #f1f1f1;
 				}
 
@@ -155,7 +155,7 @@ body{
 					top: 0;
 					right: 0;
 					height: 100%;
-					border: 1px solid black;
+					border:  0.5px solid #888;
 					background: rgb(240,240,240);
 
 				}
@@ -169,7 +169,7 @@ body{
 					display: block;
 					padding: 0.7em;
 					margin: 0;
-					border-bottom: 1px solid black;
+					border-bottom:  0.5px solid #888;
                     
                     ul.tshirt{
                         float: right;
