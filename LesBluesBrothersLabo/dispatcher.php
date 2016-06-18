@@ -27,6 +27,7 @@
         "suppMat"=>"accueil.html",
         "ajouteCat"=>"accueil.html",
         "ajouteCrea"=>"accueil.html",
+        "ajouteMat"=>"accueil.html",
         "rechercheParFiltre"=>"accueil.html"
 	];
 
@@ -244,9 +245,16 @@
             echo json_encode($requete);
             break;
 
-
+            //matière
+            //supprime une mtière => t-shirt et stock lié
             case "suppMat":
             $idMat = $_GET['idMat'];
             $requete = suppMat($idMat);
+            break;
+
+            case "ajouteMat":
+            $idMat= $_GET['ValMat'];
+            $requete = ajouMat($idMat);
+            echo json_encode($requete);
             break;
     }

@@ -186,9 +186,15 @@ function InsertCrea($idCrea){
     $connexion=connexion_PDO();
     $resultat=$connexion->prepare($requete);
     $resultat->execute([":idCrea"=>$idCrea]);
-
 }
 
+//insert une catégorie 
+function InsertMat($idMat){
+    $requete='INSERT INTO matieres (mat_nom) VALUES (:idMat)';
+    $connexion=connexion_PDO();
+    $resultat=$connexion->prepare($requete);
+    $resultat->execute([":idMat"=>$idMat]);
+}
 
 
 // ajoute une taille au volet Modif 
@@ -374,3 +380,20 @@ function suppMat($idMat){
 
 }
 
+
+//ajoute une matiére si elle n'existe pas 
+function ajouMat($idMat){
+    $mat = recupAllMatieres();
+    $tab = [];
+    for ($i=0; $i < count($mat); $i++) { 
+        array_push($tab, $mat[$i]->mat_nom);
+    }
+    if(!in_array($idMat, $tab)){
+        //insert la nouvelle matière 
+        InsertMat($idMat);
+        return "o";
+    }else{
+        return "n";
+    }
+
+}

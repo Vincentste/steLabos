@@ -649,6 +649,7 @@ $(".modal-footer-menu").on("click",".SaveCrea",function SaveCrea(){
 });
 
 /*------------------------------------------------------------------------------------Volet Modfif Mat.---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
 // affiche la modal des Matiéres 
 $(".contenu").on("click",".matieres",function modifMatiere(){
     $("#myModalMenu").find("h2").replaceWith("<h2>Matiéres</h2>");
@@ -663,9 +664,10 @@ $(".modal-body-menu").on("click","#suppMat",function SuppMat(){
     getMenuMat();
 })
 
-/*$(".modal-footer-menu").on("click",".SaveCat",function SaveCat(){
-    var idCat = $(".modal-body-menu>input").val();
-    $.getJSON("dispatcher.php",{"op":"ajouteCat","ValCat":idCat},function(a){
+//ajout une matiére 
+$(".modal-footer-menu").on("click",".SaveMat",function SaveMat(){
+    var idMat = $(".modal-body-menu>input").val();
+    $.getJSON("dispatcher.php",{"op":"ajouteMat","ValMat":idMat},function(a){
         if(a[0] == "n"){
             $("<br/><p class='msg'>Cette matiére existe déjà</p>").insertAfter(".annule")
         }else{
