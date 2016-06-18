@@ -24,6 +24,7 @@
         "save_tshirt"=>"accueil.html",
         "suppCat"=>"accueil.html",
         "suppCrea"=>"accueil.html",
+        "suppMat"=>"accueil.html",
         "ajouteCat"=>"accueil.html",
         "ajouteCrea"=>"accueil.html",
         "rechercheParFiltre"=>"accueil.html"
@@ -241,5 +242,11 @@
             $idCrea = $_GET['ValCrea'];
             $requete = ajouCrea($idCrea);
             echo json_encode($requete);
+            break;
+
+
+            case "suppMat":
+            $idMat = $_GET['idMat'];
+            $requete = suppMat($idMat);
             break;
     }

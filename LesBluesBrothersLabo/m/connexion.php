@@ -355,3 +355,22 @@ function ajouCrea($idCrea){
     }
 
 }
+
+
+//supp une matiére => tshirt et exemplaire lié
+function DeleteMat($idMat){
+    $requete='DELETE from matieres where mat_id = :idMat';
+    $connexion=connexion_PDO();
+    $resultat=$connexion->prepare($requete);
+    $resultat->execute([":idMat"=>$idMat]);
+}
+
+function suppMat($idMat){
+    DeleteMat($idMat);
+    $requete='DELETE produits,exemplaires FROM produits INNER JOIN exemplaires where prod_fk_createur = :idMat AND exem_fk_tee = prod_id';
+    $connexion=connexion_PDO();
+    $resultat=$connexion->prepare($requete);
+    $resultat->execute([":idMat"=>$idMat]);
+
+}
+

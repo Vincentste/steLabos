@@ -574,9 +574,24 @@ function getMenuCrea(){
 }
 
 
+function getMenuMat(){
+     $.getJSON("dispatcher.php","op=data_recherche",function(d){
+        var matieres=d['matieres'];
+        $(".modal-body-menu").children().remove();
+        $(".msg").remove();
+        $("<section><ul class=mat></ul></section>").appendTo(".modal-body-menu");
+        for (var i = 0; i <matieres.length; i++){
+          $('<li id='+matieres[i].mat_nom+'>'+matieres[i].mat_nom+'</li><span data='+matieres[i].mat_id+' id=suppMat class="fa fa-trash"></span><br/>').appendTo(".mat");
+        }
+        $("<input type=text></input>").appendTo(".modal-body-menu");
+        $("#save").attr("class","SaveMat");
+    });
+
+}
 
 
                                                                         /*--------------*/
+/*---------------------------------------------------------------------------------Volet Modif Catégories---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 // affiche la modal des catégories  
 $(".contenu").on("click",".categories",function modifCategorie(){
@@ -605,7 +620,7 @@ $(".modal-footer-menu").on("click",".SaveCat",function SaveCat(){
 });
 
 
-/*---------------------------------------------------------------------------------Volet Modif Créateur---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------Volet Modif Créateurs---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 // affiche la modal des catégories  
 $(".contenu").on("click",".createurs",function modifCreateur(){
@@ -626,14 +641,38 @@ $(".modal-footer-menu").on("click",".SaveCrea",function SaveCrea(){
     var idCrea = $(".modal-body-menu>input").val();
     $.getJSON("dispatcher.php",{"op":"ajouteCrea","ValCrea":idCrea},function(d){
         if(d[0] == "n"){
-            $("<br/><p class='msg'>Ce Créateur existe déjà</p>").insertAfter(".annule")
+            $("<br/><p class='msg'>Ce créateur existe déjà</p>").insertAfter(".annule")
         }else{
-           getMenuCrea(); 
+        getMenuCrea(); 
         }
     });   
 });
 
+/*------------------------------------------------------------------------------------Volet Modfif Mat.---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+// affiche la modal des Matiéres 
+$(".contenu").on("click",".matieres",function modifMatiere(){
+    $("#myModalMenu").find("h2").replaceWith("<h2>Matiéres</h2>");
+    getMenuMat();
+    $("#myModalMenu").css("display","block");
+});
 
+//supprime la matières mais aussi les t-shirt lié a cette catégorie 
+$(".modal-body-menu").on("click","#suppMat",function SuppMat(){
+    idMat = $(this).attr("data");
+    $.getJSON("dispatcher.php",{"op":"suppMat","idMat":idMat});
+    getMenuMat();
+})
+
+/*$(".modal-footer-menu").on("click",".SaveCat",function SaveCat(){
+    var idCat = $(".modal-body-menu>input").val();
+    $.getJSON("dispatcher.php",{"op":"ajouteCat","ValCat":idCat},function(a){
+        if(a[0] == "n"){
+            $("<br/><p class='msg'>Cette matiére existe déjà</p>").insertAfter(".annule")
+        }else{
+           getMenuMat(); 
+        }
+    });   
+});
 
 
 /*-------------------------------------------------------------------------Annuler /Fermer la modal Cat/Créa/Mat------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
