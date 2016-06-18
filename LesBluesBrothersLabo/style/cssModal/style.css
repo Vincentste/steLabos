@@ -81,7 +81,18 @@ p:hover{
     to {opacity: 1}
 }
 
+#non{
+ 
+    display: block;
+    float: right;
+   
+}
 
+#oui{
+   
+    display: inline-block;
+  
+}
 /*--------------------------------------modal ajout taille-----------------------------------------*/
 
 
@@ -200,10 +211,13 @@ p:hover{
 
 /* The Close Button */
 .close-menu {
+    display: block;
     color: white;
     float: right;
     font-size: 28px;
     font-weight: bold;
+    margin:0;
+    padding: 0; 
 }
 
 .close-menu:hover,
@@ -220,8 +234,17 @@ p:hover{
     color: white;
 }
 
+.modal-header-menu>h2{
+   text-align: center;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    font-weight: bold;
+
+}
+
 .modal-body-menu {
-    padding: 4px 32px;
+    padding: 32px 32px;
 }
 
 .modal-body-menu>section>ul{

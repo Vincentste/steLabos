@@ -259,7 +259,7 @@ body .contenu .content ul#recherche li form section {
 /* line 208, ../scss/style.scss */
 body .contenu .content ul#recherche li form input {
   padding: 5px;
-  border: 2px solid grey;
+  border: 1px solid lightgrey;
   -webkit-border-radius: 5px;
   border-radius: 5px;
 }
@@ -279,12 +279,12 @@ body .contenu .content ul#recherche li form input[type=button] {
 /* line 228, ../scss/style.scss */
 body .contenu .content ul#recherche li form label {
   display: inline-block;
-  width: 150px;
+  width: 45%;
 }
 /* line 233, ../scss/style.scss */
 body .contenu .content ul#recherche li form textarea {
   overflow: hidden;
-  border: 2px solid grey;
+  border: 1px solid lightgrey;
   -webkit-border-radius: 5px;
   border-radius: 5px;
   height: 60px;

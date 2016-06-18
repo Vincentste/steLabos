@@ -466,7 +466,7 @@ $('.contenu').on('click','.supprimer', function supprimerTshirt(e){
     var modal = $('#myModalSupp');
     $('#myModalSupp').find('h2').replaceWith("<h2 id="+idTshirt+">Voulez vous supprimer ce T-shirt?</h2>");
     $(".modal-body").find("p").remove();
-    $('<p class="ouiTshirt">OUI</p><p class="nonTshirt">NON</p>').appendTo(".modal-body");
+    $('<p id="oui" class="ouiTshirt">OUI</p><p id="non" class="nonTshirt">NON</p>').appendTo(".modal-body");
     modal.css('display' ,"block");
 });
 //confirmation --> oui
@@ -496,7 +496,7 @@ $('.contenu').on('click','.suppTaille', function UpdateTaille(e){
     var modal = $('#myModalSupp');
     $('#myModalSupp').find('h2').replaceWith("<h2 id="+$(this).attr("name")+" class="+idTshirt+" data="+$(this).attr("data")+">Voulez vous supprimer le Stock de cette taille?</h2>");
     $(".modal-body").find("p").remove();
-    $('<p class="ouiTaille">OUI</p><p class="nonTaille">NON</p>').appendTo(".modal-body");
+    $('<p id="oui" class="ouiTaille">OUI</p><p id="non" class="nonTaille">NON</p>').appendTo(".modal-body");
     modal.css('display' ,"block");
 });
 //confirmation => oui 
@@ -595,7 +595,7 @@ function getMenuMat(){
 
 // affiche la modal des catégories  
 $(".contenu").on("click",".categories",function modifCategorie(){
-    $("#myModalMenu").find("h2").replaceWith("<h2>Catégories</h2>");
+    $("#myModalMenu").find("h2").replaceWith("<h2>CATEGORIES</h2>");
     getMenuCat();
     $("#myModalMenu").css("display","block");
 });
@@ -624,7 +624,7 @@ $(".modal-footer-menu").on("click",".SaveCat",function SaveCat(){
 
 // affiche la modal des catégories  
 $(".contenu").on("click",".createurs",function modifCreateur(){
-    $("#myModalMenu").find("h2").replaceWith("<h2>Créateur</h2>");
+    $("#myModalMenu").find("h2").replaceWith("<h2>CREATEUR</h2>");
     getMenuCrea();
     $("#myModalMenu").css("display","block");
 });
@@ -652,7 +652,7 @@ $(".modal-footer-menu").on("click",".SaveCrea",function SaveCrea(){
 
 // affiche la modal des Matiéres 
 $(".contenu").on("click",".matieres",function modifMatiere(){
-    $("#myModalMenu").find("h2").replaceWith("<h2>Matiéres</h2>");
+    $("#myModalMenu").find("h2").replaceWith("<h2>MATIERES</h2>");
     getMenuMat();
     $("#myModalMenu").css("display","block");
 });
