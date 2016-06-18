@@ -164,11 +164,20 @@ function requeteTailleTshirt($idTshirt){
     return $resultat->fetchAll(PDO::FETCH_OBJ);
 }
 
+//insert une taille 
 function InsertTaille($ValTaille){
     $requete='INSERT INTO tailles (tail_nom) VALUES (:ValTaille)';
     $connexion=connexion_PDO();
     $resultat=$connexion->prepare($requete);
     $resultat->execute([":ValTaille"=>$ValTaille]);
+}
+
+//insert une catégorie 
+function InsertCat($idCat){
+    $requete='INSERT INTO categories (cat_nom) VALUES (:idCat)';
+    $connexion=connexion_PDO();
+    $resultat=$connexion->prepare($requete);
+    $resultat->execute([":idCat"=>$idCat]);
 }
 
 // ajoute une taille au volet Modif 
@@ -266,11 +275,37 @@ function requeteSelectImg($limite){
 }
 
 //supp une catégorie => tshirt et exemplaire lié
+function DeleteCat($idCat){
+    $requete='DELETE from categories where cat_id = :idCat';
+    $connexion=connexion_PDO();
+    $resultat=$connexion->prepare($requete);
+    $resultat->execute([":idCat"=>$idCat]);
+
+}
+
 
 function suppCat($idCat){
-    $requete='DELETE categories,produits,exemplaires FROM categories INNER JOIN produits,exemplaires where cat_id = :idCat AND prod_fk_categorie = :idCat AND exem_fk_tee = prod_id';
+    DeleteCat($idCat);
+    $requete='DELETE produits,exemplaires FROM produits INNER JOIN exemplaires where prod_fk_categorie = :idCat AND exem_fk_tee = prod_id';
     $connexion=connexion_PDO();
     $resultat=$connexion->prepare($requete);
     $resultat->execute([":idCat"=>$idCat]);
     return $resultat->fetchAll(PDO::FETCH_OBJ);
+}
+
+//ajoute une catégorie si elle n'existe pas 
+function ajouCat($idCat){
+    $cat = recupAllCategories();
+    $tab = [];
+    for ($i=0; $i < count($cat); $i++) { 
+        array_push($tab, $cat[$i]->cat_nom);
+    }
+    if(!in_array($idCat, $tab)){
+        //insert de la nouvelle catégorie  
+        InsertCat($idCat);
+        return "o";
+    }else{
+        return "n";
+    }
+
 }

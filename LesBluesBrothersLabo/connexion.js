@@ -551,6 +551,8 @@ $(".close-taille").on("click",function close(){
 function getMenuCat(){
     $.getJSON("dispatcher.php","op=data_recherche",function(d){
         var categories=d['categories'];
+        $(".modal-body-menu").children().remove();
+        $(".msg").remove();
         $("<section><ul class=cate></ul></section>").appendTo(".modal-body-menu");
         for (var i = 0; i <categories.length; i++){
           $('<li id='+categories[i].cat_nom+'>'+categories[i].cat_nom+'</li><span data='+categories[i].cat_id+' id=suppCat class="fa fa-trash"></span><br/>').appendTo(".cate");
@@ -564,7 +566,6 @@ function getMenuCat(){
 // affiche la modal des catégories  
 $(".contenu").on("click",".categories",function modifCategorie(){
     $("#myModalMenu").find("h2").replaceWith("<h2>Catégories</h2>");
-    $(".modal-body-menu").children().remove();
     getMenuCat();
     $("#myModalMenu").css("display","block");
 });
@@ -576,7 +577,19 @@ $(".modal-body-menu").on("click","#suppCat",function SuppCat(){
     $("#myModalMenu").fadeOut(1000);
 })
 
-
+//ajoute une catégorie ds la DB
+$(".modal-footer-menu").on("click",".SaveCat",function SaveCat(){
+    var idCat = $(".modal-body-menu>input").val();
+    $.getJSON("dispatcher.php",{"op":"ajouteCat","ValCat":idCat},function(a){
+        if(a[0] == "n"){
+            $("<br/><p class='msg'>Cette catégorie existe déjà</p>").insertAfter(".annule")
+        }else{
+           getMenuCat(); 
+        }
+    });
+    
+    
+});
 
 
 

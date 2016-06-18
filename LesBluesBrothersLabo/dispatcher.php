@@ -23,6 +23,7 @@
         "recherche_image"=>"accueil.html",
         "save_tshirt"=>"accueil.html",
         "suppCat"=>"accueil.html",
+        "ajouteCat"=>"accueil.html",
         "rechercheParFiltre"=>"accueil.html"
 	];
 
@@ -222,5 +223,9 @@
             echo json_encode($requete);
             break; 
 
-
+            case "ajouteCat":
+            $idCat = $_GET['ValCat'];
+            $requete = ajouCat($idCat);
+            echo json_encode($requete);
+            break;
     }
