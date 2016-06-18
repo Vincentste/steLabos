@@ -608,13 +608,18 @@ $(".modal-footer-menu").on("click",".SaveCat",function SaveCat(){
 /*---------------------------------------------------------------------------------Volet Modif Créateur---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 // affiche la modal des catégories  
-$(".contenu").on("click",".createurs",function modifCategorie(){
+$(".contenu").on("click",".createurs",function modifCreateur(){
     $("#myModalMenu").find("h2").replaceWith("<h2>Créateur</h2>");
     getMenuCrea();
     $("#myModalMenu").css("display","block");
 });
 
-
+//supprime le createur mais aussi les t-shirt lié a cette catégorie 
+$(".modal-body-menu").on("click","#suppCrea",function SuppCrea(){
+    idCrea = $(this).attr("data");
+    $.getJSON("dispatcher.php",{"op":"suppCrea","idCrea":idCrea});
+    getMenuCrea();
+})
 
 
 

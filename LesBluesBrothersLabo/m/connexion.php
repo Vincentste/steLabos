@@ -283,7 +283,6 @@ function DeleteCat($idCat){
 
 }
 
-
 function suppCat($idCat){
     DeleteCat($idCat);
     $requete='DELETE produits,exemplaires FROM produits INNER JOIN exemplaires where prod_fk_categorie = :idCat AND exem_fk_tee = prod_id';
@@ -309,3 +308,22 @@ function ajouCat($idCat){
     }
 
 }
+
+//supp un createur => tshirt et exemplaire lié
+function DeleteCrea($idCrea){
+    $requete='DELETE from createurs where cre_id = :idCrea';
+    $connexion=connexion_PDO();
+    $resultat=$connexion->prepare($requete);
+    $resultat->execute([":idCrea"=>$idCrea]);
+}
+
+function suppCrea($idCrea){
+    DeleteCrea($idCrea);
+    $requete='DELETE produits,exemplaires FROM produits INNER JOIN exemplaires where prod_fk_createur = :idCrea AND exem_fk_tee = prod_id';
+    $connexion=connexion_PDO();
+    $resultat=$connexion->prepare($requete);
+    $resultat->execute([":idCrea"=>$idCrea]);
+    return $resultat->fetchAll(PDO::FETCH_OBJ);
+
+}
+
